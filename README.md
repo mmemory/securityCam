@@ -18,9 +18,8 @@ The project is based on the Arduino Yun, to which we are going to connect a stan
       
 #### Team Members and Responsibility
 * Dustin Myers      ==>   Front-/Back-End/Data-Display
-* Mihir Patel       ==>   Front-/Back-End
-* Leonardo Prates   ==>   Hardware-Design
-* Philipp Schulte   ==>   Hardware-Design
+* Leonardo Prates   ==>   Hardware-Design/Front-End
+* Philipp Schulte   ==>   Hardware-Design/Back-End
 
 ### 1. Front-End
 ####1.1 Features
@@ -28,6 +27,7 @@ The project is based on the Arduino Yun, to which we are going to connect a stan
   
 ####1.2 Technologies
   * HTML/CSS
+  * Material design
   * AngularJS
     * $q
     * $http
@@ -38,17 +38,22 @@ The project is based on the Arduino Yun, to which we are going to connect a stan
   * Authentication
 
 ####2.2 Technologies
-  * Node
   * MongoDB
-  * Express
+  * Node.js
+    * Express
     * Cors
     * Mongoose
     * Body-Parser
   
 ### 3. Hardware-Design
-####3.1 Introduction to C
-####3.2 Features
-  * Web server
+####3.1 Features
+  * PIO Motion Sensor
+  * Camera
 
-####3.3 Technologies
+####3.2 Technologies
   * Temboo
+  * Dropbox
+
+####3.3 Libraries
+  * [Bridge] (http://www.arduino.cc/en/Tutorial/Bridge)
+  * [Process] (http://www.arduino.cc/en/Tutorial/Process)
