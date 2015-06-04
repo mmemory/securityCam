@@ -47,6 +47,7 @@ For the hardware configuration we have used [Marco Schwartz] (https://github.com
     * Cors
     * Mongoose
     * Body-Parser
+    * Passport
   
 ### 3. Hardware-Design
 ####3.1 Features
