@@ -1,6 +1,7 @@
 var app = angular.module('securityCam')
-	.controller('DashCtrl', ['$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log', function($scope, $timeout, $mdSidenav, $mdUtil, $log) {
 
+	.controller('DashCtrl', ['$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log', 'dashService', function($scope, $timeout, $mdSidenav, $mdUtil, $log, dashService) {
+ 
 	
 	////////////////////////////
 	// 		  On the Scope		
@@ -9,6 +10,12 @@ var app = angular.module('securityCam')
 	$scope.submissionEndDate
 	$scope.group
 
+            $scope.filterOptions = function() {
+                dashService.cameraInfo($scope.submissionStartDate, $scope.submissionEndDate).then(function(response) {
+                    console.log(response);
+
+                })
+            }
 
 	////////////////////////////
 	// 		  Sidebar		
