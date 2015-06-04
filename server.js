@@ -1,14 +1,8 @@
-// Main requires
+// Main imports
 var express = require('express');
 var BodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var cors = require('cors');
-
-
-
-// Connection variables
-var port = process.env.API_PORT || 3015;
-var mongoUri = 'mongodb://localhost/security-cam';
 
 
 
@@ -30,13 +24,18 @@ app.use(express.static(__dirname + '/public'));
 
 // Endpoints
 /// Users
-
+app.get('/api/test', function(req, res) {
+    res.send('It Worked');
+});
 /// Groups
 
 /// Hardware
 
 
 // Connections
+var port = process.env.API_PORT || 3015;
+var mongoUri = 'mongodb://localhost/security-cam';
+
 app.listen(port, function() {
     console.log('Listening on port', port);
 });
