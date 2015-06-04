@@ -1,4 +1,4 @@
-// Main imports
+// Main imports //
 var express = require('express');
 var BodyParser = require('body-parser');
 var mongoose = require('mongoose');
@@ -9,17 +9,23 @@ var LocalStrategy = require('passport-local').Strategy;
 
 
 
-// Initialize express
+// Initialize express //
 var app = express();
 
 
 
-// Local Imports
-//var Auth = require('./api/config/auth.js');
+// Database connection //
+var mongoUri = 'mongodb://localhost/security-cam';
+mongoose.connect(mongoUri);
+
+
+
+// Local Imports //
 var User = require('./api/models/userModel.js');
 
 
-// Local Authentication
+
+// Local Authentication //
 passport.serializeUser(function(user, done) {
     done(null, user._id);
 });
@@ -71,13 +77,35 @@ var requireAdmin = function(req, res, next) {
 
 
 
-// Middleware
+// Middleware //
 app.use(cors());
 app.use(BodyParser.json());
 app.use(express.static(__dirname + '/public'));
 
-// Endpoints
+
+
+// Endpoints //
 /// Users
+/// Register user
+app.post('api/users/register', function(req, res) {
+    User.findOne({user_info: {email: req.body.email}}, function(user) {
+
+        // User exists already, returns error
+        if (user) {
+            return res.status(400).json('User already exists with that email');
+        }
+
+        // If no user exists, then create a new user
+        var createUser = new User(req.body);
+
+        createUser.save(function(err, newUser) {
+            if (err) {
+                console.log('Error creating user', err);
+                return res.status(500).end();
+            }
+        })
+    })
+});
 
 /// Groups
 
@@ -89,14 +117,13 @@ app.get('/api/searchterm/:userID/:groupID/:startDate/:endDate', function(req, re
 });
 
 
-// Connections
+
+// Server //
 var port = process.env.API_PORT || 3015;
-var mongoUri = 'mongodb://localhost/security-cam';
 
 app.listen(port, function() {
     console.log('Listening on port', port);
 });
 
-mongoose.connect(mongoUri);
 
 
