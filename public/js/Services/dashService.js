@@ -7,10 +7,11 @@ var app = angular.module('securityCam')
 			method: 'POST',
 			//url: //url here/searchterm +userID + groupId + startDate + endDate
 		}).then(function(response) {
-			console.log(response) {
-				var data = response
-			}
-		})
-		defer.resolve(param)
-	}
-})
+			console.log(response);
+			// Do something with the response 
+			var data = response;
+			defer.resolve(data);
+		});
+		return defer.promise;
+	};
+});

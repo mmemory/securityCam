@@ -1,7 +1,6 @@
 var app = angular.module('securityCam')
-
-	.controller('MainCtrl', ['$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log', function($scope, $timeout, $mdSidenav, $mdUtil, $log) {
-	
+  .controller('MainCtrl', ['$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log', function($scope, $timeout, $mdSidenav, $mdUtil, $log) {
+  
     $scope.toggleLeft = buildToggler('left');
     $scope.toggleRight = buildToggler('right');
     /**
@@ -25,7 +24,7 @@ var app = angular.module('securityCam')
           $log.debug("close LEFT is done");
         });
     };
- 	
+  
     $scope.closeRight = function () {
       $mdSidenav('right').close()
         .then(function () {
