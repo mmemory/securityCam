@@ -1,6 +1,6 @@
 var app = angular.module('securityCam')
 
-	.controller('DashCtrl', ['$scope', 'dashService', '$timeout', '$mdSidenav', '$mdUtil', '$log', function($scope, dashService, $timeout, $mdSidenav, $mdUtil, $log) {
+	.controller('DashCtrl', ['$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log', 'dashService', function($scope, $timeout, $mdSidenav, $mdUtil, $log, dashService) {
  
 	
 	////////////////////////////
@@ -55,4 +55,5 @@ var app = angular.module('securityCam')
 
     /////////// End Sidebar ////////////
 
-}]) // End MainCtrl //
+
+}]) // End DashCtrl //

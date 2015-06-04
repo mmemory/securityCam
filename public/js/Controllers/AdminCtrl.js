@@ -1,5 +1,5 @@
 var app = angular.module('securityCam')
-	.controller('AmdinCtrl', ['$scope', function($scope) {
+	.controller('AdminCtrl', ['$scope', function($scope) {
 	
 
 }]) // End AdminCtrl //
