@@ -7,8 +7,36 @@
   <link rel="stylesheet" href="_/base.css">
   <link rel="stylesheet" href="styles.css">
 </head>
+<<<<<<< HEAD
+
+<body ng-controller='MainCtrl'>
+
+<md-toolbar flex>
+	<div class="md-toolbar-tools">
+		<div>
+      <md-button ng-click="toggleLeft()" class="md-icon-button md-secondary" hide-gt-md aria-label="Settings">
+      	<md-icon md-svg-icon="bower_components/angular-material/demos/toolbar/demoBasicUsage/img/icons/menu.svg"></md-icon>
+	    </md-button>
+    </div>
+		<h2>
+	    <span>SecurityCam</span>
+	  </h2>
+	  <div class="md-toolbar-tools">
+	    <md-button ui-sref="dashboard" class="md-secondary">
+	      Dashboard
+	    </md-button>
+	    <md-button ui-sref="admin" class="md-secondary">
+	      Admin Page
+	    </md-button>
+	  </div>
+  </div>
+</md-toolbar>
+     	
+<div ui-view></div>     
+=======
 <body ng-controller='MainCtrl'>
      
+>>>>>>> cd24eb07f9ecbca504ce2485d451ebdc83ddf9cf
 
   <!-- Bower -->
   <script src="bower_components/angular/angular.js"></script>
@@ -21,10 +49,22 @@
 
 
   <script src='js/mainApp.js'></script>
+<<<<<<< HEAD
+  <!-- Services --> 
+  <script src='js/Services/D3Services.js'></script>
+  <!-- Controllers --> 
+  <script src='js/Controllers/MainCtrl.js'></script>
+  <script src='js/Controllers/AdminCtrl.js'></script>
+  <script src='js/Controllers/DashCtrl.js'></script>
+  <script src='js/Controllers/WelcomeCtrl.js'></script>
+  <!-- D3 --> 
+  <script src='D3/DashWeekDir.js'></script>
+=======
   <script src='js/Controllers/MainCtrl.js'></script>
   <script src='js/Controllers/DashCtrl.js'></script>
 
 
+>>>>>>> cd24eb07f9ecbca504ce2485d451ebdc83ddf9cf
 
 </body>
 </html>

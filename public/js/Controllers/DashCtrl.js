@@ -1,7 +1,60 @@
 var app = angular.module('securityCam')
+<<<<<<< HEAD
+	.controller('DashCtrl', ['$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log', function($scope, $timeout, $mdSidenav, $mdUtil, $log) {
+
+	
+	////////////////////////////
+	// 		  On the Scope		
+	///////////////////////////
+	$scope.submissionStartDate
+	$scope.submissionEndDate
+	$scope.group
+
+
+	////////////////////////////
+	// 		  Sidebar		
+	///////////////////////////
+
+    $scope.toggleLeft = buildToggler('left');
+    $scope.toggleRight = buildToggler('right');
+
+    /**
+     * Build handler to open/close a SideNav; when animation finishes
+     * report completion in console
+     */
+    function buildToggler(navID) {
+      var debounceFn =  $mdUtil.debounce(function(){
+            $mdSidenav(navID)
+              .toggle()
+              .then(function () {
+                $log.debug("toggle " + navID + " is done");
+              });
+          },300);
+      return debounceFn;
+    }
+  
+    $scope.closeLeft = function () {
+      $mdSidenav('left').close()
+        .then(function () {
+          $log.debug("close LEFT is done");
+        });
+    };
+
+    $scope.groups = [
+          "Group A",
+          "Group B",
+          "Group C",
+          "Group D"
+      ];
+
+    /////////// End Sidebar ////////////
+
+}]) // End MainCtrl //
+=======
 	.controller('DashCtrl', ['$scope', function($scope) {
 	
 
 
 
 }]) // End DashCtrl //
+>>>>>>> cd24eb07f9ecbca504ce2485d451ebdc83ddf9cf
