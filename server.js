@@ -6,7 +6,7 @@ var cors = require('cors');
 
 
 
-// Initialize app
+// Initialize express
 var app = express();
 
 
@@ -24,12 +24,15 @@ app.use(express.static(__dirname + '/public'));
 
 // Endpoints
 /// Users
-app.get('/api/test', function(req, res) {
-    res.send('It Worked');
-});
+
 /// Groups
 
 /// Hardware
+
+/// Queries
+app.get('/api/searchterm/:userID/:groupID/:startDate/:endDate', function(req, res) {
+    // Search Date
+});
 
 
 // Connections
