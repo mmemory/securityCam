@@ -18,10 +18,5 @@ var app = angular.module('securityCam', ['ngMaterial', 'ui.router'])
   			templateUrl: 'js/Templates/AdminTmpl.html',
   			controller: 'AdminCtrl'
   		})
-  		.state('welcome', {
-  			url: '/welcome',
-  			templateUrl: 'js/Templates/WelcomeTmpl.html',
-  			controller: 'WelcomeCtrl'
-  		})
 
   }]) // end config //

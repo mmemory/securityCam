@@ -8,6 +8,7 @@ var app = angular.module('securityCam')
      * report completion in console
      */
     function buildToggler(navID) {
+      $log.debug(navID + "clicked")
       var debounceFn =  $mdUtil.debounce(function(){
             $mdSidenav(navID)
               .toggle()
