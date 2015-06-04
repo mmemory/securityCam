@@ -26,7 +26,11 @@ body, html {
   font-weight: 300;
   font-size: 1.2em;
   line-height: 1.2em;
+<<<<<<< HEAD
+  background: #EEEEEE;
+=======
   background: #C8C8C8;
+>>>>>>> cd24eb07f9ecbca504ce2485d451ebdc83ddf9cf
   color: #726F66;
   width: 100%;
   height: 100%;
