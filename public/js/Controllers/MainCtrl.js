@@ -1,4 +1,5 @@
 var app = angular.module('securityCam')
+
 	.controller('MainCtrl', ['$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log', function($scope, $timeout, $mdSidenav, $mdUtil, $log) {
 	
     $scope.toggleLeft = buildToggler('left');
@@ -31,6 +32,6 @@ var app = angular.module('securityCam')
           $log.debug("close RIGHT is done");
         });
     };
-	
+
 
 }]) // End MainCtrl //
