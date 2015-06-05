@@ -1,1 +1,57 @@
-DashTmpl.html
+<div layout="column" style="height:500px;">
+  <section layout="row" flex>
+    <md-sidenav style="height:491px;" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+      <h1 class="md-toolbar-tools">Photo Search</h1>
+      <md-content layout-padding>
+      	<md-whiteframe class='md-whitframe-z1'>
+	        <md-select ng-model="group" placeholder="Groups">
+		        <md-option ng-repeat="group in groups" value="{{group}}">{{group}}</md-option>
+		    	</md-select>
+		    </md-whiteframe>
+	     	<md-input-container>
+          <label>Search - Start Date</label>
+          <input type="date" ng-model="submissionStartDate">
+        </md-input-container>
+        <md-input-container>
+          <label>Search - End Date</label>
+          <input type="date" ng-model="submissionEndDate">
+        </md-input-container>
+      </md-content>
+    </md-sidenav>
+    <md-content style='background-color: #EEEEEE;' flex layout-padding layout>
+      <div layout='column' layout-gt-md='row' layout-fill layout-align="top center">
+			  <md-whiteframe class="md-whiteframe-z2" style='background-color: white; height: 475px;' layout layout-align="center start" flex='99' layout-margin>
+			    <span>
+				    <h1 layout'center start' layout-margin class='.md-headline'>Photo Feed: {{ group }}</h1>
+			    </span>	
+			  </md-whiteframe>
+      </div>
+
+    </md-content>
+  </section>
+</div>
+<div layout='column' layout-gt-md='row' style='height: 400px' layout-align='center start' layout-fill layout-padding>
+	<md-whiteframe class="md-whiteframe-z2" style='background-color: white; height: 575px;' layout-align="center start" flex='30' layout-margin>
+    <span>
+	    <h1 layout'center start' layout-margin class='.md-headline'>Photo Feed</h1>
+    </span>	
+  </md-whiteframe>
+  <md-whiteframe class="md-whiteframe-z2" style='background-color: white; height: 375px;' layout-align="center start" flex='30' layout-margin>
+    <span>
+	    <h1 layout'center start' layout-margin class='.md-headline'>Photo Feed</h1>
+    </span>	
+  </md-whiteframe>
+  <md-whiteframe class="md-whiteframe-z2" style='background-color: white; height: 375px;' layout-align="center start" flex='30' layout-margin>
+    <span>
+	    <h1 layout'center start' layout-margin class='.md-headline'>Photo Feed</h1>
+    </span>	
+  </md-whiteframe>
+</div>
+
+
+<!-- Keep for reference -->
+<!--         <p hide-md show-gt-md>
+          This sidenav is locked open on your device. To go back to the default behavior,
+          narrow your display.
+        </p> -->
+

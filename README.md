@@ -9,6 +9,7 @@ Wireless security camera using the Arduino Yun &amp; a USB webcam!
 
 The project is based on the Arduino Yun, to which we are going to connect a standard USB webcam and a PIR motion detector to create some cool applications.
 
+
 For the hardware configuration we have used [Marco Schwartz] (https://github.com/marcoschwartz) [tutorial] (https://learn.adafruit.com/wireless-security-camera-arduino-yun) from the [Adafruit Learning System] (https://learn.adafruit.com/) as a guideline.
 
       
