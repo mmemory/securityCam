@@ -78,7 +78,6 @@ var requireAdmin = function(req, res, next) {
 
 
 
-
 // Middleware //
 app.use(cors());
 app.use(BodyParser.json());
@@ -91,8 +90,8 @@ app.use(express.static(__dirname + '/public'));
 app.post('/api/auth/login', passport.authenticate('local', { failureRedirect: '/login' }), function(req, res) {
     return res.json({message: "you logged in"});
 });
-app.post('api/users/register', UserControl.registerUser);
-//app.get('api/auth/logout', UserControl.logoutUser);
+app.post('/api/users/register', UserControl.registerUser);
+//app.get('/api/auth/logout', UserControl.logoutUser);
 
 /// Groups
 
