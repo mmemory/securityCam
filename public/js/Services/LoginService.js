@@ -1,6 +1,6 @@
 var app = angular.module('securityCam');
 
-	.service('LoginService', ['$http', '$q' function($http, $q) {
+	app.service('LoginService', ['$http', '$q', function($http, $q) {
 
 		this.signup = function(firstname, lastname, email, password) {
 			var deferred = $q.defer();
@@ -39,5 +39,4 @@ var app = angular.module('securityCam');
 			})
 			return deferred.promise;
 		};
-	});
 }]);
