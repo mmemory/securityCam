@@ -1,6 +1,6 @@
 var app = angular.module('securityCam')
 
-	.controller('MainCtrl', ['$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log', function($scope, $timeout, $mdSidenav, $mdUtil, $log) {
+	.controller('MainCtrl', ['$scope', '$timeout', '$mdSidenav', '$mdUtil', function($scope, $timeout, $mdSidenav, $mdUtil, $log) {
 	
     $scope.toggleLeft = buildToggler('left');
     $scope.toggleRight = buildToggler('right');

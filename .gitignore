@@ -1,11 +1,9 @@
 # Logs
 logs
 *.log
-<<<<<<< HEAD
-=======
+
 PhpStorm Editor Log - file created by PhpStorm
 .idea
->>>>>>> cd24eb07f9ecbca504ce2485d451ebdc83ddf9cf
 
 # Runtime data
 pids
@@ -30,8 +28,4 @@ build/Release
 # Dependency directory
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
-public/bower_components
-<<<<<<< HEAD
-=======
-
->>>>>>> cd24eb07f9ecbca504ce2485d451ebdc83ddf9cf
+public/bower_components/

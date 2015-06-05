@@ -1,0 +1,14 @@
+{
+  "name": "securityCam",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Philipps-Organization/securityCam.git",
+  "authors": [
+    "Phillip Schulte & Co."
+  ],
+  "description": "An app that allows users to monitor wireless security devices.",
+  "license": "Apache 2",
+  "dependencies": {
+    "angular-material": "~0.9.7",
+    "angular-ui-router": "~0.2.15"
+  }
+}
