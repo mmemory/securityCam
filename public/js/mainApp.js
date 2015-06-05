@@ -5,7 +5,7 @@ var app = angular.module('securityCam', ['ngMaterial', 'ui.router'])
     	.primaryPalette('light-blue')
     	.accentPalette('blue')
 
-  	$urlRouterProvider.otherwise('/');
+  	$urlRouterProvider.otherwise('/login');
 
   	$stateProvider
   		.state('dashboard', {
@@ -25,7 +25,8 @@ var app = angular.module('securityCam', ['ngMaterial', 'ui.router'])
   		})
       .state('login', {
         url: '/login',
-        templateUrl: 'js/Templates/LoginTmpl.html'
+        templateUrl: 'js/Templates/LoginTmpl.html',
+            controller: 'LoginCtrl'
       })
 
   }]) // end config //

@@ -21,9 +21,11 @@ For the hardware configuration we have used [Marco Schwartz] (https://github.com
 5. [Charger] (http://www.amazon.com/T-Power%C2%AE-Charger-Lenovo-IdeaTab-Replacement/dp/B00E9JJBVC/ref=sr_1_47?s=electronics&ie=UTF8&qid=1431451337&sr=1-47&keywords=Micro+USB+Wall+Charger)
       
 #### Team Members and Responsibility
-* Dustin Myers      ==>   Front-/Back-End/Data-Display
-* Leonardo Prates   ==>   Hardware-Design/Front-End
+* Dustin Myers      ==>   Front-End/Data-Display
+* Leonardo Prates   ==>   Hardware-Design/Back-End
 * Philipp Schulte   ==>   Hardware-Design/Back-End
+* Guy Brudnicki     ==>   Front-End/Data Control
+* Michael Memory    ==>   Front-End/Back-End Coordinator
 
 ### 1. Front-End
 ####1.1 Features
@@ -35,7 +37,7 @@ For the hardware configuration we have used [Marco Schwartz] (https://github.com
   * AngularJS
     * $q
     * $http
-    * ngRoute
+    * ui-router
 
 ### 2. Back-End
 ####2.1 Features
@@ -45,10 +47,13 @@ For the hardware configuration we have used [Marco Schwartz] (https://github.com
   * MongoDB
   * Node.js
     * Express
+    * Express-Session
     * Cors
     * Mongoose
     * Body-Parser
     * Passport
+    * Passport-Local
+    * Bcrypt
   
 ### 3. Hardware-Design
 ####3.1 Features
@@ -58,6 +63,7 @@ For the hardware configuration we have used [Marco Schwartz] (https://github.com
 ####3.2 Technologies
   * Temboo
   * Dropbox
+  * AWS S3
 
 ####3.3 Libraries
   * [Bridge] (http://www.arduino.cc/en/Tutorial/Bridge)
