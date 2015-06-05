@@ -3,7 +3,7 @@ angular.module('securityCam')
   return {
   	restrict: 'EA',
   	scope: {
-  		caloriesData: '=',
+  		caloriesData: '='
   	},
     link: function(scope, element, attrs) {
       d3Service.d3().then(function(d3) {        
