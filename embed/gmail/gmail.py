@@ -12,6 +12,7 @@ sendEmailChoreo = SendEmail(session)
 # Get an InputSet object for the Choreo
 sendEmailInputs = sendEmailChoreo.new_input_set()
 
+# Encode image
 picture = open("/mnt/sda1/arduino/alarm.jpg","r")
 picture_b64 = base64.b64encode(picture.read())
 
