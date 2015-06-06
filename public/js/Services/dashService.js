@@ -15,4 +15,4 @@ var app = angular.module('securityCam')
 		return defer.promise;
 	};
 
-}); // End Service //
+}]); // End Service //

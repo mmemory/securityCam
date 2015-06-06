@@ -3,18 +3,18 @@ angular.module('securityCam')
   return {
   	restrict: 'EA',
   	scope: {
-  		caloriesData: '='
+  		barData: '='
   	},
     link: function(scope, element, attrs) {
       d3Service.d3().then(function(d3) {        
 
 	      var buildGraph = function() {
 
-      		var bardata = [78, 81, 63, 72, 90, 70]
-	      	console.log('barData', bardata, 'caloriesData', scope.caloriesData)
+      		var bardata = scope.barData
+	      	console.log('bardata', bardata, 'scope.barData', scope.barData)
 
-	      	var height = 80,
-	      		  width = 200,
+	      	var height = 50,
+	      		  width = 250,
 	      		  margin = { top: 5, right: 5, bottom: 7, left: 5},
 	      		  barWidth = 20,
 	      		  barOffset = 5;
@@ -29,7 +29,7 @@ angular.module('securityCam')
 
 				  var colors = d3.scale.linear()
 				  	.domain([0, d3.max(bardata)])
-			  		.range(['#B3E5FC', '#E1F5FE'])
+			  		.range(['#5C6BC0', '#C5CAE9'])
 
 				  var test = d3.max(bardata);
 				  console.log("max test", test);
