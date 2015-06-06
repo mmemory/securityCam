@@ -55,4 +55,11 @@ var app = angular.module('securityCam')
 
     /////////// End Sidebar ////////////
 
+    $scope.groups = [
+      "Group A",
+      "Group B",
+      "Group C",
+      "Group D"
+    ]
+
 }]) // End MainCtrl //

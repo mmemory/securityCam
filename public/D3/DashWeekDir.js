@@ -10,10 +10,10 @@ angular.module('securityCam')
 
 	      var buildGraph = function() {
 
-      		var bardata = [4, 8, 3, 12, 10, 7]
+      		var bardata = [78, 81, 63, 72, 90, 70]
 	      	console.log('barData', bardata, 'caloriesData', scope.caloriesData)
 
-	      	var height = 150,
+	      	var height = 80,
 	      		  width = 200,
 	      		  margin = { top: 5, right: 5, bottom: 7, left: 5},
 	      		  barWidth = 20,
@@ -53,7 +53,7 @@ angular.module('securityCam')
 							.attr('width', xScale.rangeBand())
 							.attr('height', 0)
 							.attr('x', function(d, i) { return xScale(i) })
-							.attr('y', height)
+							.attr('y', height - margin.top - margin.bottom)
 								// .append("text")
 							 //    .attr("x", function(d, i) { return xScale(i) - 20 })
 							 //    .attr("y", height)
@@ -63,7 +63,7 @@ angular.module('securityCam')
 						.on('mouseover', function (d) {
 					        tooltip.transition()
 					            .style('opacity', .9)
-					        tooltip.html(d + " calories!")
+					        tooltip.html(d + " photos")
 					            .style('left', (d3.event.pageX - 40) + 'px')
 					            .style('top', (d3.event.pageY - 50) + 'px')
 					        tempColor = this.style.fill;
@@ -106,7 +106,8 @@ angular.module('securityCam')
 							.style('font-size', '10px')
 				}
 
-      	$interval(buildGraph, 3500, 1);
+      	// $interval(buildGraph, 3500, 1);
+      	buildGraph();
 
     	})
   	}

@@ -1,58 +1,62 @@
 <div layout="column" style="height:500px;">
   <section layout="row" flex>
-    <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
-      <md-toolbar class="md-theme-indigo">
-        <h1 class="md-toolbar-tools">Sidenav Left</h1>
-      </md-toolbar>
+    <md-sidenav style="height:491px;" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+      <h1 class="md-toolbar-tools">Photo Search</h1>
       <md-content layout-padding>
-        <md-button ng-click="closeLeft()" class="md-primary" hide-gt-md>
-          Close Sidenav Left
-        </md-button>
-        <p hide-md show-gt-md>
-          This sidenav is locked open on your device. To go back to the default behavior,
-          narrow your display.
-        </p>
+        <md-whiteframe class='md-whitframe-z1'>
+          <md-select ng-model="group" placeholder="Groups">
+            <md-option ng-repeat="group in groups" value="{{group}}">{{group}}</md-option>
+          </md-select>
+        </md-whiteframe>
+        <md-input-container>
+          <label>Search - Start Date</label>
+          <input type="date" ng-model="submissionStartDate">
+        </md-input-container>
+        <md-input-container>
+          <label>Search - End Date</label>
+          <input type="date" ng-model="submissionEndDate">
+        </md-input-container>
       </md-content>
     </md-sidenav>
-    <md-content flex layout-padding>
-      <div layout="column" layout-fill layout-align="top center">
-        <p>
-        The left sidenav will 'lock open' on a medium (>=960px wide) device.
-        </p>
-        <p>
-        The right sidenav will focus on a specific child element.
-        </p>
-        <div>
-          <md-button ng-click="toggleLeft()"
-            class="md-primary" hide-gt-md>
-            Toggle left
-          </md-button>
-        </div>
-        <div>
-          <md-button ng-click="toggleRight()"
-            class="md-primary">
-            Toggle right
-          </md-button>
-        </div>
+    <md-content style='background-color: #EEEEEE;' flex layout-padding layout>
+      <div layout='column' layout-gt-md='row' layout-fill layout-align="top center">
+        <md-whiteframe class="md-whiteframe-z2" style='background-color: white; height: 475px;' layout layout-align="center start" flex='99' layout-margin>
+          <span>
+            <h1 layout'center start' layout-margin class='.md-headline'>Photo Feed: {{ group }}</h1>
+          </span> 
+        </md-whiteframe>
       </div>
-      <div flex></div>
+
     </md-content>
-    <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
-      <md-toolbar class="md-theme-light">
-        <h1 class="md-toolbar-tools">Sidenav Right</h1>
-      </md-toolbar>
-      <md-content layout-padding>
-        <form>
-          <md-input-container>
-            <label for="testInput">Test input</label>
-            <input type="text" id="testInput"
-                   ng-model="data" md-sidenav-focus>
-          </md-input-container>
-        </form>
-        <md-button ng-click="closeRight()" class="md-primary">
-          Close Sidenav Right
-        </md-button>
-      </md-content>
-    </md-sidenav>
   </section>
 </div>
+<div layout='column' layout-gt-md='row' style='height: auto' layout-align='center start' layout-fill layout-padding>
+  <md-whiteframe class="md-whiteframe-z2" style='background-color: white; height: 240px; width: auto;' layout-align="center start" flex-md='99' flex-gt-md='30' layout-margin>
+    <span layout='center start'>
+      <h6 layout-margin class='.md-headline'>Photos this week</h6>
+    </span>
+    <span>
+      <h1 layout-margin class='.md-headline'>256</h1>
+    </span>
+    <div style='height: 120px;'>
+      <div dash-weekly></div>    
+    </div> 
+  </md-whiteframe>
+  <md-whiteframe class="md-whiteframe-z2" style='background-color: white; height: 240px;' layout-align="center start" flex-md='99' flex-gt-md='30' layout-margin>
+    <span>
+      <h6 layout-margin class='.md-headline'>Photo Feed</h6>
+    </span> 
+  </md-whiteframe>
+  <md-whiteframe class="md-whiteframe-z2" style='background-color: white; height: 240px;' layout-align="center start" flex-md='99' flex-gt-md='30' layout-margin>
+    <span>
+      <h6 layout-margin class='.md-headline'>Photo Feed</h6>
+    </span> 
+  </md-whiteframe>
+</div>
+
+
+<!-- Keep for reference -->
+<!--         <p hide-md show-gt-md>
+          This sidenav is locked open on your device. To go back to the default behavior,
+          narrow your display.
+        </p> -->

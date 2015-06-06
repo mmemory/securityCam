@@ -9,15 +9,22 @@
 </head>
 
 <body ng-controller='MainCtrl'>
-  <div layout="column" layout-fill>
-    <md-toolbar md-scroll-shrink>
-      <div class="md-toolbar-tools">
-        <h3>
-          <span>SecurityCam</span>
-        </h3>
-      </div>
-    </md-toolbar>
-  </div>
+  <md-toolbar class='header'>
+    <div layout-margin class="md-toolbar-tools" flex>
+      <md-button hide-gt-md show-md class='md-icon-button md-secondary' ng-click='toggleLeft()' aria-label='settings'>
+        <md-icon md-svg-icon='bower_components/angular-material/demos/toolbar/demoBasicUsage/img/icons/menu.svg'</md-icon>
+      </md-button>
+      <h2 layout-margin>
+        <span>Security Cam</span>
+      </h2>
+      <md-button layout-margin class="md-button" style='margin-left: 3%' ui-sref='dashboard'>Dashboard</md-button>
+      <span flex></span>
+      <md-button md-no-ink layout-margin class="md-primary md-raised md-hue-2">Login</md-button>
+      <md-button md-no-ink layout-margin class="md-primary md-raised md-hue-2">Logout</md-button>
+    </div>
+  </md-toolbar>
+
+  
   <div ui-view></div>
 
 
@@ -25,9 +32,9 @@
 
   <!-- Bower -->
   <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-aria/angular-aria.js"></script>
-  <script src="bower_components/angular-animate/angular-animate.js"></script>
   <script src="bower_components/angular-material/angular-material.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-aria/angular-aria.js"></script>
   <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script> 
   <!-- Scripts -->
   <script src="_/d3.min.js"></script>
