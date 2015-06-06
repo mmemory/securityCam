@@ -1,5 +1,5 @@
 var app = angular.module('securityCam')
-.service('dashService', function($http, $q) {
+.service('dashService', ['$http', '$q', function($http, $q) {
 
 	this.cameraInfo = function(startDate, endDate) {
 		var defer = $q.defer();
@@ -14,4 +14,5 @@ var app = angular.module('securityCam')
 		});
 		return defer.promise;
 	};
-});
+
+}); // End Service //
