@@ -57,10 +57,17 @@ var app = angular.module('securityCam')
   //      Dummy Data   
   ///////////////////////////
 
+
+      // save array of numbers for photos taken in last ten days here:    i.e. $scope.tenDay = $scope.dataResponseFromBackend
     $scope.tenDay = [78, 81, 63, 72, 90, 70, 22, 87, 73];
+
+
+      // save array of numbers for photos taken in last thirty days here:      
     $scope.thirtyDay = [78, 24, 76, 89, 67, 78, 87, 54, 68, 89, 43, 90, 77, 63, 81, 63, 86, 55, 72, 90, 12, 77, 89, 59, 70, 22, 67, 30, 87, 73]
 
 
+      // This is for the groups that user is a part of - will come from Mongo. We need to determine 
+      // how to seperate all data based on which 'group' user decides to view
     $scope.groups = [
       "Group A",
       "Group B",
