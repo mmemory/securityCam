@@ -40,8 +40,9 @@ module.exports = {
     }, //registerUser
     
     logoutUser: function(req, res) {
+        console.log('logged out!');
         req.logout();
-        return res.redirect('/#login');
+        return res.redirect('/#/login');
     }
 
 }; //module.exports
