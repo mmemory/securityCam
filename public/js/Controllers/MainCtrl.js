@@ -1,7 +1,6 @@
 var app = angular.module('securityCam')
+  .controller('MainCtrl', ['$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log', function($scope, $timeout, $mdSidenav, $mdUtil, $log) {
 
-	.controller('MainCtrl', ['$scope', '$timeout', '$mdSidenav', '$mdUtil', function($scope, $timeout, $mdSidenav, $mdUtil, $log) {
-	
     $scope.toggleLeft = buildToggler('left');
     $scope.toggleRight = buildToggler('right');
     /**
@@ -9,6 +8,7 @@ var app = angular.module('securityCam')
      * report completion in console
      */
     function buildToggler(navID) {
+      $log.debug(navID + "clicked")
       var debounceFn =  $mdUtil.debounce(function(){
             $mdSidenav(navID)
               .toggle()
@@ -25,7 +25,7 @@ var app = angular.module('securityCam')
           $log.debug("close LEFT is done");
         });
     };
- 	
+  
     $scope.closeRight = function () {
       $mdSidenav('right').close()
         .then(function () {

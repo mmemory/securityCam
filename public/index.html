@@ -8,43 +8,38 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 
-
 <body ng-controller='MainCtrl'>
-
-<md-toolbar flex>
-	<div class="md-toolbar-tools">
-		<div>
-      <md-button ng-click="toggleLeft()" class="md-icon-button md-secondary" hide-gt-md aria-label="Settings">
-      	<md-icon md-svg-icon="./bower_components/angular-material/demos/toolbar/demoBasicUsage/img/icons/menu.svg"></md-icon>
-	    </md-button>
+  <md-toolbar class='header'>
+    <div layout-margin class="md-toolbar-tools" flex>
+      <md-button hide-gt-md show-md class='md-icon-button md-secondary' ng-click='toggleLeft()' aria-label='settings'>
+        <md-icon md-svg-icon='bower_components/angular-material/demos/toolbar/demoBasicUsage/img/icons/menu.svg'</md-icon>
+      </md-button>
+      <h2 layout-margin>
+        <span>Security Cam</span>
+      </h2>
+      <md-button layout-margin class="md-button" style='margin-left: 3%' ui-sref='dashboard'>Dashboard</md-button>
+      <span flex></span>
+      <md-button md-no-ink layout-margin ui-sref='login' class="md-primary md-raised md-hue-2">Login</md-button>
+      <md-button md-no-ink layout-margin class="md-primary md-raised md-hue-2">Logout</md-button>
     </div>
-		<h2>
-	    <span>SecurityCam</span>
-	  </h2>
-	  <div class="md-toolbar-tools">
-	    <md-button ui-sref="dashboard" class="md-secondary">
-	      Dashboard
-	    </md-button>
-	    <md-button ui-sref="admin" class="md-secondary">
-	      Admin Page
-	    </md-button>
-	  </div>
-  </div>
-</md-toolbar>
-     	
-<div ui-view></div>
+  </md-toolbar>
+  
+  <div ui-view></div>
 
-     
 
+    
 
   <!-- Bower -->
-  <script src="./bower_components/angular/angular.js"></script>
-  <script src="./bower_components/angular-aria/angular-aria.js"></script>
-  <script src="./bower_components/angular-animate/angular-animate.js"></script>
-  <script src="./bower_components/angular-material/angular-material.js"></script>
-  <script src="./bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-material/angular-material.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-aria/angular-aria.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script> 
+
   <!-- Scripts -->
   <script src="_/d3.min.js"></script>
+
+
   <script src='js/mainApp.js'></script>
 
   <!-- Services --> 
@@ -52,15 +47,18 @@
   <script src="js/Services/dashService.js"></script>
   <script src="js/Services/mainService.js"></script>
   <script src='js/Services/LoginService.js'></script>
+
   <!-- Controllers --> 
   <script src='js/Controllers/MainCtrl.js'></script>
   <script src='js/Controllers/AdminCtrl.js'></script>
   <script src='js/Controllers/DashCtrl.js'></script>
   <script src='js/Controllers/WelcomeCtrl.js'></script>
   <script src='js/Controllers/LoginCtrl.js'></script>
+
   <!-- D3 --> 
   <script src='D3/DashWeekDir.js'></script>
-
+  <script src='D3/DashMonthDir.js'></script>
+  <script src='D3/arcDir.js'></script>
 
 </body>
 </html>

@@ -1,5 +1,5 @@
 angular.module('securityCam')
-.directive('dashWeekly', ['d3Service', '$interval', function(d3Service, $interval) {
+.directive('dashMonthly', ['d3Service', '$interval', function(d3Service, $interval) {
   return {
   	restrict: 'EA',
   	scope: {
@@ -29,7 +29,7 @@ angular.module('securityCam')
 
 				  var colors = d3.scale.linear()
 				  	.domain([0, d3.max(bardata)])
-			  		.range(['#5C6BC0', '#C5CAE9'])
+			  		.range(['#81C784', '#C8E6C9'])
 
 				  var test = d3.max(bardata);
 				  console.log("max test", test);
@@ -69,7 +69,7 @@ angular.module('securityCam')
 					        tempColor = this.style.fill;
 					        d3.select(this)
 					            // .style('opacity', .6)
-					            .style('fill', '#385071')
+					            .style('fill', '#43A047')
 					            // .attr('height', function(d) { return yScale(d) - 15 })
 					            // .attr('y', function(d) { return height - yScale(d) - 30 })
 					    })
