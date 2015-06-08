@@ -1,4 +1,6 @@
 var mongoose = require('mongoose');
+var bcrypt = require('bcrypt');
+var saltFactor = 10;
 
 var UserModel = new mongoose.Schema({
     user_info: {
@@ -13,5 +15,46 @@ var UserModel = new mongoose.Schema({
     group_member: [{type: mongoose.Schema.Types.ObjectId, ref: 'Group'}],
     group_admin: [{type: mongoose.Schema.Types.ObjectId, ref: 'Group'}]
 });
+
+
+// Bcrypt middleware
+UserModel.pre('save', function(next) {
+    var user = this;
+    console.log('user variable:', user);
+
+    if(!user.isModified('password')) return next();
+
+    bcrypt.genSalt(saltFactor, function(err, salt) {
+        if(err) return next(err);
+
+        bcrypt.hash(user.password, salt, function(err, hash) {
+            if(err) return next(err);
+            console.log('HASH:', hash);
+            user.password = hash;
+            next();
+        });
+    });
+});
+
+//UserModel.methods.generateHash = function(password) {
+//    return bcrypt.hashSync(password, bcrypt.genSaltSync(saltFactor)
+//};
+
+// Verify password
+//UserModel.methods.verifyPassword = function(password) {
+//    var deferred = q.defer();
+//    var user = this;
+//    bcrypt.compare(password, user.password, function(err, res) {
+//        if (err) {
+//            deferred.resolve(false);
+//        }
+//        deferred.resolve(true);
+//    });
+//    return deferred.promise;
+//};
+
+//UserModel.methods.validatePassword = function(password) {
+//    return bcrypt.compare(password, this.user_info.password);
+//};
 
 module.exports = mongoose.model('User', UserModel);

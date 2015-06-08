@@ -17,12 +17,16 @@ module.exports = {
                         first_name: req.body.firstName,
                         last_name: req.body.lastName
                     },
-                    email: req.body.email
+                    email: req.body.email,
+                    password: req.body.password
                 }
             };
 
             // If no user exists, then create a new user
             var createUser = new User(newUserData);
+
+            //console.log('PASSWORD', req.body.password);
+            //console.log('createUser:', createUser);
 
             createUser.save(function(err, newUser) {
                 console.log('new user saved', newUser);
