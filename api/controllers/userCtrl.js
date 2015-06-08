@@ -22,7 +22,7 @@ module.exports = {
                 }
             };
 
-            // If no user exists, then create a new user
+            // If no user exists, then create a new user with newUserData
             var createUser = new User(newUserData);
 
             //console.log('PASSWORD', req.body.password);
