@@ -11,9 +11,10 @@
 	    </md-input-container>
 	    <md-input-container class="md-icon-float">
 	    <md-icon md-svg-src="" class="name"></md-icon>
-	      <input ng-model="password" type="password" placeholder="Password" ng-required="true">
+	      <input id="erase" ng-model="password" type="password" placeholder="Password" ng-required="true">
 	    </md-input-container>
-		<md-button class='md-raised md-primary' ng-click="clickLogin()">submit</md-button>
+	    <div>{{error}}</div>
+		<md-button class='md-raised md-primary' ng-click="clickLogin()">Login</md-button>
 	  </md-content>
 	</div>
 
