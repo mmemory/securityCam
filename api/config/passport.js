@@ -8,11 +8,9 @@ module.exports = function(passport) {
     });
 
     passport.deserializeUser(function(id, done) {
-
         User.findById(id, function(err, user) {
             done(err, user);
         })
-
     });
 
     //passport.use('local', new LocalStrategy({
@@ -26,19 +24,43 @@ module.exports = function(passport) {
     //            if (err) return done(err);
     //            if(user) return done(null, false);
     //            else {
-    //                var newUser = new User;
-    //                newUser.user_info.name.first_name = req.body.firstName;
-    //                newUser.user_info.name.last_name = req.body.lastName;
-    //                newUser.user_info.name.email = email;
-    //                newUser.user_info.name.password = password;
-    //
+    //                var newUser = new User({
+    //                    user_info: {
+    //                        name: {first_name: req.body.firstName, last_name: req.body.firstName},
+    //                        email: req.body.email,
+    //                        password: req.body.password
+    //                    }
+    //                });
     //
     //                newUser.save(function(err) {
     //                    if (err) return err;
     //                    return done(null, newUser);
-    //                })
-    //            }
-    //        })
-    //    })
-    //})
-};
+    //                }); //Save new user
+    //            } //else
+    //        }); //findOne
+    //    }); //nextTick
+    //}); //passport.use
+
+
+    passport.use(new LocalStrategy({
+        usernameField: 'email',
+        passwordField: 'password'
+    }, function(email, password, done) {
+        //define how we match user credentials to db values
+        User.findOne({ 'user_info.email': email }, function(err, user){
+            if (!user) {
+                console.log('user doesn\'t exist');
+                done(new Error("This user does not exist"));
+            }
+            user.verifyPassword(password).then(function(doesMatch) {
+                if (doesMatch) {
+                    console.log('password verified');
+                    done(null, user);
+                }
+                else {
+                    done(new Error("Please verify your password and try again"));
+                }
+            });
+        });
+    }));
+}; //module.exports

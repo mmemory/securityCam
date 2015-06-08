@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
+var q = require('q');
 var saltFactor = 10;
 
 var UserModel = new mongoose.Schema({
@@ -33,23 +34,18 @@ UserModel.pre('save', function(next) {
     });
 });
 
-
-//UserModel.methods.generateHash = function(password) {
-//    return bcrypt.hashSync(password, bcrypt.genSaltSync(saltFactor)
-//};
-
 // Verify password
-//UserModel.methods.verifyPassword = function(password) {
-//    var deferred = q.defer();
-//    var user = this;
-//    bcrypt.compare(password, user.password, function(err, res) {
-//        if (err) {
-//            deferred.resolve(false);
-//        }
-//        deferred.resolve(true);
-//    });
-//    return deferred.promise;
-//};
+UserModel.methods.verifyPassword = function(password) {
+    var deferred = q.defer();
+    var user = this;
+    bcrypt.compare(password, user.user_info.password, function(err, res) {
+        if (err) {
+            deferred.resolve(false);
+        }
+        deferred.resolve(true);
+    });
+    return deferred.promise;
+};
 
 //UserModel.methods.validatePassword = function(password) {
 //    return bcrypt.compare(password, this.user_info.password);

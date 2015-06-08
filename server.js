@@ -63,7 +63,10 @@ var requireAdmin = function(req, res, next) {
 // Endpoints //
 /// Users
 app.post('/api/users/register', UserControl.registerUser);
-app.post('/auth/logout', UserControl.logoutUser);
+app.post('/api/auth/login', passport.authenticate('local', { failureRedirect: '/login' }), function(req, res) {
+    return res.json({message: "you logged in"});
+});
+app.get('/auth/logout', UserControl.logoutUser);
 /// Groups
 
 /// Hardware
