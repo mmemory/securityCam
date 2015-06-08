@@ -20,21 +20,19 @@ var UserModel = new mongoose.Schema({
 // Bcrypt middleware
 UserModel.pre('save', function(next) {
     var user = this;
-    console.log('user variable:', user);
-
-    if(!user.isModified('password')) return next();
+    //console.log('user variable:', user);
 
     bcrypt.genSalt(saltFactor, function(err, salt) {
         if(err) return next(err);
 
-        bcrypt.hash(user.password, salt, function(err, hash) {
+        bcrypt.hash(user.user_info.password, salt, function(err, hash) {
             if(err) return next(err);
-            console.log('HASH:', hash);
-            user.password = hash;
+            user.user_info.password = hash;
             next();
         });
     });
 });
+
 
 //UserModel.methods.generateHash = function(password) {
 //    return bcrypt.hashSync(password, bcrypt.genSaltSync(saltFactor)
