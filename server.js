@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var cors = require('cors');
 var passport = require('passport');
 var session = require('express-session');
-var LocalStrategy = require('passport-local').Strategy;
+//var LocalStrategy = require('passport-local').Strategy;
 
 
 
@@ -20,15 +20,28 @@ mongoose.connect(mongoUri);
 
 
 
+// Middleware //
+app.use(cors());
+app.use(BodyParser.json());
+app.use(express.static(__dirname + '/public'));
+app.use(session({
+    secret: 'lskdjfl;qwerwoqeifj',
+    saveUninitialized: true,
+    resave: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+
 // Local Imports //
 var User = require('./api/models/userModel.js');
 var UserControl = require('./api/controllers/userCtrl.js');
+require('./api/config/passport.js')(passport);
 
 
 
 // Local Authentication //
-
-
 // Create new passport strategy instance for local auth
 //passport.use(new LocalStrategy({
 //    // use email as username
@@ -72,31 +85,14 @@ var requireAdmin = function(req, res, next) {
 
 
 
-// Middleware //
-app.use(cors());
-app.use(BodyParser.json());
-app.use(express.static(__dirname + '/public'));
-app.use(session({
-    secret: 'lskdjfl;qwerwoqeifj',
-    saveUninitialized: true,
-    resave: true
-}));
-
-app.use(passport.initialize());
-app.use(passport.session());
-
-
-
 // Endpoints //
 /// Users
-app.post('/api/auth/login', passport.authenticate('local', { failureRedirect: '/login' }), function(req, res) {
-    return res.json({message: "you logged in"});
-});
 app.post('/api/users/register', UserControl.registerUser);
-app.get('/auth/logout', function(req, res) {
-    req.logout();
-    res.redirect('/#/login');
-});
+
+//app.get('/auth/logout', function(req, res) {
+//    req.logout();
+//    res.redirect('/#/login');
+//});
 /// Groups
 
 /// Hardware

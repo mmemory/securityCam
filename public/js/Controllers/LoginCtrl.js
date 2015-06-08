@@ -9,7 +9,6 @@ var app = angular.module('securityCam')
 			$scope.error = err;
 			console.log($scope.error);
 		})
-			
 	}
 
 }]) // End RegisCtrl.js //
