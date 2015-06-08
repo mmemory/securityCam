@@ -33,6 +33,7 @@ UserModel.pre('save', function(next) {
     });
 });
 
+
 //UserModel.methods.generateHash = function(password) {
 //    return bcrypt.hashSync(password, bcrypt.genSaltSync(saltFactor)
 //};
