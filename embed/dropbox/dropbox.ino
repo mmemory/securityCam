@@ -7,7 +7,9 @@
 #include <Process.h>
 
 //Variables:
-int pirPin = 7; //PIR Motion Sensor
+int pirPin = 2; //PIR Motion Sensor
+int ledPin = 13; //LED 
+int pirValue = LOW; //We start, assuming no motion detected
 String folder = "/mnt/sda1/arduino/";
 
 //#############################################-setup function-##############################################
@@ -20,7 +22,9 @@ void setup() {
   Serial.begin(9600);
   
   //Declare Pin 7 as an input pin
-  pinMode(pirPin, INPUT); 
+  pinMode(pirPin, INPUT);
+  //Declare Pin 13 as an output pin
+  pinMode(ledPin, OUTPUT);  
 
 } //End setup function
 
@@ -28,22 +32,37 @@ void setup() {
 void loop() {
   
   //Declare the value of pin 7 to a variable
-  int pirValue = digitalRead(pirPin); //Value = 1 --> no motion, Value = 0 --> motion
+  pirValue = digitalRead(pirPin); //Value = 0 --> no motion, Value = 1 --> motion
+  
+  //Send PIR sensor value to serial monitor
+  Serial.print("PIR value: ");
+  Serial.println(pirValue);
   
   //Comparison if motion or no motion detected
-  if (pirValue == LOW) {
+  if (pirValue == HIGH) {
     
     //Send motion reaction to serial monitor
-    Serial.println("Alarm!");
+    Serial.println("Motion detected!");
+    
+    //LED on
+    digitalWrite(ledPin, HIGH); 
     
     //Invoke motion functions
     makePicture();
     sendToDropbox();
+   
+  } else {
     
-    //Avoiding multiple pictures
-    delay(5000);
+    //Send motion reaction to serial monitor
+    Serial.println("No motion!");
+    
+    //LED off
+    digitalWrite(ledPin, LOW); 
     
   }
+  
+  //Avoiding multiple pictures
+  delay(1000);
 
 }  //End loop function
 
@@ -76,7 +95,7 @@ void sendToDropbox() {
   post.run(); //Start dropbox.py
   int responseSuccess = post.exitValue();
 
-  //Comparison if it sent a file or not
+  //Comparison if the script sent a file or not
   if (responseSuccess == 0) {
     Serial.println("File to Dropbox successfully sent!");
   } else {
