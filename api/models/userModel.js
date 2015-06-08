@@ -17,7 +17,6 @@ var UserModel = new mongoose.Schema({
     group_admin: [{type: mongoose.Schema.Types.ObjectId, ref: 'Group'}]
 });
 
-
 // Bcrypt middleware
 UserModel.pre('save', function(next) {
     var user = this;
@@ -38,17 +37,14 @@ UserModel.pre('save', function(next) {
 UserModel.methods.verifyPassword = function(password) {
     var deferred = q.defer();
     var user = this;
-    bcrypt.compare(password, user.user_info.password, function(err, res) {
+    bcrypt.compare(password, user.user_info.password, function(err, result) {
+
         if (err) {
             deferred.resolve(false);
         }
-        deferred.resolve(true);
+        deferred.resolve(result);
     });
     return deferred.promise;
 };
-
-//UserModel.methods.validatePassword = function(password) {
-//    return bcrypt.compare(password, this.user_info.password);
-//};
 
 module.exports = mongoose.model('User', UserModel);
