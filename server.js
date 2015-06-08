@@ -27,13 +27,7 @@ var UserControl = require('./api/controllers/userCtrl.js');
 
 
 // Local Authentication //
-passport.serializeUser(function(user, done) {
-    done(null, user._id);
-});
 
-passport.deserializeUser(function(obj, done) {
-    done(null, obj);
-});
 
 // Create new passport strategy instance for local auth
 //passport.use(new LocalStrategy({
@@ -82,6 +76,14 @@ var requireAdmin = function(req, res, next) {
 app.use(cors());
 app.use(BodyParser.json());
 app.use(express.static(__dirname + '/public'));
+app.use(session({
+    secret: 'lskdjfl;qwerwoqeifj',
+    saveUninitialized: true,
+    resave: true
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 
@@ -91,8 +93,10 @@ app.post('/api/auth/login', passport.authenticate('local', { failureRedirect: '/
     return res.json({message: "you logged in"});
 });
 app.post('/api/users/register', UserControl.registerUser);
-//app.get('/api/auth/logout', UserControl.logoutUser);
-
+app.get('/auth/logout', function(req, res) {
+    req.logout();
+    res.redirect('/#/login');
+});
 /// Groups
 
 /// Hardware
@@ -100,6 +104,11 @@ app.post('/api/users/register', UserControl.registerUser);
 /// Queries
 app.get('/api/searchterm/:userID/:groupID/:startDate/:endDate', function(req, res) {
     // Search Date
+});
+/// Image Data
+app.post('/api/image-data', function(req, res) {
+    console.log('DATA FROM HARDWARE:', req.body);
+    res.send(req.body);
 });
 
 
