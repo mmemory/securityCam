@@ -7,43 +7,62 @@
 #include <Process.h>
 
 //Variables:
-int pirPin = 7; //PIR Motion Sensor
+int pirPin = 2; //PIR Motion Sensor
+int ledPin = 13; //LED 
+int pirValue = LOW; //We start, assuming no motion detected
 String folder = "/mnt/sda1/arduino/";
 
 //#############################################-setup function-##############################################
 void setup() {
-  
+
   //Bridge
   Bridge.begin();
-
+  
   //Sets the data rate in bits per second for serial data transmission
   Serial.begin(9600);
   
   //Declare Pin 7 as an input pin
-  pinMode(pirPin, INPUT); 
-  
+  pinMode(pirPin, INPUT);
+  //Declare Pin 13 as an output pin
+  pinMode(ledPin, OUTPUT);  
+
 } //End setup function
 
 //#############################################-loop function-###############################################
 void loop() {
   
   //Declare the value of pin 7 to a variable
-  int pirValue = digitalRead(pirPin); //Value = 1 --> no motion, Value = 0 --> motion
+  pirValue = digitalRead(pirPin); //Value = 0 --> no motion, Value = 1 --> motion
+  
+  //Send PIR sensor value to serial monitor
+  Serial.print("PIR value: ");
+  Serial.println(pirValue);
   
   //Comparison if motion or no motion detected
-  if (pirValue == LOW) {
+  if (pirValue == HIGH) {
     
     //Send motion reaction to serial monitor
-    Serial.println("Alarm!");
+    Serial.println("Motion detected!");
+    
+    //LED on
+    digitalWrite(ledPin, HIGH); 
     
     //Invoke motion functions
     makePicture();
     sendEmail();
+   
+  } else {
     
-    //Avoiding multiple pictures
-    delay(5000);
+    //Send motion reaction to serial monitor
+    Serial.println("No motion!");
+    
+    //LED off
+    digitalWrite(ledPin, LOW); 
     
   }
+  
+  //Avoiding multiple pictures
+  delay(1000);
 
 }  //End loop function
 
@@ -76,7 +95,7 @@ void sendEmail() {
   email.run(); //Start gmail.py
   int emailSuccess = email.exitValue();
 
-  //Comparison if it sent a email or not
+  //Comparison if the script sent a file or not
   if (emailSuccess == 0) {
     Serial.println("Email successfully sent!");
   } else {
