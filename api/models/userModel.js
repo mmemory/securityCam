@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcryptjs');
 var saltFactor = 10;
 
 var UserModel = new mongoose.Schema({

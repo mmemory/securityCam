@@ -28,5 +28,10 @@ var app = angular.module('securityCam', ['ngMaterial', 'ui.router'])
         templateUrl: 'js/Templates/LoginTmpl.html',
             controller: 'LoginCtrl'
       })
+      .state('register', {
+        url: '/register',
+        templateUrl: 'js/Templates/RegisterTmpl.html',
+        controller: 'RegisterCtrl'
+      })
 
   }]) // end config //
