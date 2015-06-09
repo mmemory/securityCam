@@ -1,4 +1,5 @@
 var User = require('../models/userModel.js');
+var Group = require('../models/groupModel.js');
 
 module.exports = {
 
@@ -22,30 +23,40 @@ module.exports = {
                 return res.status(400).json('User already exists with that email');
             }
 
-            var newUserData = {
-                first_name: req.body.firstName,
-                last_name: req.body.lastName,
-                email: req.body.email,
-                password: req.body.password
+            var newGroupData = {
+                name: req.body.groupName,
+                admin: user._id
             };
 
-            // If no user exists, then create a new user with newUserData
-            var createUser = new User(newUserData);
 
-            //console.log('PASSWORD', req.body.password);
-            //console.log('createUser:', createUser);
+            // If no user exists, then create a new user with newUserData, also create a group to be referenced on that user
+            var createGroup = new Group(newGroupData);
 
-            createUser.save(function(err, newUser) {
-                console.log('new user saved', newUser);
+            createGroup.save(function(err, newGroup) {
+                if (err) console.log('Error creating group', err);
 
-                if (err) {
-                    console.log('Error creating user', err);
-                    return res.status(500).end();
-                } //if err
+                var newUserData = {
+                    first_name: req.body.firstName,
+                    last_name: req.body.lastName,
+                    email: req.body.email,
+                    password: req.body.password,
+                    group_admin: newGroup._id
+                };
 
-                return res.json(newUser);
+                var createUser = new User(newUserData);
+                //console.log('createUser:', createUser);
 
-            }); //save
+                createUser.save(function(err, newUser) {
+                    console.log('new user saved', newUser);
+
+                    if (err) {
+                        console.log('Error creating user', err);
+                        return res.status(500).end();
+                    } //if err
+
+                    return res.json(newUser);
+                }); //save user
+            }); //save group
         }); //findOne
     }, //registerUser
 
