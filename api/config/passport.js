@@ -18,7 +18,7 @@ module.exports = function(passport) {
         passwordField: 'password'
     }, function(email, password, done) {
         //define how we match user credentials to db values
-        User.findOne({ 'user_info.email': email }, function(err, user){
+        User.findOne({ 'email': email }, function(err, user){
             if (!user) {
                 console.log('user doesn\'t exist');
                 done(new Error("This user does not exist"));

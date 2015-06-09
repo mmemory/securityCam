@@ -4,15 +4,11 @@ var q = require('q');
 var saltFactor = 10;
 
 var UserModel = new mongoose.Schema({
-    user_info: {
-        name: {
-            first_name: {type: String, required: true},
-            last_name: {type: String, required: true}
-        },
-        email: {type: String, required: true, unique: true},
-        created_on: {type: Date, default: Date.now},
-        password: {type: String, required: true}
-    },
+    first_name: {type: String, required: true},
+    last_name: {type: String, required: true},
+    email: {type: String, required: true, unique: true},
+    created_on: {type: Date, default: Date.now},
+    password: {type: String, required: true},
     group_member: [{type: mongoose.Schema.Types.ObjectId, ref: 'Group'}],
     group_admin: [{type: mongoose.Schema.Types.ObjectId, ref: 'Group'}]
 });
@@ -25,9 +21,9 @@ UserModel.pre('save', function(next) {
     bcrypt.genSalt(saltFactor, function(err, salt) {
         if(err) return next(err);
 
-        bcrypt.hash(user.user_info.password, salt, function(err, hash) {
+        bcrypt.hash(user.password, salt, function(err, hash) {
             if(err) return next(err);
-            user.user_info.password = hash;
+            user.password = hash;
             next();
         });
     });
@@ -37,7 +33,7 @@ UserModel.pre('save', function(next) {
 UserModel.methods.verifyPassword = function(password) {
     var deferred = q.defer();
     var user = this;
-    bcrypt.compare(password, user.user_info.password, function(err, result) {
+    bcrypt.compare(password, user.password, function(err, result) {
 
         if (err) {
             deferred.resolve(false);

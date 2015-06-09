@@ -23,14 +23,10 @@ module.exports = {
             }
 
             var newUserData = {
-                user_info: {
-                    name: {
-                        first_name: req.body.firstName,
-                        last_name: req.body.lastName
-                    },
-                    email: req.body.email,
-                    password: req.body.password
-                }
+                first_name: req.body.firstName,
+                last_name: req.body.lastName,
+                email: req.body.email,
+                password: req.body.password
             };
 
             // If no user exists, then create a new user with newUserData
