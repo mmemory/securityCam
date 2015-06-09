@@ -11,7 +11,8 @@ var app = angular.module('securityCam')
 			document.getElementById('erase').value = '';
 			
 		})
+
 	}
-	
+
 
 }]) // End RegisCtrl.js //
