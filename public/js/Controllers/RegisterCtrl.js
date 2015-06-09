@@ -3,7 +3,7 @@ var app = angular.module('securityCam')
 	
 	$scope.clickRegister = function() {
         console.log('controller register called');
-		LoginService.signup($scope.firstname, $scope.lastname, $scope.email, $scope.password).then(function() {
+		LoginService.signup($scope.firstname, $scope.lastname, $scope.email, $scope.password, $scope.groupName).then(function() {
 			
 			$location.path('admin');
 

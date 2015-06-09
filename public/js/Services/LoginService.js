@@ -2,7 +2,7 @@ var app = angular.module('securityCam');
 
 	app.service('LoginService', ['$http', '$q', function($http, $q) {
 
-		this.signup = function(firstname, lastname, email, password) {
+		this.signup = function(firstname, lastname, email, password, groupName) {
             console.log('service register called');
 			var deferred = $q.defer();
 			$http({
@@ -12,7 +12,8 @@ var app = angular.module('securityCam');
 					firstName: firstname,
 					lastName: lastname,
 					email: email,
-					password: password
+					password: password,
+					groupName: groupName
 				}
 			}).then(function(res) {
 				deferred.resolve(res.data);
