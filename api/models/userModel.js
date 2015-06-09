@@ -10,7 +10,7 @@ var UserModel = new mongoose.Schema({
     created_on: {type: Date, default: Date.now},
     password: {type: String, required: true},
     group_member: [{type: mongoose.Schema.Types.ObjectId, ref: 'Group'}],
-    group_admin: [{type: mongoose.Schema.Types.ObjectId, ref: 'Group'}]
+    group_admin: {type: mongoose.Schema.Types.ObjectId, ref: 'Group'}
 });
 
 // Bcrypt middleware
