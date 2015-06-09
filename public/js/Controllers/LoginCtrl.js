@@ -8,7 +8,8 @@ var app = angular.module('securityCam')
 		}).catch(function(err) {
 			console.log($scope.error);
 		})
+
 	}
-	
+
 
 }]) // End RegisCtrl.js //
