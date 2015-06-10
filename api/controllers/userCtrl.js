@@ -4,18 +4,22 @@ var Group = require('../models/groupModel.js');
 module.exports = {
 
     getCurrentUser: function(req, res) {
-        console.log(req.user);
+        console.log('current user', req.user);
 
-        //User.findById(req.user._id)
-        //    .exec(function(err, currentUser) {
-        //        if (err) console.log('Error getting current user:', err);
-        //
-        //        return res.status(200).json(currentUser);
-        //    })
+        User.findById(req.user._id)
+            .populate('group_admin')
+            .populate('group_admin.members')
+            .populate('group_admin.hardware_registered')
+            .exec(function(err, currentUser) {
+                if (err) console.log('Error getting current user:', err);
+                console.log(currentUser);
+
+                return res.status(200).json(currentUser);
+            })
     },
 
     registerUser: function(req, res) {
-        User.findOne({user_info: {email: req.body.email}}, function(user) {
+        User.findOne({email: req.body.email}, function(user) {
             console.log('register user called');
 
             // User exists already, returns error
@@ -24,16 +28,19 @@ module.exports = {
             }
 
             var newGroupData = {
-                name: req.body.groupName,
-                admin: user._id
+                name: req.body.groupName
+                //admin: req.user._id
             };
 
 
-            // If no user exists, then create a new user with newUserData, also create a group to be referenced on that user
+            // If no user exists, then create a new user with newUserData.
+            // Also create a group to be referenced on that user model
             var createGroup = new Group(newGroupData);
 
             createGroup.save(function(err, newGroup) {
                 if (err) console.log('Error creating group', err);
+
+                console.log('Created new group');
 
                 var newUserData = {
                     first_name: req.body.firstName,
@@ -52,7 +59,13 @@ module.exports = {
                     if (err) {
                         console.log('Error creating user', err);
                         return res.status(500).end();
-                    } //if err
+                    }
+
+                    Group.findByIdAndUpdate({_id: newGroup._id}, {$set: {admin: newUser._id}}, function(err, updatedGroup) {
+                        if (err) console.log('error updating group with admin ID');
+
+                        console.log('Added admin to group');
+                    });
 
                     return res.json(newUser);
                 }); //save user
