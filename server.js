@@ -59,7 +59,7 @@ app.post('/api/auth/login', passport.authenticate('local', { failureRedirect: '/
     //console.log('user from login endpoint', req.user);
     res.json(req.user);
 });
-app.get('/auth/me', function(req, res) {
+app.get('/api/users/user', function(req, res) {
     console.log('user from /auth/me', req);
 });
 
