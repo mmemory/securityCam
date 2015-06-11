@@ -5,14 +5,15 @@ var mongoose = require('mongoose');
 var cors = require('cors');
 var passport = require('passport');
 var session = require('express-session');
+var LocalStrategy = require('passport-local');
 
-
+// Local Imports //
+var User = require('./api/models/userModel.js');
+var UserControl = require('./api/controllers/userCtrl.js');
 
 // Database connection //
 var mongoUri = 'mongodb://localhost/security-cam';
 mongoose.connect(mongoUri);
-
-
 
 // Middleware //
 var app = express();
@@ -21,20 +22,44 @@ app.use(express.static(__dirname + '/public'));
 app.use(BodyParser.json());
 app.use(session({
     secret: 'lskdjflqwerwoqeifj',
-    saveUninitialized: true,
-    resave: true
+    saveUninitialized: false,
+    resave: false
 }));
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Local Login
+passport.use(new LocalStrategy({
+  usernameField: 'email',
+  passwordField: 'password'
+}, function(username, password, done) {
+  console.log('running LocalStrategy callback');
+  User.findOne({ email: username }).exec().then(function(user) {
+    if (!user) {
+        console.log('user doesn\'t exist');
+        return done(new Error("This user does not exist"));
+    }
+    user.verifyPassword(password).then(function(isMatch) {
+      if (!isMatch) return done(null, false);
+      return done(null, user);
+    });
+  });
+}));
 
-
-// Local Imports //
-var User = require('./api/models/userModel.js');
-var UserControl = require('./api/controllers/userCtrl.js');
-require('./api/config/passport.js')(passport);
-
-
+// Serializer //
+passport.serializeUser(function(user, done) {
+  console.log('serializer running');
+  done(null, user._id);
+});
+passport.deserializeUser(function(_id, done) {
+  console.log('deserializer running');
+  console.log('_id: ', _id);
+  User.findById(_id, function(err, user) {
+    if (err) console.log(err);
+    console.log('user', user);
+    done(err, user);
+  });
+});
 
 // Authentication //
 var requireAuth = function(req, res, next) {
@@ -46,18 +71,17 @@ var requireAuth = function(req, res, next) {
 };
 
 
-
 // Endpoints //
 /// Users
 app.get('/auth/logout', UserControl.logoutUser);
 app.post('/api/users/register', UserControl.registerUser);
-app.post('/api/auth/login', passport.authenticate('local', { failureRedirect: '/#/login' }, function(req, res) {
-    //console.log('user from login endpoint', req.user);
-    res.json(req.user);
-}));
+app.post('/api/auth/login', passport.authenticate('local'), function(req, res) {
+    console.log('session', req.session);
+    return res.sendStatus(200);
+});
 app.get('/api/users/user', function(req, res) {
     console.log('user from /api/users/user', req.user);
-    res.send();
+    res.json(req.user);
 });
 
 /// Groups
@@ -82,6 +106,3 @@ var port = process.env.API_PORT || 3015;
 app.listen(port, function() {
     console.log('Listening on port', port);
 });
-
-
-

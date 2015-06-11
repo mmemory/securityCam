@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 var q = require('q');
-var saltFactor = 10;
 
 var UserModel = new mongoose.Schema({
     first_name: {type: String, required: true},
@@ -13,14 +12,12 @@ var UserModel = new mongoose.Schema({
     group_admin: {type: mongoose.Schema.Types.ObjectId, ref: 'Group'}
 });
 
-// Bcrypt middleware
+// Password Encryption
 UserModel.pre('save', function(next) {
     var user = this;
-    //console.log('user variable:', user);
-
-    bcrypt.genSalt(saltFactor, function(err, salt) {
+    if (!user.isModified('password'))	return next();
+    bcrypt.genSalt(10, function(err, salt) {
         if(err) return next(err);
-
         bcrypt.hash(user.password, salt, function(err, hash) {
             if(err) return next(err);
             user.password = hash;
@@ -29,16 +26,13 @@ UserModel.pre('save', function(next) {
     });
 });
 
-// Verify password
+// Password Verification
 UserModel.methods.verifyPassword = function(password) {
     var deferred = q.defer();
     var user = this;
-    bcrypt.compare(password, user.password, function(err, result) {
-
-        if (err) {
-            deferred.resolve(false);
-        }
-        deferred.resolve(result);
+    bcrypt.compare(password, user.password, function(err, isMatch) {
+        if (err) deferred.reject(err);
+        else deferred.resolve(isMatch);
     });
     return deferred.promise;
 };
