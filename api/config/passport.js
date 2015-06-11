@@ -13,7 +13,7 @@ module.exports = function(passport) {
         })
     });
 
-    passport.use('local', new LocalStrategy({
+    passport.use(new LocalStrategy({
         usernameField: 'email',
         passwordField: 'password'
     }, function(email, password, done) {

@@ -8,11 +8,6 @@ var session = require('express-session');
 
 
 
-// Initialize express //
-var app = express();
-
-
-
 // Database connection //
 var mongoUri = 'mongodb://localhost/security-cam';
 mongoose.connect(mongoUri);
@@ -20,11 +15,12 @@ mongoose.connect(mongoUri);
 
 
 // Middleware //
+var app = express();
 app.use(cors());
-app.use(BodyParser.json());
 app.use(express.static(__dirname + '/public'));
+app.use(BodyParser.json());
 app.use(session({
-    secret: 'lskdjfl;qwerwoqeifj',
+    secret: 'lskdjflqwerwoqeifj',
     saveUninitialized: true,
     resave: true
 }));
@@ -40,24 +36,7 @@ require('./api/config/passport.js')(passport);
 
 
 
-// Local Authentication //
-// Checks for member authentication status
-//var requireAuth = function(req, res, next) {
-//    if (!req.isAuthenticated()) {
-//        return res.status(401).end();
-//    }
-//    console.log(req.user);
-//    next();
-//};
-//
-//// Checks for Admin authentication status
-//var requireAdmin = function(req, res, next) {
-//	if (!req.user.group_admin) {
-//		return res.status(401).end();
-//	}
-//	next();
-//};
-
+// Authentication //
 var requireAuth = function(req, res, next) {
     if (!req.isAuthenticated()) {
         return res.status(401).end();
@@ -66,17 +45,21 @@ var requireAuth = function(req, res, next) {
     next();
 };
 
+
+
 // Endpoints //
 /// Users
 app.get('/auth/logout', UserControl.logoutUser);
 app.post('/api/users/register', UserControl.registerUser);
-app.post('/api/auth/login', passport.authenticate('local', { failureRedirect: '/#/login' }), function(req, res) {
-
-    console.log('user from login endpoint', req.user);
-    var userID = req.user._id;
+app.post('/api/auth/login', passport.authenticate('local', { failureRedirect: '/#/login' }, function(req, res) {
+    //console.log('user from login endpoint', req.user);
     res.json(req.user);
+}));
+app.get('/api/users/user', function(req, res) {
+    console.log('user from /api/users/user', req.user);
+    res.send();
 });
-app.get('/auth/me', requireAuth, UserControl.getCurrentUser);
+
 /// Groups
 
 /// Hardware
@@ -86,7 +69,7 @@ app.get('/api/searchterm/:userID/:groupID/:startDate/:endDate', requireAuth, fun
     // Search Date
 });
 /// Image Data
-app.post('/api/image-data', requireAuth, function(req, res) {
+app.post('/api/image-data', function(req, res) {
     console.log('DATA FROM HARDWARE:', req.body);
     res.send(req.body);
 });

@@ -30,7 +30,7 @@ var app = angular.module('securityCam', ['ngMaterial', 'ui.router'])
                 controller: 'LoginCtrl',
                 resolve: {
                   user: function(LoginService) {
-                    return LoginService.user
+                    return LoginService.user();
                   }
                 }
             })
