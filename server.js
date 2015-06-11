@@ -8,11 +8,6 @@ var session = require('express-session');
 
 
 
-// Initialize express //
-var app = express();
-
-
-
 // Database connection //
 var mongoUri = 'mongodb://localhost/security-cam';
 mongoose.connect(mongoUri);
@@ -20,11 +15,12 @@ mongoose.connect(mongoUri);
 
 
 // Middleware //
-app.use(express.static(__dirname + '/public'));
+var app = express();
 app.use(cors());
+app.use(express.static(__dirname + '/public'));
 app.use(BodyParser.json());
 app.use(session({
-    secret: 'lskdjfl;qwerwoqeifj',
+    secret: 'lskdjflqwerwoqeifj',
     saveUninitialized: true,
     resave: true
 }));
@@ -55,12 +51,13 @@ var requireAuth = function(req, res, next) {
 /// Users
 app.get('/auth/logout', UserControl.logoutUser);
 app.post('/api/users/register', UserControl.registerUser);
-app.post('/api/auth/login', passport.authenticate('local', { failureRedirect: '/#/login' }), function(req, res) {
+app.post('/api/auth/login', passport.authenticate('local', { failureRedirect: '/#/login' }, function(req, res) {
     //console.log('user from login endpoint', req.user);
     res.json(req.user);
-});
+}));
 app.get('/api/users/user', function(req, res) {
-    console.log('user from /auth/me', req);
+    console.log('user from /api/users/user', req.user);
+    res.send();
 });
 
 /// Groups
@@ -72,7 +69,7 @@ app.get('/api/searchterm/:userID/:groupID/:startDate/:endDate', requireAuth, fun
     // Search Date
 });
 /// Image Data
-app.post('/api/image-data', requireAuth, function(req, res) {
+app.post('/api/image-data', function(req, res) {
     console.log('DATA FROM HARDWARE:', req.body);
     res.send(req.body);
 });
