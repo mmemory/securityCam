@@ -1,4 +1,6 @@
-// Main imports //
+///////////////////////////////////////////
+//      MAIN VARIABLES
+/////////////////////////////////////////
 var express = require('express');
 var BodyParser = require('body-parser');
 var mongoose = require('mongoose');
@@ -7,15 +9,27 @@ var passport = require('passport');
 var session = require('express-session');
 var LocalStrategy = require('passport-local');
 
-// Local Imports //
+
+
+///////////////////////////////////////////
+//      LOCAL IMPORTS
+/////////////////////////////////////////
 var User = require('./api/models/userModel.js');
 var UserControl = require('./api/controllers/userCtrl.js');
 
-// Database connection //
+
+
+///////////////////////////////////////////
+//      CONNECTIONS
+/////////////////////////////////////////
 var mongoUri = 'mongodb://localhost/security-cam';
 mongoose.connect(mongoUri);
 
-// Middleware //
+
+
+///////////////////////////////////////////
+//      MIDDLEWARE
+/////////////////////////////////////////
 var app = express();
 app.use(cors());
 app.use(express.static(__dirname + '/public'));
@@ -28,7 +42,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Local Login
+// Passport Config
 passport.use(new LocalStrategy({
   usernameField: 'email',
   passwordField: 'password'
@@ -46,11 +60,16 @@ passport.use(new LocalStrategy({
   });
 }));
 
-// Serializer //
+
+
+///////////////////////////////////////////
+//      AUTHENTICATION
+/////////////////////////////////////////
 passport.serializeUser(function(user, done) {
   console.log('serializer running');
   done(null, user._id);
 });
+
 passport.deserializeUser(function(_id, done) {
   console.log('deserializer running');
   console.log('_id: ', _id);
@@ -71,8 +90,11 @@ var requireAuth = function(req, res, next) {
 };
 
 
-// Endpoints //
-/// Users
+
+///////////////////////////////////////////
+//      ENDPOINTS
+/////////////////////////////////////////
+// Users
 app.get('/auth/logout', UserControl.logoutUser);
 app.post('/api/users/register', UserControl.registerUser);
 app.post('/api/auth/login', passport.authenticate('local'), function(req, res) {
@@ -81,18 +103,18 @@ app.post('/api/auth/login', passport.authenticate('local'), function(req, res) {
 });
 app.get('/api/users/user', function(req, res) {
     console.log('user from /api/users/user', req.user);
-    res.json(req.user);
+    res.send(req.user);
 });
 
-/// Groups
+// Groups
 
-/// Hardware
+// Hardware
 
-/// Queries
+// Queries
 app.get('/api/searchterm/:userID/:groupID/:startDate/:endDate', requireAuth, function(req, res) {
     // Search Date
 });
-/// Image Data
+// Image Data
 app.post('/api/image-data', function(req, res) {
     console.log('DATA FROM HARDWARE:', req.body);
     res.send(req.body);
@@ -100,7 +122,9 @@ app.post('/api/image-data', function(req, res) {
 
 
 
-// Server //
+///////////////////////////////////////////
+//      SERVER
+/////////////////////////////////////////
 var port = process.env.API_PORT || 3015;
 
 app.listen(port, function() {
