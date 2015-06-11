@@ -1,5 +1,5 @@
 var app = angular.module('securityCam')
-  .controller('DashCtrl', ['$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log', function($scope, $timeout, $mdSidenav, $mdUtil, $log) { 
+  .controller('DashCtrl', ['$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log', 'dashService', 'user', function($scope, $timeout, $mdSidenav, $mdUtil, $log, dashService, user) { 
 	
 	////////////////////////////
 	// 		  On the Scope		
@@ -74,5 +74,8 @@ var app = angular.module('securityCam')
       "Group C",
       "Group D"
     ]
+
+    $scope.user = user;
+    console.log($scope.user)
 
 }]) // End MainCtrl //

@@ -12,7 +12,12 @@ var app = angular.module('securityCam', ['ngMaterial', 'ui.router'])
             .state('dashboard', {
                 url: '/dashboard',
                 templateUrl: 'js/Templates/DashTmpl.html',
-                controller: 'DashCtrl'
+                controller: 'DashCtrl',
+                resolve: {
+                  user: function(dashService) {
+                    return dashService.user();
+                  }
+                }
             })
             .state('admin', {
                 url: '/admin',
@@ -27,12 +32,7 @@ var app = angular.module('securityCam', ['ngMaterial', 'ui.router'])
             .state('login', {
                 url: '/login',
                 templateUrl: 'js/Templates/LoginTmpl.html',
-                controller: 'LoginCtrl',
-                resolve: {
-                  user: function(LoginService) {
-                    return LoginService.user();
-                  }
-                }
+                controller: 'LoginCtrl'
             })
             .state('register', {
                 url: '/register',
