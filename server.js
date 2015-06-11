@@ -102,8 +102,16 @@ app.post('/api/auth/login', passport.authenticate('local'), function(req, res) {
     return res.sendStatus(200);
 });
 app.get('/api/users/user', function(req, res) {
+
+    User.findById(req.user._id)
+        .populate('group_admin')
+        .populate('group_member')
+        .exec(function(err, userFromMongo) {
+        res.send(userFromMongo);
+    });
+
     console.log('user from /api/users/user', req.user);
-    res.send(req.user);
+    //res.send(req.user);
 });
 
 // Groups
