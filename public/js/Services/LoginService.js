@@ -42,17 +42,4 @@ var app = angular.module('securityCam');
 			return deferred.promise;
 		};
 
-		this.user = function() {
-			var deferred = $q.defer();
-			$http({
-				method: 'GET',
-				url: '/api/users/user'
-			}).then(function(res) {
-				console.log('success', res);
-				deferred.resolve(res.data);
-			}).catch(function(res) {
-				deferred.reject(res.data);
-				//console.log('rejected' res)
-			})
-		}
 }]);
