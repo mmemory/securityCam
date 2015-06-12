@@ -9,3 +9,4 @@ var ImageModel = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('Image', ImageModel);
+
