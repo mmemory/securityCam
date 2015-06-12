@@ -15,6 +15,7 @@ var LocalStrategy = require('passport-local');
 //      LOCAL IMPORTS
 /////////////////////////////////////////
 var User = require('./api/models/userModel.js');
+var Image = require('./api/models/imageModel.js');
 var UserControl = require('./api/controllers/userCtrl.js');
 
 
@@ -96,24 +97,13 @@ var requireAuth = function(req, res, next) {
 /////////////////////////////////////////
 // Users
 app.get('/auth/logout', UserControl.logoutUser);
+app.get('/api/users/user', UserControl.getCurrentUser);
 app.post('/api/users/register', UserControl.registerUser);
 app.post('/api/auth/login', passport.authenticate('local'), function(req, res) {
     console.log('session', req.session);
     return res.sendStatus(200);
 });
-app.get('/api/users/user', function(req, res) {
-
-    User.findById(req.user._id)
-        .populate('group_admin')
-        .populate('group_member')
-        .populate('group_admin.hardware_registered')
-        .exec(function(err, userFromMongo) {
-        res.send(userFromMongo);
-    });
-
-    console.log('user from /api/users/user', req.user);
-    //res.send(req.user);
-});
+app.post('api/user/member', UserControl.createNewGroupMember);
 
 // Groups
 
@@ -125,8 +115,38 @@ app.get('/api/searchterm/:userID/:groupID/:startDate/:endDate', requireAuth, fun
 });
 // Image Data
 app.post('/api/image-data', function(req, res) {
-    console.log('DATA FROM HARDWARE:', req.body);
-    res.send('THE TRANSFER WORKED');
+
+    var dataFromHardware = req.body;
+
+    dataFromHardware.split(',').join();
+
+    dataFromHardware = JSON.parse(dataFromHardware);
+
+    console.log('SAVE IMAGE FIRED');
+
+    var newImageData = {
+        name: dataFromHardware.name,
+        from_hardware: dataFromHardware.camera,
+        image_url: dataFromHardware.url
+    };
+
+    var newImage = new Image(newImageData);
+
+    newImage.save(function(err, image) {
+
+
+        if (err) res.status(500).send(err);
+
+        console.log('IMAGE SAVED SUCCESSFULLY');
+
+        var stringData = JSON.stringify(image);
+
+        res.send(stringData);
+
+    });
+
+    //console.log('DATA FROM HARDWARE:', req.body);
+    //res.send('THE TRANSFER WORKED');
 });
 
 

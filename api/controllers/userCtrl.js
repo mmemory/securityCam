@@ -4,18 +4,17 @@ var Group = require('../models/groupModel.js');
 module.exports = {
 
     getCurrentUser: function(req, res) {
-        console.log('current user', req.user);
 
         User.findById(req.user._id)
             .populate('group_admin')
-            .populate('group_admin.members')
+            .populate('group_member')
             .populate('group_admin.hardware_registered')
-            .exec(function(err, currentUser) {
-                if (err) console.log('Error getting current user:', err);
-                console.log(currentUser);
+            .exec(function(err, userFromMongo) {
+                res.send(userFromMongo);
+            });
 
-                return res.status(200).json(currentUser);
-            })
+        console.log('user from /api/users/user', req.user);
+        //res.send(req.user);
     },
 
     registerUser: function(req, res) {
@@ -77,6 +76,10 @@ module.exports = {
         console.log('logged out!');
         req.logout();
         return res.redirect('/#/login');
+    },
+
+    createNewGroupMember: function(req, res) {
+
     }
 
 }; //module.exports
