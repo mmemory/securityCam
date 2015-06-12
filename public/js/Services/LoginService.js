@@ -41,4 +41,5 @@ var app = angular.module('securityCam');
 			})
 			return deferred.promise;
 		};
+
 }]);
