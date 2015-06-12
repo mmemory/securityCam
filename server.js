@@ -116,11 +116,7 @@ app.get('/api/searchterm/:userID/:groupID/:startDate/:endDate', requireAuth, fun
 // Image Data
 app.post('/api/image-data', function(req, res) {
 
-    var dataFromHardware = req.body;
-
-    dataFromHardware.split(',').join();
-
-    dataFromHardware = JSON.parse(dataFromHardware);
+    var dataFromHardware = JSON.parse(req.body);
 
     console.log('SAVE IMAGE FIRED');
 
@@ -138,6 +134,7 @@ app.post('/api/image-data', function(req, res) {
         if (err) res.status(500).send(err);
 
         console.log('IMAGE SAVED SUCCESSFULLY');
+        console.log(image);
 
         var stringData = JSON.stringify(image);
 
