@@ -106,6 +106,7 @@ app.get('/api/users/user', function(req, res) {
     User.findById(req.user._id)
         .populate('group_admin')
         .populate('group_member')
+        .populate('group_admin.hardware_registered')
         .exec(function(err, userFromMongo) {
         res.send(userFromMongo);
     });
@@ -125,7 +126,7 @@ app.get('/api/searchterm/:userID/:groupID/:startDate/:endDate', requireAuth, fun
 // Image Data
 app.post('/api/image-data', function(req, res) {
     console.log('DATA FROM HARDWARE:', req.body);
-    res.send(req.body);
+    res.json(req.body);
 });
 
 
