@@ -22,3 +22,14 @@
   color: red; 
 }
 
+.welcomeImg {
+	background-image: url('http://twitterheaders.org/twheads/blur.jpg');
+	background-size: cover;
+	width: 100%;
+	height: 600px;
+	background-attachment: fixed;
+}
+
+.login {
+	opacity: .9;
+}
