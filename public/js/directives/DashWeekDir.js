@@ -11,7 +11,7 @@ angular.module('securityCam')
 	      var buildGraph = function() {
 
       		var bardata = scope.barData
-	      	console.log('bardata', bardata, 'scope.barData', scope.barData)
+	      	// console.log('bardata', bardata, 'scope.barData', scope.barData)
 
 	      	var height = 50,
 	      		  width = 250,
@@ -32,7 +32,7 @@ angular.module('securityCam')
 			  		.range(['#5C6BC0', '#C5CAE9'])
 
 				  var test = d3.max(bardata);
-				  console.log("max test", test);
+				  // console.log("max test", test);
 
 	      	var yScale = d3.scale.linear()
 	      		.domain([0, d3.max(bardata)])
