@@ -68,15 +68,21 @@ var app = angular.module('securityCam')
 
       // This is for the groups that user is a part of - will come from Mongo. We need to determine 
       // how to seperate all data based on which 'group' user decides to view
-    $scope.groups = {
+    $scope.groups = [
       "Group A",
       "Group B",
       "Group C",
       "Group D"
-    }
+    ]
+
 
     $scope.user = user;
     console.log($scope.user);
     console.log($scope.user.group_admin.name)
 
+    var displayGroups = function(groups) {
+      groupAdminName = $scope.user.group_admin.name;
+      groups.unshift(groupAdminName)
+    };
+    displayGroups($scope.groups);
 }]) // End MainCtrl //
