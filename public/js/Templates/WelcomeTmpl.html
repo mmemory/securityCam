@@ -1,1 +1,20 @@
-WelcomeTmpl.html
+<div class="welcomeImg" layout='column' layout-align='end center' flex>
+	<div layout='column' layout-align='start center' layout-margin style="margin-bottom:3%">
+	  <md-content class='login' layout-padding layout='row' layout-md='column' layout-sm='column' flex-md='70' flex-gt-md='35'>
+	    <md-input-container class="md-icon-float" >
+	      <md-icon md-svg-src="bower_components/angular-material/demos/input/demoIcons/icons/ic_email_24px.svg" class="email"></md-icon>
+	      <input ng-model="email" type="email" placeholder="Email" ng-required="true">
+	    </md-input-container>
+	    <md-input-container class="md-icon-float">
+	    	<md-icon md-svg-src="" class="name"></md-icon>
+	      <input id="erase" ng-model="password" type="password" placeholder="Password" ng-required="true">
+	    </md-input-container>
+	    <div>{{error}}</div>	
+	    <div layout='row'>
+	    <span flex></span>
+				<md-button ng-click='clickLogin()' class="md-primary ">Login</md-button>
+				<md-button ng-click='register($event)' class="md-primary ">Register</md-button>
+	    </div>    
+		</md-content>
+  </div>
+</div>
