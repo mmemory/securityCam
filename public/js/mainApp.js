@@ -3,7 +3,7 @@ var app = angular.module('securityCam', ['ngMaterial', 'ui.router'])
 	.config(['$mdThemingProvider', '$stateProvider', '$urlRouterProvider', function($mdThemingProvider, $stateProvider, $urlRouterProvider) {
   	$mdThemingProvider.theme('default')
     	.primaryPalette('light-blue')
-    	.accentPalette('blue')
+    	.accentPalette('pink')
 
   	$urlRouterProvider.otherwise('/login');
 
