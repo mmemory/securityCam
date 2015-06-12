@@ -15,6 +15,7 @@ var LocalStrategy = require('passport-local');
 //      LOCAL IMPORTS
 /////////////////////////////////////////
 var User = require('./api/models/userModel.js');
+var Image = require('./api/models/imageModel.js');
 var UserControl = require('./api/controllers/userCtrl.js');
 
 
@@ -125,8 +126,35 @@ app.get('/api/searchterm/:userID/:groupID/:startDate/:endDate', requireAuth, fun
 });
 // Image Data
 app.post('/api/image-data', function(req, res) {
-    console.log('DATA FROM HARDWARE:', req.body);
-    res.send('THE TRANSFER WORKED');
+
+    var dataFromHardware = req.body;
+
+    dataFromHardware.split(',').join();
+
+    dataFromHardware = JSON.parse(dataFromHardware);
+
+    //console.log(typeof dataFromHardware);
+
+    var newImageData = {
+        name: dataFromHardware.name,
+        from_hardware: dataFromHardware.camera,
+        image_url: dataFromHardware.url
+    };
+
+    var newImage = new Image(newImageData);
+
+    newImage.save(function(err, image) {
+
+        if (err) res.status(500).send(err);
+
+        var stringData = JSON.stringify(image);
+
+        res.send(stringData);
+
+    });
+
+    //console.log('DATA FROM HARDWARE:', req.body);
+    //res.send('THE TRANSFER WORKED');
 });
 
 
