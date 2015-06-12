@@ -126,7 +126,7 @@ app.get('/api/searchterm/:userID/:groupID/:startDate/:endDate', requireAuth, fun
 // Image Data
 app.post('/api/image-data', function(req, res) {
     console.log('DATA FROM HARDWARE:', req.body);
-    res.json(req.body);
+    res.send('THE TRANSFER WORKED');
 });
 
 
