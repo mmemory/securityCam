@@ -35,6 +35,7 @@ var app = express();
 app.use(cors());
 app.use(express.static(__dirname + '/public'));
 app.use(BodyParser.json());
+app.use(BodyParser.urlencoded({extended: true}));
 app.use(session({
     secret: 'lskdjflqwerwoqeifj',
     saveUninitialized: false,
@@ -116,8 +117,9 @@ app.get('/api/searchterm/:userID/:groupID/:startDate/:endDate', requireAuth, fun
 // Image Data
 app.post('/api/image-data', function(req, res) {
 
-    console.log('0. req.body:', req.body);
-    console.log('0.1: req:', req);
+    console.log('req.body.something:', req.body.something);
+    console.log('req.body:', req.body);
+    console.log('req:', req);
     console.log('1. type of req.body:', typeof req.body);
     console.log('2. req.body.name:', req.body.name);
 
