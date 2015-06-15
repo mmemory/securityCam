@@ -15,22 +15,5 @@ var app = angular.module('securityCam')
                 });
                 return defer.promise;
             };
-
-
-
-            this.user = function() {
-                var deferred = $q.defer();
-                $http({
-                    method: 'GET',
-                    url: '/api/users/user'
-                }).then(function(res) {
-                    // console.log('success', res.data);
-                    deferred.resolve(res.data);
-                }).catch(function(res) {
-                    deferred.reject(res.data);
-                    console.log('rejected', res)
-                });
-                return deferred.promise;
-            }
         }
     ]); // End Service //
