@@ -12,20 +12,30 @@ var app = angular.module('securityCam', ['ngMaterial', 'ui.router'])
             templateUrl: 'js/Templates/DashTmpl.html',
             controller: 'DashCtrl',
             resolve: {
-              user: function(dashService) {
-                return dashService.user();
+              user: function(mainService) {
+                return mainService.user();
               }
             }
         })
         .state('admin', {
             url: '/admin',
             templateUrl: 'js/Templates/AdminTmpl.html',
-            controller: 'AdminCtrl'
+            controller: 'AdminCtrl',
+            resolve: {
+              user: function(mainService) {
+                return mainService.user();
+              }
+            }
         })
         .state('welcome', {
             url: '/welcome',
             templateUrl: 'js/Templates/WelcomeTmpl.html',
-            controller: 'LoginCtrl'
+            controller: 'WelcomeCtrl',
+            resolve: {
+              user: function(mainService) {
+                return mainService.user();
+              }
+            }
         })
         .state('login', {
             url: '/login',
