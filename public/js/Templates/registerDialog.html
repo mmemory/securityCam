@@ -14,32 +14,38 @@
         <md-content>
       	   <md-input-container>
   		      <label>First Name</label>
-  		      <input ng-model="newUserFirstName">
+  		      <input ng-model="firstname">
   		    </md-input-container>
   		  </md-content>
         <md-content>
            <md-input-container>
             <label>Last Name</label>
-            <input ng-model="newUserLasttName">
+            <input ng-model="lastname">
           </md-input-container>
         </md-content>
+  		  <md-content>
+      	   <md-input-container>
+  		      <label>Email</label>
+  		      <input ng-model="email">
+  		    </md-input-container>
+  		  </md-content>
         <md-content>
            <md-input-container>
-            <label>Email</label>
-            <input ng-model="newUserEmail">
+            <label>Group Name</label>
+            <input ng-model="groupName">
           </md-input-container>
-        </md-content>
-        <md-content>
+          <md-content>
            <md-input-container>
             <label>Password</label>
-            <input ng-model="newUserPassword">
+            <input ng-model="password">
           </md-input-container>
-        </md-content>
-        <md-content>
+          <md-content>
            <md-input-container>
             <label>Confirm Password</label>
             <input>
           </md-input-container>
+        </md-content>
+        </md-content>
         </md-content>
   		</div>
       <div class="md-actions" layout="row">
@@ -47,7 +53,7 @@
         <md-button ng-click="closeDialog()" class="md-primary">
           Cancel
         </md-button>
-        <md-button ng-click="addUser(newUserName, newUserEmail)" class="md-primary">
+        <md-button ng-click="register(firstname, lastname, email, groupName, password)" class="md-primary">
           Register User
         </md-button>
       </div>

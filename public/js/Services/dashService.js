@@ -24,7 +24,7 @@ var app = angular.module('securityCam')
                     method: 'GET',
                     url: '/api/users/user'
                 }).then(function(res) {
-                    console.log('success', res.data);
+                    // console.log('success', res.data);
                     deferred.resolve(res.data);
                 }).catch(function(res) {
                     deferred.reject(res.data);

@@ -28,10 +28,10 @@ var app = angular.module('securityCam')
 	  };
 
 		function DialogController($scope, $mdDialog) {
-		  $scope.addUser = function(name, email) {
+		  $scope.addUser = function(firstName, lastName, email, password) {
 		    $mdDialog.hide();
-		    console.log('addUser invoked', name, email);
-		    AdminService.registerUser(name, email).then(function() {
+		    console.log('addUser invoked', firstName, lastName, email, password);
+		    AdminService.registerUser(firstName, lastName, email, password).then(function() {
 		    	console.log('somthin')
 		    })
 		  };

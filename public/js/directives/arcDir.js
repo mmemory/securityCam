@@ -10,7 +10,7 @@ angular.module('securityCam')
 
 	      	var buildGraph = function() {
 
-	      	  console.log('arcData from Dir', scope.arcData)
+	      	  // console.log('arcData from Dir', scope.arcData)
 	      
 					var data = scope.arcData
 					var r = 55;
