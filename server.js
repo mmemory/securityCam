@@ -117,6 +117,7 @@ app.get('/api/searchterm/:userID/:groupID/:startDate/:endDate', requireAuth, fun
 app.post('/api/image-data', function(req, res) {
 
     console.log('0. req.body:', req.body);
+    console.log('0.1: req:', req);
     console.log('1. type of req.body:', typeof req.body);
     console.log('2. req.body.name:', req.body.name);
 
@@ -138,14 +139,17 @@ app.post('/api/image-data', function(req, res) {
 
         if (err) res.status(500).send(req.body);
 
-        console.log('3. IMAGE SAVED SUCCESSFULLY');
-        console.log('4. saved image:', image);
+        else{
 
-        var stringData = JSON.stringify(image);
+            console.log('3. IMAGE SAVED SUCCESSFULLY');
+            console.log('4. saved image:', image);
 
-        console.log('5. this is what I sent back to arduino:', stringData);
+            var stringData = JSON.stringify(image);
 
-        res.send(req.body);
+            console.log('5. this is what I sent back to arduino:', stringData);
+
+            res.send(req.body);
+        }
 
     });
 
