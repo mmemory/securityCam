@@ -1,20 +1,79 @@
-<div class="welcomeImg" layout='column' layout-align='end center' flex>
-	<div layout='column' layout-align='start center' layout-margin style="margin-bottom:3%">
-	  <md-content class='login' layout-padding layout='row' layout-md='column' layout-sm='column' flex-md='70' flex-gt-md='35'>
-	    <md-input-container class="md-icon-float" >
-	      <md-icon md-svg-src="bower_components/angular-material/demos/input/demoIcons/icons/ic_email_24px.svg" class="email"></md-icon>
-	      <input ng-model="email" type="email" placeholder="Email" ng-required="true">
-	    </md-input-container>
-	    <md-input-container class="md-icon-float">
-	    	<md-icon md-svg-src="" class="name"></md-icon>
-	      <input id="erase" ng-model="password" type="password" placeholder="Password" ng-required="true">
-	    </md-input-container>
-	    <div>{{error}}</div>	
-	    <div layout='row'>
-	    <span flex></span>
-				<md-button ng-click='clickLogin()' class="md-primary ">Login</md-button>
-				<md-button ng-click='register($event)' class="md-primary ">Register</md-button>
-	    </div>    
-		</md-content>
-  </div>
+<!-- <div class="welcomeImg" layout='column' layout-align='start center' style='height: 950px;' flex-md='100' flex-gt-md='65'>
+	<div style='height: 100%;'>
+		<div layout='column' layout-align='start center' layout-margin style="color: white; margin: 10%; height: 60%;">	
+			<h1 style='color: white; font-size: 4em;'>SecurityCam</h1>
+		</div>
+		<div layout='column' layout-align='end center' layout-margin style="margin-bottom:3%">
+		  <md-content class='login' layout-padding layout='row' layout-md='column' layout-sm='column' flex-md='70' flex-gt-md='35'>
+		    <md-input-container class="md-icon-float" >
+		      <md-icon md-svg-src="bower_components/angular-material/demos/input/demoIcons/icons/ic_email_24px.svg" class="email"></md-icon>
+		      <input ng-model="email" type="email" placeholder="Email" ng-required="true">
+		    </md-input-container>
+		    <md-input-container class="md-icon-float">
+		    	<md-icon md-svg-src="" class="name"></md-icon>
+		      <input id="erase" ng-model="password" type="password" placeholder="Password" ng-required="true">
+		    </md-input-container>
+		    <div>{{error}}</div>	
+		    <div layout='row'>
+		    <span flex></span>
+					<md-button ng-click='clickLogin()' class="md-primary ">Login</md-button>
+					<md-button ng-click='register($event)' class="md-primary ">Register</md-button>
+		    </div>    
+			</md-content>
+	  </div>
+	</div>
+</div> -->
+<div style='height: 100vh;'>
+	<md-content>
+    <md-toolbar style='height: 100vh;'>
+      <span flex></span>
+			<div layout='column' layout-align='center center' layout-margin style="color: white; margin: 10%; height: 60%;">	
+				<h1 style='color: white; font-size: 4em; margin-top: 60%;'>SecurityCam</h1>
+				<h6 style="margin-top: 37px;">Project by DevMountaineers</h6>
+			</div>
+			<div style='margin: 6% auto;'>
+				<i class="material-icons" style='font-size: 48px; color: white;'>&#xE313;</i>
+			</div>
+    </md-toolbar>
+  <md-content>
+</div>
+<div style='width: 100%;' layout-gt-md='row' layout-md='column' flex>
+	<div layout='column' layout-align='start start' flex-gt-md='45' flex-md='95'>	
+		<h1 style='font-size: 1.5em; margin: 60px 0px 0px 20px;'>What is SecurityCam?</h1>
+	</div>
+	<div layout='column' layout-align-gt-md='start start' layout-align-md='start center' layout-margin flex-gt-md='45' flex-md='95' style='margin-top: 60px;'>	
+		<div layout='row' layout-margin>
+			<div layout='column' layout-align='center start' style='margin-right: 30px'>
+				<i class="material-icons" style='font-size: 60px;'>&#xE86F;</i>
+			</div>
+			<div layout='column'>
+				<h6 style='font-weight: bold; margin-bottom: 5px;'>Web Development Project</h6>
+				<p style='font-size: .8em;'>As students from DevMountain, we came up with SecurityCam to use for our group project. SecurityCam was a way for us to showcase the skills we have learned while at DevMountain.</p>
+			</div>
+		</div>
+		<div layout='row' layout-margin>
+			<div layout='column' layout-align='center start' style='margin-right: 30px'>
+				<i class="material-icons" style='font-size: 60px;'>&#xE04B;</i>
+			</div>
+			<div layout='column'>
+				<h6 style='font-weight: bold; margin-bottom: 5px;'>Security Camera System</h6>
+				<p style='font-size: .8em;'>We built a Security Camera using an Arduino Chip, webcam, and motion sensor. We also attatched a temprature sensor, a light meter, and a humidity sensor, so that we could display a wide range of data.</p>
+			</div>
+		</div>
+		<div layout='row' layout-margin>
+			<div layout='column' layout-align='center start' style='margin-right: 30px'>
+				<i class="material-icons" style='font-size: 60px;'>&#xE30A;</i>
+			</div>
+			<div layout='column'>
+				<h6 style='font-weight: bold; margin-bottom: 5px;'>Single Page Web Application</h6>
+				<p style='font-size: .8em;'>The web application we made is used to display the photos taken from the security camera. There are many graphs that we also display to show the data from the other sensors as well.</p>
+			</div>
+		</div>
+	</div>
+
+	
+</div>
+<div style='height: 800px;'>
+
+	
 </div>
