@@ -117,14 +117,14 @@ app.get('/api/searchterm/:userID/:groupID/:startDate/:endDate', requireAuth, fun
 // Image Data
 app.post('/api/image-data', function(req, res) {
 
-    console.log('req.body.something:', req.body.something);
+    console.log('req.body.something:', req.body.data);
     console.log('req.body:', req.body);
     console.log('req:', req);
     console.log('1. type of req.body:', typeof req.body);
     console.log('2. req.body.name:', req.body.name);
 
     //var dataFromHardware = JSON.parse(req.body);
-    var dataFromHardware = req.body;
+    var dataFromHardware = JSON.parse(req.body.data);
 
     //console.log('2. SAVE IMAGE FIRED');
 
