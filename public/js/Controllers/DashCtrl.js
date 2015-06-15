@@ -1,12 +1,12 @@
 var app = angular.module('securityCam')
-  .controller('DashCtrl', ['$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log', 'dashService', 'user', function($scope, $timeout, $mdSidenav, $mdUtil, $log, dashService, user) { 
-	
-	////////////////////////////
-	// 		  On the Scope		
-	///////////////////////////
-	$scope.submissionStartDate
-	$scope.submissionEndDate
-	$scope.group
+  .controller('DashCtrl', ['$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log', 'dashService', 'user', 'mainService', function($scope, $timeout, $mdSidenav, $mdUtil, $log, dashService, user, mainService) { 
+  
+  ////////////////////////////
+  //      On the Scope    
+  ///////////////////////////
+  $scope.submissionStartDate
+  $scope.submissionEndDate
+  $scope.group
 
             //$scope.filterOptions = function() {
             //    dashService.cameraInfo($scope.submissionStartDate, $scope.submissionEndDate).then(function(response) {

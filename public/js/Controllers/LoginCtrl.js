@@ -1,8 +1,12 @@
 var app = angular.module('securityCam')
 	.controller('LoginCtrl', ['$scope', 'LoginService', '$location', '$mdDialog', function($scope, LoginService, $location, $mdDialog) {
 
+	///////////////////////////add user to scope///////////////////
+	// $scope.user = user;
+
+
 	$scope.clickLogin = function() {
-		console.log('controller login called');
+		// console.log('controller login called');
 		LoginService.login($scope.email, $scope.password).then(function() {
 			$location.path('dashboard');
 		}).catch(function(err) {
@@ -47,6 +51,7 @@ var app = angular.module('securityCam')
 	    console.log('registration cancelled')
 	  };
 	};
+
 
 
 }]) // End RegisCtrl.js //

@@ -1,7 +1,7 @@
 var app = angular.module('securityCam')
-	.controller('MainCtrl', ['$scope', function($scope) {
+	.controller('WelcomeCtrl', ['$scope', 'user', function($scope, user) {
 	
-
+		$scope.user = user;
 	
 
 }]) // End MainCtrl //
