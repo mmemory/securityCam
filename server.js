@@ -136,14 +136,16 @@ app.post('/api/image-data', function(req, res) {
     newImage.save(function(err, image) {
 
 
-        if (err) res.status(500).send(err);
+        if (err) res.status(500).send(req.body);
 
         console.log('3. IMAGE SAVED SUCCESSFULLY');
         console.log('4. saved image:', image);
 
         var stringData = JSON.stringify(image);
 
-        res.send(stringData);
+        console.log('5. this is what I sent back to arduino:', stringData);
+
+        res.send(req.body);
 
     });
 
