@@ -35,6 +35,7 @@ var app = express();
 app.use(cors());
 app.use(express.static(__dirname + '/public'));
 app.use(BodyParser.json());
+app.use(BodyParser.urlencoded({extended: true}));
 app.use(session({
     secret: 'lskdjflqwerwoqeifj',
     saveUninitialized: false,
@@ -116,9 +117,21 @@ app.get('/api/searchterm/:userID/:groupID/:startDate/:endDate', requireAuth, fun
 // Image Data
 app.post('/api/image-data', function(req, res) {
 
-    var dataFromHardware = JSON.parse(req.body);
+    //console.log('req.body.something:', req.body.data);
+    //console.log('req.body:', req.body);
+    //console.log('1. type of req.body:', typeof req.body);
+    //console.log('2. req.body.name:', req.body.name);
 
-    console.log('SAVE IMAGE FIRED');
+    console.log('req.body.something:', req.body.name);
+    console.log('req.body:', req.body);
+    console.log('1. type of req.body:', typeof req.body);
+    console.log('2. req.body.name:', req.body.name);
+
+    //var dataFromHardware = JSON.parse(req.body);
+    //var dataFromHardware = JSON.parse(req.body.data);
+    var dataFromHardware = req.body;
+
+    //console.log('2. SAVE IMAGE FIRED');
 
     var newImageData = {
         name: dataFromHardware.name,
@@ -131,14 +144,19 @@ app.post('/api/image-data', function(req, res) {
     newImage.save(function(err, image) {
 
 
-        if (err) res.status(500).send(err);
+        if (err) res.status(500).send(req.body);
 
-        console.log('IMAGE SAVED SUCCESSFULLY');
-        console.log(image);
+        else{
 
-        var stringData = JSON.stringify(image);
+            console.log('3. IMAGE SAVED SUCCESSFULLY');
+            console.log('4. saved image:', image);
 
-        res.send(stringData);
+            var stringData = JSON.stringify(image);
+
+            console.log('5. this is what I sent back to arduino:', stringData);
+
+            res.send(req.body);
+        }
 
     });
 
