@@ -30,12 +30,7 @@ var app = angular.module('securityCam', ['ngMaterial', 'ui.router'])
         .state('welcome', {
             url: '/welcome',
             templateUrl: 'js/Templates/WelcomeTmpl.html',
-            controller: 'WelcomeCtrl',
-            resolve: {
-              user: function(mainService) {
-                return mainService.user();
-              }
-            }
+            controller: 'WelcomeCtrl'
         })
         .state('login', {
             url: '/login',
