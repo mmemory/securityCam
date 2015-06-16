@@ -9,6 +9,8 @@
   "license": "Apache 2",
   "dependencies": {
     "angular-material": "~0.9.7",
-    "angular-ui-router": "~0.2.15"
+    "angular-ui-router": "~0.2.15",
+    "ngSmoothScroll": "~1.7.1",
+    "angular-scroll": "~0.7.1"
   }
 }
