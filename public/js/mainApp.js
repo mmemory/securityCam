@@ -7,6 +7,14 @@ var app = angular.module('securityCam', ['ngMaterial', 'ui.router'])
     $urlRouterProvider.otherwise('/welcome');
 
     $stateProvider
+        .state('/', {
+            controller: 'MainCtrl',
+            resolve: {
+              user: function(mainService) {
+                return mainService.user();
+              }
+            }
+        })
         .state('dashboard', {
             url: '/dashboard',
             templateUrl: 'js/Templates/DashTmpl.html',
