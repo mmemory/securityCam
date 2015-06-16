@@ -1,5 +1,5 @@
 var app = angular.module('securityCam')
-  .controller('MainCtrl', ['$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log', 'mainService',  function($scope, $timeout, $mdSidenav, $mdUtil, $log, mainService) {
+  .controller('MainCtrl', ['$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log', 'mainService', function($scope, $timeout, $mdSidenav, $mdUtil, $log, mainService) {
 
   $scope.toggleLeft = buildToggler('left');
   $scope.toggleRight = buildToggler('right');
@@ -66,6 +66,10 @@ var app = angular.module('securityCam')
       console.log('registration cancelled')
     };
   };
+
+  // $scope.user = user;
+  //   console.log($scope.user);
+  //   console.log($scope.user.group_admin.name)
 
 
 
