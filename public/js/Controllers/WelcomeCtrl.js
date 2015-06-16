@@ -1,5 +1,5 @@
 var app = angular.module('securityCam')
-	.controller('WelcomeCtrl', ['$scope', '$mdDialog', '$location', '$document', function($scope, $mdDialog, $location, $document) {
+	.controller('WelcomeCtrl', ['$scope', '$mdDialog', '$location', '$document', 'LoginService', function($scope, $mdDialog, $location, $document, LoginService) {
 	
 	$scope.login = function(ev) {
 		console.log("Login clicked WelcomeCtrl")
