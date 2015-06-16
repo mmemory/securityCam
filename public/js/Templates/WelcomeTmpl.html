@@ -1,49 +1,23 @@
-<!-- <div class="welcomeImg" layout='column' layout-align='start center' style='height: 950px;' flex-md='100' flex-gt-md='65'>
-	<div style='height: 100%;'>
-		<div layout='column' layout-align='start center' layout-margin style="color: white; margin: 10%; height: 60%;">	
-			<h1 style='color: white; font-size: 4em;'>SecurityCam</h1>
+<div>
+  <md-toolbar style='height: 80vh;'>
+		<div layout='row' layout-align='end center' layout-padding style='position: fixed; width: 100%;'>
+			<md-button layout-margin ng-click='login($event)' class="md-primary md-raised md-hue-2">Login</md-button>
+	    <md-button layout-margin ng-click='register($event)' class="md-primary md-raised md-hue-2">Register</md-button>
 		</div>
-		<div layout='column' layout-align='end center' layout-margin style="margin-bottom:3%">
-		  <md-content class='login' layout-padding layout='row' layout-md='column' layout-sm='column' flex-md='70' flex-gt-md='35'>
-		    <md-input-container class="md-icon-float" >
-		      <md-icon md-svg-src="bower_components/angular-material/demos/input/demoIcons/icons/ic_email_24px.svg" class="email"></md-icon>
-		      <input ng-model="email" type="email" placeholder="Email" ng-required="true">
-		    </md-input-container>
-		    <md-input-container class="md-icon-float">
-		    	<md-icon md-svg-src="" class="name"></md-icon>
-		      <input id="erase" ng-model="password" type="password" placeholder="Password" ng-required="true">
-		    </md-input-container>
-		    <div>{{error}}</div>	
-		    <div layout='row'>
-		    <span flex></span>
-					<md-button ng-click='clickLogin()' class="md-primary ">Login</md-button>
-					<md-button ng-click='register($event)' class="md-primary ">Register</md-button>
-		    </div>    
-			</md-content>
-	  </div>
-	</div>
-</div> -->
-<div style='height: 100vh;'>
-	<md-content>
-    <md-toolbar style='height: 100vh;'>
-      <span flex></span>
-			<div layout='column' layout-align='center center' layout-margin style="color: white; margin: 10%; height: 60%;">	
-				<h1 style='color: white; font-size: 4em; margin-top: 60%;'>SecurityCam</h1>
-				<h6 style="margin-top: 37px;">Project by DevMountaineers</h6>
-			</div>
-			<div style='margin: 6% auto;'>
-				<i class="material-icons" style='font-size: 48px; color: white;'>&#xE313;</i>
-			</div>
-    </md-toolbar>
-  <md-content>
+    <span flex></span>
+		<div layout='column' layout-align='center center' layout-margin style="color: white; margin: 10%; height: 60%;">	
+			<h1 style='color: white; font-size: 4em;'>SecurityCam</h1>
+			<h6 style="margin-top: 37px;">Project by DevMountaineers</h6>
+		</div>
+  </md-toolbar>
 </div>
-<div style='width: 100%;' layout-gt-md='row' layout-md='column' flex>
-	<div layout='column' layout-align='start start' flex-gt-md='45' flex-md='95'>	
-		<h1 style='font-size: 1.5em; margin: 60px 0px 0px 20px;'>What is SecurityCam?</h1>
+<div style='width: 100%;' layout-gt-md='row' layout-md='column' flex id='about'>
+	<div layout='column' layout-align='start start' flex-gt-md='55' flex-md='95'>	
+		<h1 style='font-size: 1.5em; margin: 90px 0px 0px 30px;'>What is SecurityCam?</h1>
 	</div>
-	<div layout='column' layout-align-gt-md='start start' layout-align-md='start center' layout-margin flex-gt-md='45' flex-md='95' style='margin-top: 60px;'>	
+	<div layout='column' layout-align-gt-md='start start' layout-align-md='start center' layout-margin flex-gt-md='40' flex-md='95' style='margin-top: 90px;'>	
 		<div layout='row' layout-margin>
-			<div layout='column' layout-align='center start' style='margin-right: 30px'>
+			<div layout='column' layout-align='center start' style='margin-right: 45px'>
 				<i class="material-icons" style='font-size: 60px;'>&#xE86F;</i>
 			</div>
 			<div layout='column'>
@@ -52,7 +26,7 @@
 			</div>
 		</div>
 		<div layout='row' layout-margin>
-			<div layout='column' layout-align='center start' style='margin-right: 30px'>
+			<div layout='column' layout-align='center start' style='margin-right: 45px'>
 				<i class="material-icons" style='font-size: 60px;'>&#xE04B;</i>
 			</div>
 			<div layout='column'>
@@ -61,7 +35,7 @@
 			</div>
 		</div>
 		<div layout='row' layout-margin>
-			<div layout='column' layout-align='center start' style='margin-right: 30px'>
+			<div layout='column' layout-align='center start' style='margin-right: 45px'>
 				<i class="material-icons" style='font-size: 60px;'>&#xE30A;</i>
 			</div>
 			<div layout='column'>
@@ -73,7 +47,88 @@
 
 	
 </div>
-<div style='height: 800px;'>
+<md-divider style='margin-top: 80px'></md-divider>
+<div style='width: 100%;' layout='column' flex id='about'>
+	<div layout='column' layout-align='center center' flex-gt-md='40' flex-md='95'>	
+		<h1 style='font-size: 1.5em; margin: 90px 0px 0px 30px;'>Technologies we used</h1>
+	</div>
+	<div layout-gt-md='row' layout-md='column' style='margin-top: 60px;'>
+		<div layout='column' layout-align='center start' style='margin-left: 8%;' layout-margin flex-gt-md='40' flex-md='95'>
+			<div layout='row' layout-margin>
+				<div layout='column' layout-align='center start' style='margin-right: 45px'>
+				<img style='height: 100px; width: 100px;' src="http://www.nganimate.org/img/angular-logo-big.png" alt="">
+				</div>
+				<div layout='column' layout-align='center start'>
+					<h6 style='font-weight: bold; margin-bottom: 5px;'>AngularJS</h6>
+				</div>
+			</div>
+			<div layout='row' layout-margin>
+				<div layout='column' layout-align='center start' style='margin-right: 45px'>
+				<img style='height: 100px; width: 100px;' src="https://s3.amazonaws.com/cloud.ohloh.net/attachments/71714/logo64_med.png" alt="">
+				</div>
+				<div layout='column' layout-align='center start'>
+					<h6 style='font-weight: bold; margin-bottom: 5px;'>D3.js</h6>
+				</div>
+			</div>
+			<div layout='row' layout-margin>
+				<div layout='column' layout-align='center start' style='margin-right: 45px'>
+				<img style='height: 100px; width: 100px;' src="https://avatars0.githubusercontent.com/u/139426?v=3&s=400" alt="">
+				</div>
+				<div layout='column' layout-align='center start'>
+					<h6 style='font-weight: bold; margin-bottom: 5px;'>Angular Material</h6>
+				</div>
+			</div>
+			<div layout='row' layout-margin>
+				<div layout='column' layout-align='center start' style='margin-right: 45px'>
+				<img style='height: 100px; width: 100px;' src="https://assets-cdn.github.com/images/modules/logos_page/Octocat.png" alt="">
+				</div>
+				<div layout='column' layout-align='center start'>
+					<h6 style='font-weight: bold; margin-bottom: 5px;'>GitHub</h6>
+				</div>
+			</div>
+		</div>
+		<div layout='column' layout-align='center start' style='margin-left: 8%;' layout-margin flex-gt-md='40' flex-md='95'>
+			<div layout='row' layout-margin>
+				<div layout='column' layout-align='center start' style='margin-right: 45px'>
+				<img style='height: 100px; width: 100px;' src="http://cdn.rawgit.com/ferventcoder/chocolatey-packages/bd3902ea9e357d5d1b3ece2977f02e5ef60ca84a/icons/nodejs.png" alt="">
+				</div>
+				<div layout='column' layout-align='center start'>
+					<h6 style='font-weight: bold; margin-bottom: 5px;'>NodeJS</h6>
+				</div>
+			</div>
+			<div layout='row' layout-margin>
+				<div layout='column' layout-align='center start' style='margin-right: 45px'>
+				<img style='height: 100px; width: 100px;' src="http://i.imgur.com/pgkvQTm.png" alt="">
+				</div>
+				<div layout='column' layout-align='center start'>
+					<h6 style='font-weight: bold; margin-bottom: 5px;'>C++</h6>
+				</div>
+			</div>
+			<div layout='row' layout-margin>
+				<div layout='column' layout-align='center start' style='margin-right: 45px'>
+				<img style='height: 100px; width: 100px;' src="http://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/2000px-Python-logo-notext.svg.png" alt="">
+				</div>
+				<div layout='column' layout-align='center start'>
+					<h6 style='font-weight: bold; margin-bottom: 5px;'>Python</h6>
+				</div>
+			</div>
+			<div layout='row' layout-margin>
+				<div layout='column' layout-align='center start' style='margin-right: 45px'>
+				<img style='height: 100px; width: 100px;' src="http://blog.fabianpiau.com/wp-content/uploads/2013/01/00048.png" alt="">
+				</div>
+				<div layout='column' layout-align='center start'>
+					<h6 style='font-weight: bold; margin-bottom: 5px;'>MongoDB</h6>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<md-divider style='margin-top: 80px'></md-divider>
+<div style='width: 100%;' layout-gt-md='row' layout-md='column' flex id='about'>
+	<div layout='column' layout-align='center center' flex-gt-md='55' flex-md='95'>	
+		<h1 style='font-size: 1.5em; margin: 90px 0px 0px 30px;'>Meet the SecurityCam Team!</h1>
+	</div>
+	<div layout='column' layout-align-gt-md='start start' layout-align-md='start center' layout-margin flex-gt-md='40' flex-md='95' style='margin-top: 90px;'>
 
-	
+	</div>
 </div>
