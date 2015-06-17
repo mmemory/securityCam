@@ -26,6 +26,9 @@ angular.module('securityCam')
 				    .style('padding', '0 10px')
 				    .style('background', 'white')
 				    .style('opacity', .3)
+				    .html(function(d) {
+					    return "<a ui-sref='admin'></a>";
+  					})
 
 				  var colors = d3.scale.linear()
 				  	.domain([0, d3.max(bardata)])

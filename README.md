@@ -57,14 +57,18 @@ For the hardware configuration we have used [Marco Schwartz] (https://github.com
   
 ### 3. Hardware-Design
 ####3.1 Features
-  * PIO Motion Sensor
+  * PIR Motion Sensor
+  * Temperatur Sensor
+  * Humidity Sensor
+  * Photo Resistor
   * Camera
 
 ####3.2 Technologies
   * Temboo
-  * Dropbox
-  * AWS S3
+  * Amazon S3
 
 ####3.3 Libraries
   * [Bridge] (http://www.arduino.cc/en/Tutorial/Bridge)
   * [Process] (http://www.arduino.cc/en/Tutorial/Process)
+  * [HttpClient] (http://www.arduino.cc/en/Tutorial/HttpClient)
+  * [DHT] (https://github.com/adafruit/DHT-sensor-library)

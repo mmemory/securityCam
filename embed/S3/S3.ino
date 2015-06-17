@@ -3,27 +3,40 @@
 //#########################################################################################################################
 
 //##################################################-Required libraries-###################################################
-#include <Bridge.h>
-#include <Process.h>
-#include <HttpClient.h>
+#include <Bridge.h>     //The Bridge library simplifies communication between the ATmega32U4 and the AR9331
+#include <Process.h>    //Bridge library's Process class to run Linux processes on the AR9331
+#include <HttpClient.h> //Library to make it easier to interact with web servers from Arduino
+#include <DHT.h>        //Library for the DHT series of low cost temperature/humidity sensors
 
 //######################################################-Variables-########################################################
-int pirPin = 2;                                                              //PIR Motion Sensor
-int ledPin = 13;                                                             //LED as picture trigger
-int pirValue = LOW;                                                          //We start, assuming no motion detected
-String folder = "/mnt/sda1/arduino/";                                        //Folder path to micro sd card
-String httpDestination = "http://trinkiter.com:3015/api/image-data";         //API url for the POST request
-String httpBody;                                                             //Data for the POST request message body
-String url = "https://s3.amazonaws.com/securitywebcam/2015-06-12+03%3A46PM"; //Amazon S3 url for httpBody concatenation 
-String hardware = "192.168.0.6";                                             //Hardware ID for httpBody concatenation 
-String timestamp;                                                            //Picture name for httpBody concatenation 
-boolean transmissionToS3 = false;                                            //We start, assuming transmission to S3 failed
+int pirPin = 2;                                                      //Pin for the PIR motion sensor
+int ledPin = 13;                                                     //Pin for the LED as a picture trigger
+int pirValue = LOW;                                                  //We start, assuming no motion detected
+String folderPath = "/mnt/sda1/arduino/";                            //Folder path to micro sd card
+String httpDestination = "http://trinkiter.com:3015/api/image-data"; //API url for the POST request
+String httpBody;                                                     //Data for the POST request message body
+String timestamp;                                                    //Picture name for httpBody concatenation 
+String hardware = "192.168.0.6";                                     //Hardware ID for httpBody concatenation 
+String url;                                                          //Amazon S3 url for httpBody concatenation
+String lightIntensity;                                               //Light intensity at the location of the hardware 
+String temperatureInCelsius, temperatureInFahrenheit;                //Temperature at the location of the hardware
+String humidity;                                                     //Humidity at the location of the hardware
+boolean transmissionToS3 = false;                                    //We start, assuming transmission to S3 failed
+
+//#######################################################-Defines-#########################################################
+#define lightPin A0   //Pin for the photo-resistor
+#define DHTPIN 2      //Pin for the DHT11 sensor
+#define DHTTYPE DHT11 //Type of DHT sensor
 
 //####################################################-Setup function-#####################################################
 void setup() {
 
-  //Start bridge library
+  // Initialize DHT sensor for normal 16mhz Arduino
+  DHT dht(DHTPIN, DHTTYPE);  
+  
+  //Initialize libraries
   Bridge.begin();
+  dht.begin();
   
   //Sets the data rate in bits per second for serial data transmission
   Serial.begin(9600);
@@ -35,17 +48,13 @@ void setup() {
   //Wait for a serial connection
   while (!Serial);
 
-} //End setup function
+}
 
 //####################################################-Loop function-######################################################
 void loop() {
   
   //Write the value of the PIR sensor to a variable
   pirValue = digitalRead(pirPin); //Value = 0 --> no motion, Value = 1 --> motion
-  
-  //Print PIR sensor value 
-  Serial.print("PIR value: ");
-  Serial.println(pirValue);
   
   //Comparison if motion detected
   if (pirValue == HIGH) {
@@ -57,26 +66,37 @@ void loop() {
     digitalWrite(ledPin, HIGH); 
     
     //Invoke custom functions
-    takePicture();                    //Function to take a picture and to save it on the micro sd card
-    transmissionToS3 = sendToS3();    //Function to send the picture to S3 and to determine the transmisson success
-    
-    //Print transmisson success
-    Serial.println(transmissionToS3); 
+    takePicture();                 //Function to take a picture and to save it on the micro sd card
+    transmissionToS3 = sendToS3(); //Function to send the picture to S3 and to determine the transmisson success
     
     //Comparison if the picture was successfully sent to S3
     if (!transmissionToS3) {
       
       //Invoke custom functions
-      timestamp = getTimestamp(); //Function to get the current date and time
-                                  //Function to get the current humidity
-                                  //Function to get the current temperature
-                                  //Function to get the current light intensity
+      timestamp = getTimestamp();                             //Function to get the current date and time
+      lightIntensity = String(getLightIntensity());           //Function to get the current light intensity
+      temperatureInCelsius = String(getTemperature(false));   //Function to get the current temperature in Celsius
+      temperatureInFahrenheit = String(getTemperature(true)); //Function to get the current temperature in Fahrenheit
+      humidity = String(getHumidity());                       //Function to get the current humidity
+                                       
+      //Print return values of custom functions    
+      Serial.println("Timestamp: " + timestamp);
+      Serial.println("Light intensity: " + lightIntensity);
+      Serial.println("Temperature in Celsius: " + temperatureInCelsius);
+      Serial.println("Temperature in Fahrenheit: " + temperatureInFahrenheit);
+      Serial.println("Humidity: " + humidity);
                                   
-      //Concatenation of the message body for the http POST request
-      httpBody = "{\"name\":\"" + timestamp + "\",\"camera\":\"" + hardware + "\",\"url\":\"" + url + "\"}";
+      //Build the message body for the http POST request
+      httpBody = "name=" + timestamp + 
+                 "&camera=" + hardware + 
+                 "&url=" + url +
+                 "$lightIntensity=" + lightIntensity +
+                 "&temperatureInCelsius=" + temperatureInCelsius +
+                 "&temperatureInFahrenheit=" + temperatureInFahrenheit +
+                 "&humidity=" + humidity;
       
       //Print message body
-      Serial.println(httpBody);
+      Serial.println("HTTP POST BODY: " + httpBody);
       
       //Invoke custom function
       postRequest(httpDestination, httpBody); //Function for http POST request 
@@ -86,7 +106,7 @@ void loop() {
   } else {
     
     //Print PIR sensor reaction
-    Serial.println("No motion!");
+    Serial.println("No motion detected!");
 
     //LED off
     digitalWrite(ledPin, LOW);
@@ -96,7 +116,7 @@ void loop() {
   //Avoiding multiple pictures
   delay(1000);
 
-}  //End loop function
+}
 
 //#########################################################################################################################
 //----------------------------------------------------Custom functions-----------------------------------------------------
@@ -105,11 +125,11 @@ void loop() {
 //###############################################-Take picture function-###################################################
 void takePicture() {
   
-  Process picture;                            //Create Process instance
-  picture.begin("fswebcam");                  //Use the fswebcam program on Arduino Yun to take a picture
-  picture.addParameter(folder + "alarm.jpg"); //Set destination on micro sd card
-  picture.addParameter("-r 1280x960");        //Set picture resulution 
-  picture.run();                              //Start fswebcam
+  Process picture;                                //Create Process instance
+  picture.begin("fswebcam");                      //Use the fswebcam program on Arduino Yun to take a picture
+  picture.addParameter(folderPath + "alarm.jpg"); //Set destination on micro sd card
+  picture.addParameter("-r 1280x960");            //Set picture resulution 
+  picture.run();                                  //Start fswebcam
   
   //Write the return value of the process instance to a variable
   int pictureSuccess = picture.exitValue(); //Value = 0 --> took a picture, Value = 1 --> did not take a picture
@@ -121,15 +141,15 @@ void takePicture() {
     Serial.println("Picture not successfully made!");
   }
   
-} //End of takePicture function
+} 
 
 //########################################-Send picture to Amazon S3 function-#############################################
 boolean sendToS3() {
 
-  Process post;                        //Create Process instance 
-  post.begin("python");                //Use a Python script to send the picture on S3
-  post.addParameter(folder + "S3.py"); //Path to Python script on micro sd card
-  post.run();                          //Start S3.py
+  Process post;                            //Create Process instance 
+  post.begin("python");                    //Use a Python script to send the picture on S3
+  post.addParameter(folderPath + "S3.py"); //Path to Python script on micro sd card
+  post.run();                              //Start S3.py
   
   //Write the return value of the process instance into a variable
   int responseSuccess = post.exitValue(); //Value = 0 --> send the picture, Value = 1 --> did not send the picture
@@ -146,7 +166,7 @@ boolean sendToS3() {
   
 } //End of sendToS3 function
 
-//###############################################-POST request function -##################################################
+//###############################################-POST request function-###################################################
 void postRequest(String httpDestination, String httpBody) {
   
   HttpClient client;                      //Create a basic HTTP client that connects to the internet
@@ -156,25 +176,27 @@ void postRequest(String httpDestination, String httpBody) {
   //As long as there are bytes from the server in the client buffer, read the bytes...
   while (client.available()) {
     char response = client.read(); //save them to a variable
-    Serial.println("Response: " + response); //and print them
+    Serial.print(response);        //and print them
   }
+  
+  //Start with a new line in the serial monitor
+  Serial.println();
   
   //Waits for the transmission of outgoing serial data to complete
   Serial.flush();
   
-} //End of postRequest function
+} 
 
-//##############################################-Get timestamp function -##################################################
+//##############################################-Get timestamp function-###################################################
 String getTimestamp() {
   
-  //Variable for
+  //Variable to store the return value
   String timestamp; 
  
-  Process date;             //Create Process instance that will be used to get the date 
-  date.begin("date");       //Linux command line to get time
-  date.addParameter("+%D"); //Adding parameter D for the complete date mm/dd/yy
-  date.addParameter("+%T"); //Adding parameter T for the time hh:mm:ss
-  date.run();               //Run the command
+  Process date;                //Create Process instance that will be used to get the date 
+  date.begin("date");          //Linux command line to get time
+  date.addParameter("+%D-%T"); //Adding parameters D and T for the date (mm/dd/yy) and time (hh:mm:ss)
+  date.run();                  //Run the command
   
   //If there is a result from the date process, parse the data
   while(date.available() > 0) {
@@ -187,10 +209,61 @@ String getTimestamp() {
   //Return value
   return timestamp;
   
-} //End of getTimestamp function
+} 
 
-//###############################################-Get humidity function -##################################################
+//###############################################-Get humidity function-###################################################
+float getHumidity() {
 
-//#############################################-Get temperature function -#################################################
+  // Initialize DHT sensor for normal 16mhz Arduino
+  DHT dht(DHTPIN, DHTTYPE);
+  
+  //Read humidity
+  float humidity = dht.readHumidity();
+  
+  //Check if reading the humidity has failed
+  if (isnan(humidity)) {
+    Serial.println("Failed to read from DHT sensor!");
+    return 0;
+  } else {
+    return humidity;  
+  }
+  
+} 
 
-//###########################################-Get light intensity function -###############################################
+//#############################################-Get temperature function-##################################################
+float getTemperature(boolean unity) {
+  
+  // Initialize DHT sensor for normal 16mhz Arduino
+  DHT dht(DHTPIN, DHTTYPE);  
+  
+  //Read temperature
+  float temperatureInCelsius = dht.readTemperature();        //as Celsius
+  float temperatureInFahrenheit = dht.readTemperature(true); //as Fahrenheit
+
+  //Check if any reads failed
+  if (isnan(temperatureInCelsius) || isnan(temperatureInFahrenheit)) {
+    Serial.println("Failed to read from DHT sensor!");
+    return 0;
+  } else {
+    if (unity) {
+      return temperatureInFahrenheit; 
+    } else {
+      return temperatureInCelsius; 
+    }
+  }
+
+} 
+
+//###########################################-Get light intensity function-################################################
+int getLightIntensity() {   
+  
+  //Pin declaration
+  pinMode(lightPin, INPUT); //Declare Pin A0 as an input pin
+  
+  //Read the input on analog pin 0
+  int lightIntensity = analogRead(lightPin);
+  
+  //Return value
+  return lightIntensity;
+  
+} 
