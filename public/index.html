@@ -10,25 +10,26 @@
 </head>
 
 <body ng-controller='MainCtrl'>
-  <md-toolbar class='header' ng-show='user'>
+  <md-toolbar class='header' ng-show='authorized'>
     <div layout-margin class="md-toolbar-tools" flex>
-      <md-button hide-gt-md show-md class='md-icon-button md-secondary' ng-click='toggleLeft()' aria-label='settings'>
+      <!-- <md-button hide-gt-md show-md class='md-icon-button md-secondary' ng-click='toggleLeft()' aria-label='settings'>
         <md-icon md-svg-icon='bower_components/angular-material/demos/toolbar/demoBasicUsage/img/icons/menu.svg'</md-icon>
-      </md-button>
-      <h2 layout-margin  ng-show='user'>
+      </md-button> -->
+      <h2 layout-margin>
         <span ui-sref='welcome'>Security Cam</span>
       </h2>
-      <md-button layout-margin class="md-button" style='margin-left: 3%' ui-sref='dashboard' ng-show='user'>Dashboard</md-button>
-      <md-button layout-margin class="md-button" style='margin-left: 3%' ui-sref='admin' ng-show='user'>Admin</md-button>
+      <md-button layout-margin class="md-button" style='margin-left: 3%' ui-sref='dashboard'>Dashboard</md-button>
+      <md-button layout-margin class="md-button" style='margin-left: 3%' ui-sref='admin'>Admin</md-button>
       <span flex></span>
-      <md-button md-no-ink layout-margin ui-sref='login' class="md-primary md-raised md-hue-2"  ng-show='!user'>Login</md-button>
-      <md-button md-no-ink layout-margin ng-click='register($event)' class="md-primary md-raised md-hue-2" ng-show='!user'>Register</md-button>
-      <a href="/auth/logout"><md-button md-no-ink layout-margin class="md-primary md-raised md-hue-2" ng-show='user'>Logout</md-button></a>
+      <a href="/auth/logout"><md-button md-no-ink layout-margin class="md-primary md-raised md-hue-2">Logout</md-button></a>
     </div>
   </md-toolbar>
 
   
-  <div ui-view></div>
+  <div ui-view='header'></div>
+  <div ui-view='content'></div>
+  <div ui-view='footer'></div>
+
 
 
     

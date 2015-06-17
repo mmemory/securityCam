@@ -1,5 +1,5 @@
 var app = angular.module('securityCam')
-  .controller('DashCtrl', ['$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log', 'dashService', 'user', 'mainService', function($scope, $timeout, $mdSidenav, $mdUtil, $log, dashService, user, mainService) { 
+  .controller('DashCtrl', ['$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log', 'dashService', 'user', function($scope, $timeout, $mdSidenav, $mdUtil, $log, dashService, user) { 
   
   ////////////////////////////
   //      On the Scope    
@@ -77,8 +77,8 @@ var app = angular.module('securityCam')
 
 
     $scope.user = user;
-    console.log($scope.user);
-    console.log($scope.user.group_admin.name)
+    $scope.authorized = user.email;
+    console.log($scope.authorized);
 
     var displayGroups = function(groups) {
       groupAdminName = $scope.user.group_admin.name;
