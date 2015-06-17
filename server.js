@@ -15,8 +15,10 @@ var LocalStrategy = require('passport-local');
 //      LOCAL IMPORTS
 /////////////////////////////////////////
 var User = require('./api/models/userModel.js');
-var Image = require('./api/models/imageModel.js');
 var UserControl = require('./api/controllers/userCtrl.js');
+var ImageControl = require('./api/controllers/imageCtrl.js');
+var HardwareControl = require('./api/controllers/hardwareCtrl.js');
+var Image = require('./api/models/imageModel.js');
 
 
 
@@ -100,68 +102,27 @@ var requireAuth = function(req, res, next) {
 app.get('/auth/logout', UserControl.logoutUser);
 app.get('/api/users/user', UserControl.getCurrentUser);
 app.post('/api/users/register', UserControl.registerUser);
-app.post('/api/auth/login', passport.authenticate('local'), function(req, res) {
-    console.log('session', req.session);
-    return res.sendStatus(200);
-});
-app.post('api/user/member', UserControl.createNewGroupMember);
+app.post('/api/auth/login', passport.authenticate('local'), UserControl.authenticate);
+app.post('/api/user/member', UserControl.createNewGroupMember);
+app.delete('/api/user/member', UserControl.removeMember);
 
 // Groups
 
 // Hardware
-
+app.post('/api/user/hardware', HardwareControl.createHardwareInstance);
+app.delete('api/user/hardware', HardwareControl.deleteHardware);
 // Queries
-app.get('/api/searchterm/:userID/:groupID/:startDate/:endDate', requireAuth, function(req, res) {
+app.get('/api/searchterm/:groupID/:cameraID/:startDate/:endDate', requireAuth, function(req, res) {
     // Search Date
 });
 // Image Data
-app.post('/api/image-data', function(req, res) {
+app.post('/api/image-data', ImageControl.recieveImageFromHardware);
+app.get('/api/image-data', function(req, res) {
+    Image.find(function(err, images) {
+        if (err) console.log('Error getting images', err);
 
-    //console.log('req.body.something:', req.body.data);
-    //console.log('req.body:', req.body);
-    //console.log('1. type of req.body:', typeof req.body);
-    //console.log('2. req.body.name:', req.body.name);
-
-    console.log('req.body.something:', req.body.name);
-    console.log('req.body:', req.body);
-    console.log('1. type of req.body:', typeof req.body);
-    console.log('2. req.body.name:', req.body.name);
-
-    //var dataFromHardware = JSON.parse(req.body);
-    //var dataFromHardware = JSON.parse(req.body.data);
-    var dataFromHardware = req.body;
-
-    //console.log('2. SAVE IMAGE FIRED');
-
-    var newImageData = {
-        name: dataFromHardware.name,
-        from_hardware: dataFromHardware.camera,
-        image_url: dataFromHardware.url
-    };
-
-    var newImage = new Image(newImageData);
-
-    newImage.save(function(err, image) {
-
-
-        if (err) res.status(500).send(req.body);
-
-        else{
-
-            console.log('3. IMAGE SAVED SUCCESSFULLY');
-            console.log('4. saved image:', image);
-
-            var stringData = JSON.stringify(image);
-
-            console.log('5. this is what I sent back to arduino:', stringData);
-
-            res.send(req.body);
-        }
-
-    });
-
-    //console.log('DATA FROM HARDWARE:', req.body);
-    //res.send('THE TRANSFER WORKED');
+        res.send(images);
+    })
 });
 
 
