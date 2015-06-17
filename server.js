@@ -18,6 +18,7 @@ var User = require('./api/models/userModel.js');
 var UserControl = require('./api/controllers/userCtrl.js');
 var ImageControl = require('./api/controllers/imageCtrl.js');
 var HardwareControl = require('./api/controllers/hardwareCtrl.js');
+var Image = require('./api/models/imageModel.js');
 
 
 
@@ -111,11 +112,18 @@ app.delete('/api/user/member', UserControl.removeMember);
 app.post('/api/user/hardware', HardwareControl.createHardwareInstance);
 app.delete('api/user/hardware', HardwareControl.deleteHardware);
 // Queries
-app.get('/api/searchterm/:userID/:groupID/:startDate/:endDate', requireAuth, function(req, res) {
+app.get('/api/searchterm/:groupID/:cameraID/:startDate/:endDate', requireAuth, function(req, res) {
     // Search Date
 });
 // Image Data
 app.post('/api/image-data', ImageControl.recieveImageFromHardware);
+app.get('/api/image-data', function(req, res) {
+    Image.find(function(err, images) {
+        if (err) console.log('Error getting images', err);
+
+        res.send(images);
+    })
+});
 
 
 
