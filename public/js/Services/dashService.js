@@ -2,18 +2,22 @@ var app = angular.module('securityCam')
     .service('dashService', ['$http', '$q',
         function($http, $q) {
 
-            this.cameraInfo = function(startDate, endDate) {
-                var defer = $q.defer();
+            this.getPics = function(startDate, endDate) {
+                console.log('hit service')
+                var deferred = $q.defer();
                 $http({
                     method: 'POST',
-                    //url: //url here/searchterm +userID + groupId + startDate + endDate
+                    url: "/api/searchterm/search?term=" + startDate + "&entity=" + endDate
                 }).then(function(response) {
                     console.log(response);
                     // Do something with the response 
                     var data = response;
                     defer.resolve(data);
-                });
-                return defer.promise;
+                }).catch(function(res) {
+                    deferred.reject(res.data);
+                    console.log('rejected', res.data)
+                })
+                return deferred.promise;
             };
         }
     ]); // End Service //
