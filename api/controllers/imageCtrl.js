@@ -26,15 +26,19 @@ module.exports = {
             if (err) console.log(err);
             //console.log('saved image:', image);
             //var stringData = JSON.stringify(image);
-            Hardware.find({product_code: image.from_hardware}, function(err, hardwareFound) {
-                console.log(hardwareFound);
+
+
+            // When a new image document is created, store the image ID on the hardware model
+            Hardware.findOne({product_code: image.from_hardware}, function(err, hardwareFound) {
+                //console.log(hardwareFound);
+                hardwareFound.pictures.push(image._id);
+
+                hardwareFound.save(function(err) {
+                    if (err) console.log('Error saving image to pictures array on hardware', err);
+                })
             });
 
             res.send('SUCCESSFULLY SAVED IN MONGO!');
         });
     }
-
-
-
-
 };

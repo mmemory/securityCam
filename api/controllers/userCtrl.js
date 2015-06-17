@@ -96,10 +96,10 @@ module.exports = {
 
                 User.findByIdAndUpdate(userFound._id, {$pull: {group_member: groupUpdated._id}}, function(err, userUpdatedWithDelete) {
                     if (err) console.log('Error removing group ID from user group_member array');
+
+                    res.send();
                 })
             })
-
-
         })
     },
 
