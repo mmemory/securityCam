@@ -69,8 +69,8 @@ var app = angular.module('securityCam')
 
 
             $scope.user = user;
-            console.log($scope.user);
-            console.log($scope.user.group_admin.name)
+            $scope.authorized = user.email;
+            console.log($scope.authorized);
 
             var displayGroups = function(groups) {
                 groupAdminName = $scope.user.group_admin.name;
