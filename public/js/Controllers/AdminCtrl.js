@@ -1,6 +1,10 @@
 var app = angular.module('securityCam')
 	.controller('AdminCtrl', ['$scope', '$mdDialog', 'user', function($scope, $mdDialog, user) {
+		
 		$scope.user = user;
+    $scope.authorized = user.email;
+    console.log($scope.authorized);
+		
 		// Function to add a new user
 		$scope.addUser = function(name, email) {
 			$mdDialog.hide();
