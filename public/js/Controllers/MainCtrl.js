@@ -67,12 +67,5 @@ var app = angular.module('securityCam')
     };
   };
 
-  // $scope.user = user;
-  //   console.log($scope.user);
-  //   console.log($scope.user.group_admin.name)
-
-
-
-
 
 }]) // End MainCtrl //

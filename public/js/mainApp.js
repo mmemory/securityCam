@@ -7,18 +7,18 @@ var app = angular.module('securityCam', ['ngMaterial', 'ui.router'])
     $urlRouterProvider.otherwise('/welcome');
 
     $stateProvider
-        .state('/', {
-            controller: 'MainCtrl',
-            resolve: {
-              user: function(mainService) {
-                return mainService.user();
-              }
-            }
-        })
         .state('dashboard', {
             url: '/dashboard',
-            templateUrl: 'js/Templates/DashTmpl.html',
-            controller: 'DashCtrl',
+            views: {
+                'header': { 
+                    templateUrl: 'js/Templates/HeaderTmpl.html',
+                    controller: 'MainCtrl' 
+                },
+                'content': { 
+                    templateUrl: 'js/Templates/DashTmpl.html',
+                    controller: 'DashCtrl' 
+                }, 
+            },
             resolve: {
               user: function(mainService) {
                 return mainService.user();
@@ -29,6 +29,16 @@ var app = angular.module('securityCam', ['ngMaterial', 'ui.router'])
             url: '/admin',
             templateUrl: 'js/Templates/AdminTmpl.html',
             controller: 'AdminCtrl',
+            views: {
+                'header': { 
+                    templateUrl: 'js/Templates/HeaderTmpl.html',
+                    controller: 'MainCtrl' 
+                },
+                'content': { 
+                    templateUrl: 'js/Templates/AdminTmpl.html',
+                    controller: 'AdminCtrl' 
+                }, 
+            },
             resolve: {
               user: function(mainService) {
                 return mainService.user();
@@ -37,18 +47,12 @@ var app = angular.module('securityCam', ['ngMaterial', 'ui.router'])
         })
         .state('welcome', {
             url: '/welcome',
-            templateUrl: 'js/Templates/WelcomeTmpl.html',
-            controller: 'WelcomeCtrl'
-        })
-        .state('login', {
-            url: '/login',
-            templateUrl: 'js/Templates/LoginTmpl.html',
-            controller: 'LoginCtrl'
-        })
-        .state('register', {
-            url: '/register',
-            templateUrl: 'js/Templates/RegisterTmpl.html',
-            controller: 'RegisterCtrl'
+            views: {
+                'content': { 
+                    templateUrl: 'js/Templates/WelcomeTmpl.html',
+                    controller: 'WelcomeCtrl' 
+                }, 
+            },
         })
 
     }

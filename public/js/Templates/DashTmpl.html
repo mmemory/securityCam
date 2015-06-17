@@ -1,39 +1,39 @@
-<div layout="column" style="height:500px;">
-  <section layout="row">
-    <md-content>
-      <div layout='column' layout-gt-md='row' layout-align="top center" flex='80'>
-        <md-whiteframe class="md-whiteframe-z2" style='background-color: white; height: 475px;' layout='column' layout-margin flex='99'>
-          <div layout layout-align='center center' flex='99'>
-            <span><h1 layout'center center' layout-margin class='.md-headline'>Photo Feed: {{ group }}</h1></span> 
-          </div>
-          <div layout='row' layout-margin>
-            <form>
-            <div layout='column' layout-align='start start' flex='20'>
-              <h1 class="md-toolbar-tools">Photo Search</h1>
-              <md-select ng-model="group" placeholder="Groups">
-                <md-option ng-repeat="group in groups" value="{{group}}">{{group}}</md-option>
-              </md-select>
-              <md-input-container>
-                <label>Search - Start Date</label>
-                <input type="date" ng-model="submissionStartDate">
-              </md-input-container>
-              <md-input-container>
-                <label>Search - End Date</label>
-                <input type="date" ng-model="submissionEndDate">
-              </md-input-container>
-              <md-button layout-margin ng-click='' class="md-accent md-raised md-hue-2">Search...</md-button>
-            </div>
-            </form>
-          </div>
-        </md-whiteframe>
+
+<div layout='row' layout-align='start center' style='height: 475px'>
+  <md-whiteframe class="md-whiteframe-z1" layout='column' layout-align="start center" layout-padding layout-margin flex='66' style='background-color: white; height: 470px'>
+    <div layout-margin>
+      <h1>Photo Feed: {{ group }}</h1>
+    </div>
+    <div layout='row' layout-align='center start'>
+      <div layout='column' layout-align='start start'  flex='33'>
+        <form>
+        <div layout='column' layout-align='start start' flex='20'>
+          <h1 class="md-toolbar-tools">Photo Search</h1>
+          <md-select ng-model="group" placeholder="Groups">
+            <md-option ng-repeat="group in groups" value="{{group}}">{{group}}</md-option>
+          </md-select>
+          <md-input-container>
+            <label>Search - Start Date</label>
+            <input type="date" ng-model="submissionStartDate">
+          </md-input-container>
+          <md-input-container>
+            <label>Search - End Date</label>
+            <input type="date" ng-model="submissionEndDate">
+          </md-input-container>
+          <md-button layout-margin ng-click='runTest()' class="md-accent md-raised md-hue-2">Search...</md-button>
+        </div>
+        </form>
       </div>
-      <div layout  flex='15'>
-        <md-whiteframe class="md-whiteframe-z1" layout layout-align="center center" style='background-color: white; height: 475px;'>
-          <img style='height 400px; width: 100%' src="https://cdn4.iconfinder.com/data/icons/weathercons/64/thermometer-512.png" alt="">
+<!--       <div>
+        <md-whiteframe class='md-whiteframe-z1' flex='65'>
+
         </md-whiteframe>
-      </div>
-    </md-content>
-  </section>
+      </div> -->
+    </div>
+  </md-whiteframe>
+  <md-whiteframe class='md-whiteframe-z1' layout='column' layout-align='center start' flex='30' style='height: 470px; background-color: white;'>
+
+  </md-whiteframe>
 </div>
 <div layout='row' layout-wrap style='height: auto' layout-align='start start' layout-align-gt-md='center start' layout-fill>
   <md-whiteframe class="md-whiteframe-z2" style='background-color: white; height: 200px; padding: 0; color: white;' layout='column' layout-align='center start' layout-margin flex-md='45' flex-gt-md='30'>
@@ -48,7 +48,7 @@
       </div> 
     </span>
   </md-whiteframe>
-  <md-whiteframe class="md-whiteframe-z2" style='background-color: white; height: 200px; padding: 0; color: white;' layout='column' layout-align='center start' layout-margin flex-md='45' flex-gt-md='30'>
+  <md-whiteframe class="md-whiteframe-z2" style='background-color: white; height: 200px; padding: 0; color: white;' layout='column' layout-align='center start' layout-margin flex-md='45' flex-gt-md='33'>
     <span style='width:100%; height: 65%; background: #66BB6A;' layout="column" layout-align="start center">
       <h6 class='.md-headline' style='margin-top: 8px; margin-top: 18px;'>Photos the last 30 days</h6>
       <h1 style='margin-top: 30px; color: white;' class='.md-headline'>842</h1>
