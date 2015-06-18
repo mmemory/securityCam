@@ -2,12 +2,12 @@ var app = angular.module('securityCam')
     .service('dashService', ['$http', '$q',
         function($http, $q) {
 
-            this.getPics = function(startDate, endDate) {
+            this.getPics = function(userId, group, startDate, endDate) {
                 console.log('hit service')
                 var deferred = $q.defer();
                 $http({
                     method: 'POST',
-                    url: "/api/searchterm/search?term=" + startDate + "&entity=" + endDate
+                    url: "/api/searchterm/group/startDate/endDate/" 
                 }).then(function(response) {
                     console.log(response);
                     // Do something with the response 

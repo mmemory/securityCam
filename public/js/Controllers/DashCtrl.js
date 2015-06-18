@@ -80,12 +80,13 @@ var app = angular.module('securityCam')
 
 
             $scope.runTest = function() {
-                var date = new Date();
-                console.log(user)
-                // console.log(Date.parse($scope.submissionStartDate))
-                // dashService.getPics($scope.group, $scope.submissionStartDate, $scope.submissionEndDate).then(function(response) {
-                //     console.log("response");
-                // })
+                var startDate = Date.parse($scope.startDate)
+                console.log(startDate);
+                var endDate = Date.parse($scope.endDate)
+                console.log(endDate);
+                dashService.getPics($scope.group, startDate, endDate).then(function(response) {
+                    console.log("response");
+                })
             }
 
 
