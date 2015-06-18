@@ -1,0 +1,31 @@
+<div style="width: 60%;">
+  <md-dialog>
+    <form>
+   		<md-toolbar>
+        <div class="md-toolbar-tools">
+          <h2 style='color: white;'>Filter Photos</h2>
+          <span flex></span>
+          <md-button class="md-icon-button" ng-click="closeDialog()">
+            <i class="material-icons" style='color: white; font-size: 36px'>&#xE14C;</i>
+          </md-button>
+        </div>
+      </md-toolbar>
+      <div layout-padding>
+        <md-input-container flex>
+          <label>Start Date</label>
+          <input type="date" ng-model="startDate">
+        </md-input-container>
+        <md-input-container flex>
+          <label>End Date</label>
+          <input type="date" ng-model="endDate">
+        </md-input-container>
+      <div class="md-actions" layout="row">
+        <span flex></span>
+        <md-button ng-click="closeDialog()" class="md-primary">
+          Cancel
+        </md-button>
+        <md-button class='md-primary' ng-click='runTest(startDate, endDate)'>Filter Photos</md-button>
+      </div>
+    </form>
+  </md-dialog>
+</div>

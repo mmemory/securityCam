@@ -1,6 +1,6 @@
 var app = angular.module('securityCam')
-    .controller('DashCtrl', ['$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log', 'dashService', 'user', 'mainService',
-        function($scope, $timeout, $mdSidenav, $mdUtil, $log, dashService, user, mainService) {
+    .controller('DashCtrl', ['$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log', 'dashService', 'user', 'mainService', '$mdDialog',
+        function($scope, $timeout, $mdSidenav, $mdUtil, $log, dashService, user, mainService, $mdDialog) {
 
             ////////////////////////////
             //      On the Scope    
@@ -79,17 +79,45 @@ var app = angular.module('securityCam')
             displayGroups($scope.groups);
 
 
-            $scope.runTest = function() {
-                var startDate = Date.parse($scope.startDate)
-                console.log(startDate);
-                var endDate = Date.parse($scope.endDate)
-                console.log(endDate);
-                dashService.getPics($scope.group, startDate, endDate).then(function(response) {
-                    console.log("response");
+            $scope.filterPhotos = function(ev) {
+                console.log("Filter clicked DashCtrl")
+                $mdDialog.show({
+                  controller: FilterController,
+                  scope: $scope,
+                  preserveScope: true,
+                  parent: angular.element(document.body),
+                  clickOutsideToClose: true,
+                  title: 'Filter Photos',
+                  templateUrl: 'js/Templates/filterPhotosDialog.html',
+                  targetEvent: ev
                 })
-            }
+                .then(function() {
+                    console.log('filtering...')
+                })
+            };
 
+            function FilterController($scope, $mdDialog) {
+                $scope.runTest = function(startDate, endDate) {
+                    $mdDialog.hide();
+                    console.log('filterPhotos invoked', startDate, endDate);
+                    var startDate = Date.parse($scope.startDate)
+                    console.log(startDate);
+                    var endDate = Date.parse($scope.endDate)
+                    console.log(endDate);
+                    dashService.getPics($scope.group, startDate, endDate).then(function(response) {
+                    console.log("response");
+                    })
+                    .catch(function(err) {
+                        $scope.error = err;
+                        console.log($scope.error);
+                    })
+                };
 
+                $scope.closeDialog = function() {
+                    $mdDialog.hide();
+                    console.log('filtering cancelled')
+                };
+            };
 
         }
     ]) // End MainCtrl //
