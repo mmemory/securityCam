@@ -36,7 +36,7 @@ module.exports = {
 
     deleteHardware: function(req, res) {
 
-        Hardware.findOne({email: req.body}, function(err, hardwareFound) {
+        Hardware.findOne({product_code: req.body}, function(err, hardwareFound) {
             hardwareFound.remove(function(err, removed) {
                 if (err) console.log('Error deleting hardware', err);
 
