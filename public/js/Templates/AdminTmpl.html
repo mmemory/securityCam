@@ -1,52 +1,91 @@
 <div layout-gt-md="row" layout-md="column" layout-fill style="padding-bottom: 32px; width: 75%; margin: 20px auto;">
   <md-whiteframe class="md-whiteframe-z1" style='background-color: white;' layout='column' layout-margin layout-padding layout-align="center start" flex-gt-md='45' flex='90'>
     <h1>Users</h1>
-    <md-list style='width: 90%'>
-		  <md-list-item ng-click="" layout='row' layout-align='space-between center' flex>
+    <md-list style='width: 90%; margin: 0 auto;'>
+		  <md-list-item layout='row' layout-align='space-around center' flex='99'>
+		    	<p>User... </p>
+		    	<md-button class="md-icon-button" ng-click="deleteUser()">
+		            <i class="material-icons" style='color: red; font-size: 24px; margin-top: 10px;'>&#xE14C;</i>
+		        </md-button>
+		  </md-list-item>
+		  <md-list-item >
 		    	<p>User...</p>
-		    	<span flex></span>
-		    	<i class="material-icons">&#xE0C9;</i>
+		    	<md-button  class="md-icon-button" ng-click="deleteUser()">
+		            <i class="material-icons" style='color: red; font-size: 24px; margin-top: 10px;'>&#xE14C;</i>
+		        </md-button>
 		  </md-list-item>
-		  <md-list-item ng-click="">
-		    <p>User...</p>
-		    <i class="material-icons">&#xE0C9;</i>
+		  <md-list-item >
+		    	<p>User...</p>
+		    	<md-button  class="md-icon-button" ng-click="deleteUser()">
+		            <i class="material-icons" style='color: red; font-size: 24px; margin-top: 10px;'>&#xE14C;</i>
+		        </md-button>
 		  </md-list-item>
-		  <md-list-item ng-click="">
-		    <p>User...</p>
-		    <i class="material-icons">&#xE0C9;</i>
-		  </md-list-item>
-		  <md-list-item ng-click="">
-		    <p>User...</p>
-		    <i class="material-icons">&#xE0C9;</i>
+		  <md-list-item >
+		    	<p>User...</p>
+		    	<md-button  class="md-icon-button" ng-click="deleteUser()">
+		            <i class="material-icons" style='color: red; font-size: 24px; margin-top: 10px;'>&#xE14C;</i>
+		        </md-button>
 		  </md-list-item>
 		</md-list>
   </md-whiteframe>
   <md-whiteframe class="md-whiteframe-z1" style='background-color: white;' layout='column' layout-margin layout-padding layout-align="center start" flex-gt-md='45' flex='90'>
     <h1>Hardware</h1>
-    <md-list style='width: 90%'>
-		  <md-list-item ng-click="" layout='row' layout-align='space-between center' flex>
-		    	<p>Front Door Camera...</p>
-		    	<span flex></span>
+    <md-list style='width: 90%; margin: 0 auto'>
+		  <md-list-item layout='row' layout-align='space-between center' flex>
+		    	<p>Front Door</p>
+		    	<md-button class="md-icon-button" ng-click="deleteUser()">
+		            <i class="material-icons" style='color: red; font-size: 24px; margin-top: 10px;'>&#xE14C;</i>
+		        </md-button>
 		  </md-list-item>
-		  <md-list-item ng-click="">
-		    <p>Kids Room Camera...</p>
+		  <md-list-item>
+		    <p>Kids Room</p>
+		    <md-button class="md-icon-button" ng-click="deleteUser()">
+		            <i class="material-icons" style='color: red; font-size: 24px; margin-top: 10px;'>&#xE14C;</i>
+		        </md-button>
 		  </md-list-item>
-		  <md-list-item ng-click="">
-		    <p>BackyardCamera...</p>
+		  <md-list-item>
+		    <p>Backyar</p>
+		    <md-button class="md-icon-button" ng-click="deleteUser()">
+		            <i class="material-icons" style='color: red; font-size: 24px; margin-top: 10px;'>&#xE14C;</i>
+		        </md-button>
 		  </md-list-item>
-		  <md-list-item ng-click="">
-		    <p>Living Room Camera...</p>
+		  <md-list-item>
+		    <p>Living Room</p>
+		    <md-button class="md-icon-button" ng-click="deleteUser()">
+		            <i class="material-icons" style='color: red; font-size: 24px; margin-top: 10px;'>&#xE14C;</i>
+		        </md-button>
 		  </md-list-item>
 		</md-list>
   </md-whiteframe>
  </div>
     
-		<md-button layout='row' layout-align='center center' class="md-warn md-fab md-fab-bottom-right right" aria-label="Add" ng-click='addNewUser($event)'>
+<div class="lock-size" layout="row" layout-align="end end">
+  <md-fab-speed-dial md-open="demo.isOpen" md-direction="up" ng-class="demo.selectedMode">
+    <md-fab-trigger>
+      <md-button aria-label="Add" class="md-fab md-accent">
+        <i class="material-icons" style='color: white; font-size: 48px; margin-top: 4px;'>&#xE145;</i>
+      </md-button>
+    </md-fab-trigger>
+    <md-fab-actions>
+      <md-button aria-label="User" class="md-fab md-raised md-mini">
+        <i class="material-icons" style='color: blue; font-size: 24px; margin-top: 7px;'>&#xE8A6;</i>
+      </md-button>
+      <md-button aria-label="Camera" class="md-fab md-raised md-mini">
+        <i class="material-icons" style='color: green; font-size: 24px; margin-top: 8px;'>&#xE04B;</i>
+      </md-button>
+    </md-fab-actions>
+  </md-fab-speed-dial>
+</div>
+
+
+
+
+<!-- 		<md-button layout='row' layout-align='center center' class="md-warn md-fab md-fab-bottom-right right" aria-label="Add" ng-click='addNewUser($event)'>
       <md-icon md-svg-icon="path/to/your.svg"></md-icon>
       <md-tooltip>
         Add
       </md-tooltip>
-    </md-button>
+    </md-button> -->
 
 
 
