@@ -19,6 +19,7 @@ var UserControl = require('./api/controllers/userCtrl.js');
 var ImageControl = require('./api/controllers/imageCtrl.js');
 var HardwareControl = require('./api/controllers/hardwareCtrl.js');
 var Image = require('./api/models/imageModel.js');
+var QueryControl = require('./api/controllers/queryCtrl.js');
 
 
 
@@ -84,7 +85,6 @@ passport.deserializeUser(function(_id, done) {
   });
 });
 
-// Authentication //
 var requireAuth = function(req, res, next) {
     if (!req.isAuthenticated()) {
         return res.status(401).end();
@@ -105,18 +105,15 @@ app.post('/api/users/register', UserControl.registerUser);
 app.post('/api/auth/login', passport.authenticate('local'), UserControl.authenticate);
 app.post('/api/user/member', UserControl.createNewGroupMember);
 app.delete('/api/user/member', UserControl.removeMember);
-
-// Groups
-
 // Hardware
 app.post('/api/user/hardware', HardwareControl.createHardwareInstance);
 app.delete('api/user/hardware', HardwareControl.deleteHardware);
-// Queries
-app.get('/api/searchterm/:groupID/:cameraID/:startDate/:endDate', requireAuth, function(req, res) {
-    // Search Date
-});
+// Data Queries
+app.get('/api/searchterm/:groupID/:startDate/:endDate', QueryControl.findImagesByDateRange);
+app.get('/api/d3/ten-days', requireAuth, QueryControl.findImagesFromPastTenDays);
+app.get('/api/d3/thirty-days', requireAuth, QueryControl.findImagesFromPastThirtyDays);
 // Image Data
-app.post('/api/image-data', ImageControl.recieveImageFromHardware);
+app.post('/api/image-data', ImageControl.receiveImageFromHardware);
 app.get('/api/image-data', function(req, res) {
     Image.find(function(err, images) {
         if (err) console.log('Error getting images', err);

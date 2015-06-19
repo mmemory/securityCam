@@ -8,16 +8,24 @@ module.exports = {
     // This method receives data from Arduino hardware POST, and creates a new image instance.
     // The Arduino unit automatically POSTs to the corresponding endpoint when a picture
     // is taken by its camera.
-    recieveImageFromHardware: function(req, res) {
+    receiveImageFromHardware: function(req, res) {
 
         console.log('req.body:', req.body);
 
         var dataFromHardware = req.body;
 
+        var timeStamp = new Date(dataFromHardware.timestamp);
+
         var newImageData = {
             name: dataFromHardware.name,
             from_hardware: dataFromHardware.camera,
-            image_url: dataFromHardware.url
+            image_url: dataFromHardware.url,
+            created_on: timeStamp,
+            // Other readings
+            lightIntensity: dataFromHardware.lightIntensity,
+            temperatureInCelsius: dataFromHardware.temperatureInCelsius,
+            temperatureInFahrenheit: dataFromHardware.temperatureInFahrenheit,
+            humidity: dataFromHardware.humidity
         };
 
         var newImage = new Image(newImageData);
