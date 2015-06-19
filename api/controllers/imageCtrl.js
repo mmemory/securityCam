@@ -10,24 +10,24 @@ module.exports = {
     // is taken by its camera.
     receiveImageFromHardware: function(req, res) {
 
-        console.log('req', req);
+        //console.log('req', req);
 
         console.log('req.body:', req.body);
 
         var dataFromHardware = req.body;
 
-        var timeStamp = new Date(dataFromHardware.timestamp);
+        //var timeStamp = new Date(dataFromHardware.timestamp);
 
         var newImageData = {
             name: dataFromHardware.name,
             from_hardware: dataFromHardware.camera,
-            image_url: dataFromHardware.url,
-            created_on: timeStamp,
+            image_url: dataFromHardware.url
+            //created_on: timeStamp
             // Other readings
-            lightIntensity: dataFromHardware.lightIntensity,
-            temperatureInCelsius: dataFromHardware.temperatureInCelsius,
-            temperatureInFahrenheit: dataFromHardware.temperatureInFahrenheit,
-            humidity: dataFromHardware.humidity
+            //lightIntensity: dataFromHardware.lightIntensity,
+            //temperatureInCelsius: dataFromHardware.temperatureInCelsius,
+            //temperatureInFahrenheit: dataFromHardware.temperatureInFahrenheit,
+            //humidity: dataFromHardware.humidity
         };
 
         var newImage = new Image(newImageData);
