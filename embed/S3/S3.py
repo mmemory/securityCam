@@ -1,9 +1,14 @@
+##################################################################################################
+#--------------------------------Script to upload files to Amazon S3------------------------------
+##################################################################################################
+
 # Import libraries
 import base64
-import time
-import datetime
+import sys
 from temboo.Library.Amazon.S3 import PutObject
 from temboo.core.session import TembooSession
+
+
 
 # Create a session with your Temboo account details
 session = TembooSession("philippschulte", "myFirstApp", "7ca916a326c44dc5b32d6012546996fe")
@@ -15,21 +20,17 @@ putObjectChoreo = PutObject(session)
 putObjectInputs = putObjectChoreo.new_input_set()
 
 # Encode image
-picture = open("/mnt/sda1/arduino/alarm.jpg","r")
-picture_b64 = base64.b64encode(picture.read())
-
-# Timestamp
-ts = time.time() - 21600
-st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %I:%M%p')
+with open(str(sys.argv[1]), "rb") as image_file:
+    encoded_string = base64.b64encode(image_file.read())
 
 # Set the Choreo inputs
 putObjectInputs.set_CannedACL("public-read")
 putObjectInputs.set_BucketName("securitywebcam")
-putObjectInputs.set_FileName(st)
-putObjectInputs.set_AWSAccessKeyId("ENTER_ACCESS_KEY_ID_HERE")
-putObjectInputs.set_AWSSecretKeyId("ENTER_SECRET_KEY_ID_HERE")
-putObjectInputs.set_ContentType("image/jpeg")
-putObjectInputs.set_FileContents(picture_b64)
+putObjectInputs.set_FileName(str(sys.argv[1]))
+putObjectInputs.set_AWSAccessKeyId("AKIAJHEU4VRRVCQT5OYQ")
+putObjectInputs.set_AWSSecretKeyId("VlftEHTcOw7cVb5slWgqFmw+Yk09leh0/cpvmI6R")
+putObjectInputs.set_ContentType("image/jpg")
+putObjectInputs.set_FileContents(encoded_string)
 
 # Execute the Choreo
 putObjectResults = putObjectChoreo.execute_with_results(putObjectInputs)
