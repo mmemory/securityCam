@@ -29,8 +29,6 @@ var QueryControl = require('./api/controllers/queryCtrl.js');
 var mongoUri = 'mongodb://localhost/security-cam';
 mongoose.connect(mongoUri);
 
-
-
 ///////////////////////////////////////////
 //      MIDDLEWARE
 /////////////////////////////////////////
@@ -46,6 +44,8 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+
 
 // Passport Config
 passport.use(new LocalStrategy({
@@ -94,6 +94,15 @@ var requireAuth = function(req, res, next) {
 };
 
 
+//
+// Logger
+//
+var logMe = function(req, res, done) {
+    console.log('REQUEST MADE');
+    console.log(req.method, ' ', req.path);
+    console.log('BODY:\n', req.body);
+    done();
+};
 
 ///////////////////////////////////////////
 //      ENDPOINTS
@@ -113,8 +122,8 @@ app.get('/api/searchterm/:groupID/:startDate/:endDate', QueryControl.findImagesB
 app.get('/api/d3/ten-days', requireAuth, QueryControl.findImagesFromPastTenDays);
 app.get('/api/d3/thirty-days', requireAuth, QueryControl.findImagesFromPastThirtyDays);
 // Image Data
-app.post('/api/image-data', ImageControl.receiveImageFromHardware);
-app.get('/api/image-data', function(req, res) {
+app.post('/api/image-data', logMe, ImageControl.receiveImageFromHardware);
+app.get('/api/image-data', logMe, function(req, res) {
     Image.find(function(err, images) {
         if (err) console.log('Error getting images', err);
 

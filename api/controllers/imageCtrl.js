@@ -10,6 +10,8 @@ module.exports = {
     // is taken by its camera.
     receiveImageFromHardware: function(req, res) {
 
+        console.log('req', req);
+
         console.log('req.body:', req.body);
 
         var dataFromHardware = req.body;
