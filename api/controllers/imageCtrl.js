@@ -16,14 +16,13 @@ module.exports = {
 
         var dataFromHardware = req.body;
 
-        //var timeStamp = new Date(dataFromHardware.timestamp);
+        var timeStamp = new Date(dataFromHardware.timestamp);
 
         var newImageData = {
             name: dataFromHardware.name,
             from_hardware: dataFromHardware.camera,
             image_url: dataFromHardware.url,
             created_on: timeStamp,
-            //Other readings
             lightIntensity: dataFromHardware.lightIntensity,
             temperatureInCelsius: dataFromHardware.temperatureInCelsius,
             temperatureInFahrenheit: dataFromHardware.temperatureInFahrenheit,
