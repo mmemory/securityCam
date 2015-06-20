@@ -3,7 +3,7 @@ var app = angular.module('securityCam')
 		
 		$scope.user = user;
     $scope.authorized = user.email;
-    console.log($scope.authorized);
+    console.log($scope.user);
 		
 		// Function to add a new user
 		$scope.addUser = function(name, email) {
@@ -44,6 +44,20 @@ var app = angular.module('securityCam')
 		    console.log('registration cancelled')
 		  };
 		};
+
+		$scope.deleteUser = function(userObj) {
+			var member = userObj; 
+			//this will be the actuall member we want to delete from array we will need their email address
+			AdminService.deleteMember(member.email).then(function(response) {
+				console.log(response)
+			})
+		}
+
+		$scope.deleteHardware = function(cameraId) {
+			AdminService.deleteCamera(cameraId).then(function(response) {
+				console.log(response)
+			})
+		}
 
 
 }]) // End AdminCtrl //
