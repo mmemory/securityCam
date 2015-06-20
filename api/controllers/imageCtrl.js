@@ -16,17 +16,29 @@ module.exports = {
 
         var dataFromHardware = req.body;
 
-        var timestamp = new Date(dataFromHardware.timestamp);
+        //var timestamp = new Date(dataFromHardware.timestamp);
+        var timestamp = new Date(dataFromHardware.ts);
+
+        //var newImageData = {
+        //    name: dataFromHardware.name,
+        //    from_hardware: dataFromHardware.camera,
+        //    image_url: dataFromHardware.url,
+        //    created_on: timestamp,
+        //    //lightIntensity: dataFromHardware.lightIntensity,
+        //    temperatureInCelsius: dataFromHardware.temperatureInCelsius
+        //    //temperatureInFahrenheit: dataFromHardware.temperatureInFahrenheit,
+        //    //humidity: dataFromHardware.humidity
+        //};
 
         var newImageData = {
-            name: dataFromHardware.name,
-            from_hardware: dataFromHardware.camera,
-            image_url: dataFromHardware.url,
+            name: dataFromHardware.n,
+            from_hardware: dataFromHardware.c,
+            image_url: dataFromHardware.u,
             created_on: timestamp,
-            //lightIntensity: dataFromHardware.lightIntensity,
-            temperatureInCelsius: dataFromHardware.temperatureInCelsius
-            //temperatureInFahrenheit: dataFromHardware.temperatureInFahrenheit,
-            //humidity: dataFromHardware.humidity
+            lightIntensity: dataFromHardware.li,
+            temperatureInCelsius: dataFromHardware.tc,
+            temperatureInFahrenheit: dataFromHardware.tf,
+            humidity: dataFromHardware.h
         };
 
         var newImage = new Image(newImageData);
