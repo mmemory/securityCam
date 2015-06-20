@@ -23,7 +23,7 @@ module.exports = {
             from_hardware: dataFromHardware.camera,
             image_url: dataFromHardware.url,
             created_on: timestamp,
-            lightIntensity: dataFromHardware.lightIntensity,
+            //lightIntensity: dataFromHardware.lightIntensity,
             temperatureInCelsius: dataFromHardware.temperatureInCelsius
             //temperatureInFahrenheit: dataFromHardware.temperatureInFahrenheit,
             //humidity: dataFromHardware.humidity
