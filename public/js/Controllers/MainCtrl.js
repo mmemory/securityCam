@@ -1,5 +1,5 @@
 var app = angular.module('securityCam')
-  .controller('MainCtrl', ['$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log', 'mainService', function($scope, $timeout, $mdSidenav, $mdUtil, $log, mainService) {
+  .controller('MainCtrl', ['$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log', 'mainService', '$location', function($scope, $timeout, $mdSidenav, $mdUtil, $log, mainService, $location) {
 
   $scope.toggleLeft = buildToggler('left');
   $scope.toggleRight = buildToggler('right');
@@ -64,6 +64,16 @@ var app = angular.module('securityCam')
     $scope.closeDialog = function() {
       $mdDialog.hide();
       console.log('registration cancelled')
+    };
+  };
+
+  var accountSettings = function() {
+    var account = this;
+    account.settings = function(e) {
+      $location('account');
+    };
+    account.logout = function(e) {
+      $location('auth/logout');
     };
   };
 

@@ -20,7 +20,7 @@
         <md-content>
            <md-input-container>
             <label>Last Name</label>
-            <input ng-model="newUserLasttName">
+            <input ng-model="newUserLastName">
           </md-input-container>
         </md-content>
         <md-content>
@@ -47,7 +47,7 @@
         <md-button ng-click="closeDialog()" class="md-primary">
           Cancel
         </md-button>
-        <md-button ng-click="addUser(newUserName, newUserEmail)" class="md-primary">
+        <md-button ng-click="addUser(newUserFirstName, newUserLastName, newUserEmail, newUserPassword)" class="md-primary">
           Register User
         </md-button>
       </div>
