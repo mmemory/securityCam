@@ -62,14 +62,17 @@ var app = angular.module('securityCam')
             // how to seperate all data based on which 'group' user decides to view
             $scope.groups = []
 
-
             $scope.user = user;
             $scope.authorized = user.email;
             console.log($scope.user);
 
             var displayGroups = function(groups) {
                 groupAdminName = $scope.user.group_admin.name;
-                groups.unshift(groupAdminName)
+                groupName = $scope.user.group_member;
+                groups.unshift(groupAdminName);
+                for (var i = 0; i < groupName.length; i++) {
+                    groups.push(groupName[i])
+                };
                 console.log($scope.user.group_member)
             };
             displayGroups($scope.groups);
