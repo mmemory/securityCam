@@ -1,0 +1,37 @@
+<div style="width: 60%;">
+  <md-dialog>
+    <form>
+   		<md-toolbar>
+        <div class="md-toolbar-tools">
+          <h2 style='color: white;'>Register New User</h2>
+          <span flex></span>
+          <md-button class="md-icon-button" ng-click="closeDialog()">
+            <i class="material-icons" style='color: white; font-size: 36px'>&#xE14C;</i>
+          </md-button>
+        </div>
+      </md-toolbar>
+      <div layout-padding>
+        <md-content>
+      	   <md-input-container>
+  		      <label>Product Code</label>
+  		      <input ng-model="newProductCode">
+  		    </md-input-container>
+  		  </md-content>
+        <md-content>
+           <md-input-container>
+            <label>Camera Nickname (e.g. "Front Door"</label>
+            <input ng-model="cameraName">
+          </md-input-container>
+        </md-content>
+      <div class="md-actions" layout="row">
+        <span flex></span>
+        <md-button ng-click="closeDialog()" class="md-primary">
+          Cancel
+        </md-button>
+        <md-button ng-click="addHardware(newProductCode, cameraName)" class="md-primary">
+          Register User
+        </md-button>
+      </div>
+    </form>
+  </md-dialog>
+</div>
