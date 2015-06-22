@@ -19,7 +19,9 @@ var app = angular.module('securityCam')
 		$scope.addNewUser = function(ev) {
 			console.log("addNewUser clicked AdminCtrl")
 		    $mdDialog.show({
-		    	controller: DialogController,
+		      controller: DialogController,
+		      scope: $scope,
+		      preserveScope: true,
 		      parent: angular.element(document.body),
 		      clickOutsideToClose: true,
 		      title: 'Register New User',
@@ -34,7 +36,9 @@ var app = angular.module('securityCam')
 		$scope.addNewHardware = function(ev) {
 			console.log("addNewHardware clicked AdminCtrl")
 		    $mdDialog.show({
-		    	controller: DialogController,
+		      controller: DialogController,
+		      scope: $scope,
+		      preserveScope: true,		     
 		      parent: angular.element(document.body),
 		      clickOutsideToClose: true,
 		      title: 'Register New Hardware',
