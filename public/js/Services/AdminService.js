@@ -7,7 +7,7 @@ var app = angular.module('securityCam')
                 var deferred = $q.defer();
                 $http({
                     method: 'POST',
-                    url: '/api/user/member'
+                    url: '/api/user/member',
                     data: {
                         firstName: firstname,
                         lastName: lastname,
