@@ -20,6 +20,8 @@ var app = angular.module('securityCam')
 		console.log("Register clicked WelcomeCtrl")
     $mdDialog.show({
       controller: RegisterController,
+      scope: $scope,
+      preserveScope: true,
       parent: angular.element(document.body),
       clickOutsideToClose: true,
       title: 'Register',
@@ -32,7 +34,7 @@ var app = angular.module('securityCam')
   };
 
   function RegisterController($scope, $mdDialog) {
-	  $scope.register = function(firstname, lastname, email, groupName, password) {
+	  $scope.registerUser = function(firstname, lastname, email, groupName, password) {
 	    $mdDialog.hide();
 	    console.log('addUser invoked', firstname, lastname, email, groupName, password);
 	    LoginService.signup(firstname, lastname, email, groupName, password).then(function() {

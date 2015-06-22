@@ -6,9 +6,15 @@ var app = angular.module('securityCam')
     console.log($scope.user);
 		
 		// Function to add a new user
-		$scope.addUser = function(name, email) {
+		$scope.addUser = function(name, lastname, email, password) {
 			$mdDialog.hide();
+			AdminService.registerMember(name, lastname, email, password).then(function(response) {
 			console.log('addNewUser invoked - AdminCtrl', name, email)
+			console.log(response)
+				//document.getElementsByClassName('')
+			}).catch(function(err) {
+				console.log(err)
+			})
 		}
 
 		$scope.closeDialog = function() {
@@ -28,11 +34,11 @@ var app = angular.module('securityCam')
 		      templateUrl: 'js/Templates/newUserDialog.html',
 		      targetEvent: ev
 		  	})
-		    .then(function() {
-		    	$scope.addUser(name, email);
-		    })
+		    // .then(function() {
+		    // 	$scope.addUser(name, email);
+		    // })
 		};
-
+		
 		$scope.addNewHardware = function(ev) {
 			console.log("addNewHardware clicked AdminCtrl")
 		    $mdDialog.show({

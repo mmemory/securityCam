@@ -81,18 +81,18 @@ var app = angular.module('securityCam')
             $scope.filterPhotos = function(ev) {
                 console.log("Filter clicked DashCtrl")
                 $mdDialog.show({
-                  controller: FilterController,
-                  scope: $scope,
-                  preserveScope: true,
-                  parent: angular.element(document.body),
-                  clickOutsideToClose: true,
-                  title: 'Filter Photos',
-                  templateUrl: 'js/Templates/filterPhotosDialog.html',
-                  targetEvent: ev
+                    controller: FilterController,
+                    scope: $scope,
+                    preserveScope: true,
+                    parent: angular.element(document.body),
+                    clickOutsideToClose: true,
+                    title: 'Filter Photos',
+                    templateUrl: 'js/Templates/filterPhotosDialog.html',
+                    targetEvent: ev
                 })
-                .then(function() {
-                    console.log('filtering...')
-                })
+                    .then(function() {
+                        console.log('filtering...')
+                    })
             };
 
             function FilterController($scope, $mdDialog) {
@@ -105,13 +105,19 @@ var app = angular.module('securityCam')
                     //console.log(endDate);
                     var groupID = $scope.groupID;
                     dashService.getPics(groupID, startDate, endDate).then(function(response) {
-                    console.log("response");
-                    })
-                    .catch(function(err) {
+                        console.log("response");
+                        $scope.queryPics = response.data
+                    }).catch(function(err) {
                         $scope.error = err;
                         console.log($scope.error);
-                    })
+                        })
                 };
+
+                $scope.recentPics = function() {
+                    dashService.getFive().then(function(response) {
+                        $scope.pictures = response.data;
+                    })
+                }
 
                 $scope.closeDialog = function() {
                     $mdDialog.hide();
