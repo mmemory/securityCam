@@ -27,7 +27,8 @@
           </form>
         </div> -->
         <div layout='column' layout-padding layout-margin layout-align='start center' flex='45'>
-          <div style='width: 200px; height: 140px; border: 1px solid black; margin: 0 auto;'>
+          <div style='width: 200px; height: 140px; border: 1px solid black; margin: 0 auto;' ng-repeat="picture in pictures">
+          <img src="{{pictures}}">
           </div>
         </div>
       </div>
