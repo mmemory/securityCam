@@ -99,6 +99,7 @@ var requireAuth = function(req, res, next) {
 //
 var logMe = function(req, res, done) {
     console.log('REQUEST MADE');
+    console.log('Type of request:', typeof req.body);
     console.log(req.method, ' ', req.path);
     console.log('BODY:\n', req.body);
     done();
