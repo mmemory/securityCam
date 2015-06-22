@@ -51,7 +51,7 @@ module.exports = {
                     Hardware.findByIdAndUpdate(hardwareFound._id, {$push: {pictures: image._id}}, function(err) {
                         if (err) console.log('Error saving image to hardware pictures array', err);
                         //Get pictures from global group images
-                        group.findByIdAndUpdate(hardwareFound.group_assigned, {$push: {pictures_total: image._id}}, function(err) {
+                        Group.findByIdAndUpdate(hardwareFound.group_assigned, {$push: {pictures_total: image._id}}, function(err) {
                             if (err) console.log('Error saving group images to total', err);
                             res.send();
                         });
