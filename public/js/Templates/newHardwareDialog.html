@@ -13,41 +13,22 @@
       <div layout-padding>
         <md-content>
       	   <md-input-container>
-  		      <label>First Name</label>
-  		      <input ng-model="newUserFirstName">
+  		      <label>Product Code</label>
+  		      <input ng-model="newProductCode">
   		    </md-input-container>
   		  </md-content>
         <md-content>
            <md-input-container>
-            <label>Last Name</label>
-            <input ng-model="newUserLastName">
+            <label>Camera Nickname (e.g. "Front Door"</label>
+            <input ng-model="cameraName">
           </md-input-container>
         </md-content>
-        <md-content>
-           <md-input-container>
-            <label>Email</label>
-            <input ng-model="newUserEmail">
-          </md-input-container>
-        </md-content>
-        <md-content>
-           <md-input-container>
-            <label>Password</label>
-            <input ng-model="newUserPassword">
-          </md-input-container>
-        </md-content>
-        <md-content>
-           <md-input-container>
-            <label>Confirm Password</label>
-            <input>
-          </md-input-container>
-        </md-content>
-  		</div>
       <div class="md-actions" layout="row">
         <span flex></span>
         <md-button ng-click="closeDialog()" class="md-primary">
           Cancel
         </md-button>
-        <md-button ng-click="addUser(newUserFirstName, newUserLastName, newUserEmail, newUserPassword)" class="md-primary">
+        <md-button ng-click="addHardware(newProductCode, cameraName)" class="md-primary">
           Register User
         </md-button>
       </div>
