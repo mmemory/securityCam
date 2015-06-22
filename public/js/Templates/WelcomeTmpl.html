@@ -6,12 +6,15 @@
 		</div>
     <span flex></span>
 		<div layout='column' layout-align='center center' layout-margin style="color: white; margin: 10%; height: 75%;">	
-			<h1 style='color: white; font-size: 4em;'>GladCam</h1>
-			<h6 style="margin-top: 37px;">Project by DevMountaineers</h6>
+			<div layout='row'>
+				<h1 style='color: white; font-size: 4em; margin-top: 40px;'>GladCam</h1>
+				<i class="material-icons" style='font-size: 105px; color: white;'>&#xE8FC;</i>
+			</div>
+			<a href="http://devmounta.in" style='text-decoration: none;'><h6 style="margin-top: 8px; color: white;">Project by DevMountaineers</h6></a>
 		</div>
   </md-toolbar>
   <md-toolbar hide-gt-sm layout='row' style='position: fixed;' layout-align='center center'>
-		<h1 style='color: white;'>SecurityCam</h1>
+		<h1 style='color: white;'>GladCam</h1>
     <span flex></span>
 		<md-button layout-margin ng-click='login($event)' class="md-primary md-raised md-hue-2">Login</md-button>
 	  <md-button layout-margin ng-click='register($event)' class="md-primary md-raised md-hue-2">Register</md-button>
@@ -19,7 +22,7 @@
 </div>
 <div style='width: 100%;' layout-gt-md='row' layout-md='column' flex id='about'>
 	<div layout='column' layout-align='start start' flex-gt-md='55' flex-md='95'>	
-		<h1 style='font-size: 1.5em; margin: 90px 0px 0px 30px;'>What is SecurityCam?</h1>
+		<h1 style='font-size: 1.5em; margin: 90px 0px 0px 30px;'>What is GladCam?</h1>
 	</div>
 	<div layout='column' layout-align-gt-md='start start' layout-align-md='start center' layout-margin flex-gt-md='40' flex-md='95' style='margin-top: 90px;'>	
 		<div layout='row' layout-margin>
@@ -28,7 +31,7 @@
 			</div>
 			<div layout='column'>
 				<h6 style='font-weight: bold; margin-bottom: 5px;'>Web Development Project</h6>
-				<p style='font-size: .8em;'>As students from DevMountain, we came up with SecurityCam to use for our group project. SecurityCam was a way for us to showcase the skills we have learned while at DevMountain.</p>
+				<p style='font-size: .8em;'>As students from DevMountain, we came up with GladCam to use for our group project. GladCam was a way for us to showcase the skills we have learned while at DevMountain.</p>
 			</div>
 		</div>
 		<div layout='row' layout-margin>
@@ -37,7 +40,16 @@
 			</div>
 			<div layout='column'>
 				<h6 style='font-weight: bold; margin-bottom: 5px;'>Security Camera System</h6>
-				<p style='font-size: .8em;'>We built a Security Camera using an Arduino Chip, webcam, and motion sensor. We also attatched a temprature sensor, a light meter, and a humidity sensor, so that we could display a wide range of data.</p>
+				<p style='font-size: .8em;'>We built a Glad Camera using an Arduino Chip, webcam, and motion sensor. We also attatched a temprature sensor, a light meter, and a humidity sensor, so that we could display a wide range of data.</p>
+			</div>
+		</div>
+		<div layout='row' layout-margin>
+			<div layout='column' layout-align='center start' style='margin-right: 45px'>
+				<i class="material-icons" style='font-size: 60px;'>&#xE430;</i>
+			</div>
+			<div layout='column'>
+				<h6 style='font-weight: bold; margin-bottom: 5px;'>Environment Monitoring System</h6>
+				<p style='font-size: .8em;'>Aside from its use as a security camera, GladCam also uses sensors to gather data on the temperature, humidity, and light density, to give you an idea of what the environment is like.</p>
 			</div>
 		</div>
 		<div layout='row' layout-margin>
@@ -46,17 +58,18 @@
 			</div>
 			<div layout='column'>
 				<h6 style='font-weight: bold; margin-bottom: 5px;'>Single Page Web Application</h6>
-				<p style='font-size: .8em;'>The web application we made is used to display the photos taken from the security camera. There are many graphs that we also display to show the data from the other sensors as well.</p>
+				<p style='font-size: .8em;'>The web application we made is used to display the photos taken from the Glad camera. There are many graphs that we also display to show the data from the other sensors as well.</p>
 			</div>
 		</div>
 	</div>
+
 
 	
 </div>
 <md-divider style='margin-top: 80px'></md-divider>
 <div style='width: 100%;' layout='column' flex id='about'>
 	<div layout='column' layout-align='center center' flex-gt-md='40' flex-md='95'>	
-		<h1 style='font-size: 1.5em; margin: 90px 0px 0px 30px;'>How SecurityCam was built</h1>
+		<h1 style='font-size: 1.5em; margin: 90px 0px 0px 30px;'>How GladCam was built</h1>
 	</div>
 	<div layout-gt-sm='row' layout-sm='column' style='margin-top: 60px;'>
 		<div layout='column' layout-align='center start' style='margin-left: 2%;' layout-margin flex-gt-md='30' flex-md='45' flex-sm='95'>
@@ -187,10 +200,10 @@
 		</div>
 	</div>
 </div>
-<md-divider style='margin-top: 80px'></md-divider>
+<!-- <md-divider style='margin-top: 80px'></md-divider>
 <div style='width: 100%;' layout-gt-md='row' layout-md='column' flex id='about'>
 	<div layout='column' layout-align='center center' flex-gt-md='55' flex-md='95'>	
-		<h1 style='font-size: 1.5em; margin: 90px 0px 0px 30px;'>Meet the SecurityCam Team!</h1>
+		<h1 style='font-size: 1.5em; margin: 90px 0px 0px 30px;'>Meet the GladCam Team!</h1>
 	</div>
 	<div layout='column' layout-align-gt-md='start start' layout-align-md='start center' layout-margin flex-gt-md='40' flex-md='95' style='margin-top: 90px;'>
 		<div layout='row'>
@@ -198,4 +211,4 @@
 			<h6 style='font-weight: bold; margin-bottom: 5px;'>Guy Brud</h6>
 		</div>
 	</div>
-</div>
+</div> -->
