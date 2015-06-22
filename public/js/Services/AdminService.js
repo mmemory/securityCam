@@ -24,13 +24,13 @@ var app = angular.module('securityCam')
                 return deferred.promise;
             };
 
-            this.deleteMember = function(member.email) {
+            this.deleteMember = function(email) {
                 var deferred = $q.defer();
                 $http({
                     method: 'DELETE',
                     url: '/api/user/member',
                     data: {
-                        email: member.email
+                        email: email
                     }
                 }).then(function(res) {
                     deferred.resolve(res.data)
