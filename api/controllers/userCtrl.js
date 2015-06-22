@@ -10,6 +10,8 @@ module.exports = {
             .populate('group_admin')
             .populate('group_member')
             .populate('group_admin.hardware_registered')
+            .populate('group_admin.pictures_total')
+            .populate('group_member.pictures_total')
             .exec(function(err, userFromMongo) {
                 res.send(userFromMongo);
             });
