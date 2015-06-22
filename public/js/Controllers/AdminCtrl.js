@@ -1,9 +1,9 @@
 var app = angular.module('securityCam')
-	.controller('AdminCtrl', ['$scope', '$mdDialog', 'user', function($scope, $mdDialog, user) {
+	.controller('AdminCtrl', ['$scope', '$mdDialog', 'user', 'AdminService', function($scope, $mdDialog, user, AdminService) {
 		
 		$scope.user = user;
     $scope.authorized = user.email;
-    console.log($scope.authorized);
+    console.log($scope.user);
 		
 		// Function to add a new user
 		$scope.addUser = function(name, email) {
@@ -121,6 +121,7 @@ var app = angular.module('securityCam')
       availableDirections: ['up', 'down', 'left', 'right'],
       selectedDirection: 'up'
   	};
+
 
 
 }]) // End AdminCtrl //
