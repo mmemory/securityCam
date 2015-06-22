@@ -3,7 +3,7 @@
     <form>
    		<md-toolbar>
         <div class="md-toolbar-tools">
-          <h2 style='color: white;'>Filter Photos</h2>
+          <h2 style='color: white;'>Delete Hardware</h2>
           <span flex></span>
           <md-button class="md-icon-button" ng-click="closeDialog()">
             <i class="material-icons" style='color: white; font-size: 36px'>&#xE14C;</i>
@@ -11,20 +11,13 @@
         </div>
       </md-toolbar>
       <div layout-padding>
-        <md-input-container flex>
-          <label>Start Date - mm/dd/yyyy</label>
-          <input type="date" ng-model="startDate">
-        </md-input-container>
-        <md-input-container flex>
-          <label>End Date - mm/dd/yyyy</label>
-          <input type="date" ng-model="endDate">
-        </md-input-container>
+        <p>Are you sure you want to delete {{ user.hardware_registered }} from your hardware list? This action cannot be reversed!</p>
       <div class="md-actions" layout="row">
         <span flex></span>
         <md-button ng-click="closeDialog()" class="md-primary">
           Cancel
         </md-button>
-        <md-button class='md-primary' ng-click='runTest(startDate, endDate)'>Filter Photos</md-button>
+        <md-button class='md-primary' ng-click='deleteUser()'>Delete Hardware</md-button>
       </div>
     </form>
   </md-dialog>

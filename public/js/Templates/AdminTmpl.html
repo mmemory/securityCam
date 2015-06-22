@@ -4,26 +4,26 @@
     <md-list style='width: 90%; margin: 0 auto;'>
 		  <md-list-item layout='row' layout-align='space-around center' flex='99'>
 		    	<p>User... </p>
-		    	<md-button class="md-icon-button" ng-click="deleteUser()">
-		            <i class="material-icons" style='color: red; font-size: 24px; margin-top: 10px;'>&#xE14C;</i>
+		    	<md-button class="md-fab md-mini md-primary" ng-click="deleteUserDialog($event)" style='background-color: #FFC107;'>
+		            <i class="material-icons" style='color: white; font-size: 24px; margin: 8px 1px 0px 0px;'>&#xE14C;</i>
 		        </md-button>
 		  </md-list-item>
 		  <md-list-item >
 		    	<p>User...</p>
-		    	<md-button  class="md-icon-button" ng-click="deleteUser()">
-		            <i class="material-icons" style='color: red; font-size: 24px; margin-top: 10px;'>&#xE14C;</i>
+		    	<md-button  class="md-fab md-mini" ng-click="deleteUserDialog($event)" style='background-color: #FFC107;'>
+		            <i class="material-icons" style='color: white; font-size: 24px; margin: 8px 1px 0px 0px;'>&#xE14C;</i>
 		        </md-button>
 		  </md-list-item>
 		  <md-list-item >
 		    	<p>User...</p>
-		    	<md-button  class="md-icon-button" ng-click="deleteUser()">
-		            <i class="material-icons" style='color: red; font-size: 24px; margin-top: 10px;'>&#xE14C;</i>
+		    	<md-button  class="md-fab md-mini" ng-click="deleteUserDialog($event)" style='background-color: #FFC107;'>
+		            <i class="material-icons" style='color: white; font-size: 24px; margin: 8px 1px 0px 0px;'>&#xE14C;</i>
 		        </md-button>
 		  </md-list-item>
 		  <md-list-item >
 		    	<p>User...</p>
-		    	<md-button  class="md-icon-button" ng-click="deleteUser()">
-		            <i class="material-icons" style='color: red; font-size: 24px; margin-top: 10px;'>&#xE14C;</i>
+		    	<md-button  class="md-fab md-mini" ng-click="deleteUserDialog($event)" style='background-color: #FFC107;'>
+		            <i class="material-icons" style='color: white; font-size: 24px; margin: 8px 1px 0px 0px;'>&#xE14C;</i>
 		        </md-button>
 		  </md-list-item>
 		</md-list>
@@ -33,26 +33,26 @@
     <md-list style='width: 90%; margin: 0 auto'>
 		  <md-list-item layout='row' layout-align='space-between center' flex>
 		    	<p>Front Door</p>
-		    	<md-button class="md-icon-button" ng-click="deleteHardware()">
-		            <i class="material-icons" style='color: red; font-size: 24px; margin-top: 10px;'>&#xE14C;</i>
+		    	<md-button class="md-fab md-mini" ng-click="deleteHardwareDialog($event)" style='background-color: #FFC107;'>
+		            <i class="material-icons" style='color: white; font-size: 24px; margin: 8px 1px 0px 0px;'>&#xE14C;</i>
 		        </md-button>
 		  </md-list-item>
 		  <md-list-item>
 		    <p>Kids Room</p>
-		    <md-button class="md-icon-button" ng-click="deleteHardware()">
-		            <i class="material-icons" style='color: red; font-size: 24px; margin-top: 10px;'>&#xE14C;</i>
+		    <md-button class="md-fab md-mini" ng-click="deleteHardwareDialog($event)" style='background-color: #FFC107;'>
+		            <i class="material-icons" style='color: white; font-size: 24px; margin: 8px 1px 0px 0px;'>&#xE14C;</i>
 		        </md-button>
 		  </md-list-item>
 		  <md-list-item>
 		    <p>Backyard</p>
-		    <md-button class="md-icon-button" ng-click="deleteHardware()">
-		            <i class="material-icons" style='color: red; font-size: 24px; margin-top: 10px;'>&#xE14C;</i>
+		    <md-button class="md-fab md-mini" ng-click="deleteHardwareDialog($event)" style='background-color: #FFC107;'>
+		            <i class="material-icons" style='color: white; font-size: 24px; margin: 8px 1px 0px 0px;'>&#xE14C;</i>
 		        </md-button>
 		  </md-list-item>
 		  <md-list-item>
 		    <p>Living Room</p>
-		    <md-button class="md-icon-button" ng-click="deleteHardware()">
-		            <i class="material-icons" style='color: red; font-size: 24px; margin-top: 10px;'>&#xE14C;</i>
+		    <md-button class="md-fab md-mini" ng-click="deleteHardwareDialog($event)" style='background-color: #FFC107;'>
+		            <i class="material-icons" style='color: white; font-size: 24px; margin: 8px 1px 0px 0px;'>&#xE14C;</i>
 		        </md-button>
 		  </md-list-item>
 		</md-list>
@@ -67,11 +67,17 @@
       </md-button>
     </md-fab-trigger>
     <md-fab-actions>
-      <md-button aria-label="User" class="md-fab md-raised md-mini">
+      <md-button aria-label="User" class="md-fab md-raised md-mini" ng-click='addNewUser($event)'>
         <i class="material-icons" style='color: blue; font-size: 24px; margin-top: 7px;'>&#xE8A6;</i>
+        <md-tooltip>
+          Add User
+     	</md-tooltip>
       </md-button>
-      <md-button aria-label="Camera" class="md-fab md-raised md-mini">
+      <md-button aria-label="Camera" class="md-fab md-raised md-mini" ng-click='addNewHardware($event)'>
         <i class="material-icons" style='color: green; font-size: 24px; margin-top: 8px;'>&#xE04B;</i>
+        <md-tooltip>
+          Add Hardware
+        </md-tooltip>      
       </md-button>
     </md-fab-actions>
   </md-fab-speed-dial>
