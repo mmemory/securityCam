@@ -65,5 +65,12 @@ module.exports = {
 
             res.send('SUCCESSFULLY SAVED IN MONGO!');
         });
+    },
+
+    allImages: function(req, res) {
+      Image.find()
+      .exec(function(err, images) {
+        res.send(images);
+      });
     }
 };

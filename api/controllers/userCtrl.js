@@ -59,7 +59,9 @@ module.exports = {
         name: req.body.groupName
       };
 
-      var UserGroupRelationData = {};
+      var UserGroupRelationData = {
+        user_is_admin: true
+      };
 
       // USER
       var createUser = new User(newUserData);

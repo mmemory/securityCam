@@ -1,8 +1,54 @@
 var User = require('../models/userModel.js');
 var Group = require('../models/groupModel.js');
 var UserGroupRelation = require('../models/UserGroupRelation.js');
+var q = require('q');
 
 module.exports = {
+
+  adminGroupsAndMembers: function(req, res) {
+    UserGroupRelation.find({
+      user_id: req.user._id,
+      user_is_admin: true
+    })
+    .populate('group_id')
+    .exec(function(err, relations) {
+      console.log('ADMIN group data: ', relations);
+      if (err) return res.sendStatus(500);
+      var promiseArray = relations.map(function(relation, index) {
+
+        var dfd = q.defer();
+
+        var adminGroup = relation.group_id;
+        console.log('adminGroup: ', adminGroup);
+
+        UserGroupRelation.find({
+          group_id: adminGroup._id
+        })
+        .populate({ path: 'user_id', select: 'first_name last_name email'})
+        .then(function(relationWithUser) {
+          console.log('users found: ', relationWithUser);
+          var innerMap = relationWithUser.map(function(relate) {
+            console.log('individual relation', relate);
+            return relate.user_id;
+          });
+          console.log('INNER MAP: ', innerMap);
+          adminObj = adminGroup.toObject();
+          adminObj.members = innerMap;
+          console.log('ADMIN GROUP', adminObj);
+          dfd.resolve(adminObj);
+        });
+
+        return dfd.promise;
+
+      });
+
+      q.all(promiseArray).then(function(groupsWithMembers) {
+        console.log('GROUPS WITH MEMBERS', groupsWithMembers);
+        res.send(groupsWithMembers);
+      });
+
+    });
+  },
 
   removeMember: function(req, res) {
 
@@ -16,7 +62,7 @@ module.exports = {
       console.log('REMOVE MEMBER RESULT', result);
       res.send(result);
     });
-  },
+  }, // removeMember
 
   // An admin can create a group member on their group. This function checks to see
   // if the email address provided by admin already exists with a user. If there is
@@ -74,8 +120,8 @@ module.exports = {
             if (err) return res.sendStatus(500);
             return res.send(relationDataNewMember);
           });
-        });// createUser.save
-      }// if (!foundUser)
-    });
-  }// createNewGroupMember
+        }); // createUser.save
+      } // if (!foundUser)
+    }); // User.findOne()
+  } // createNewGroupMember
 };
