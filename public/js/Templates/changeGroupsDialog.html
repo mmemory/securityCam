@@ -6,21 +6,21 @@
           <h2 style='color: white;'>Change Groups</h2>
           <span flex></span>
           <md-button class="md-icon-button" ng-click="closeDialog()">
-            <i class="material-icons" style='color: white; font-size: 36px'>&#xE14C;</i>
+            <i class="material-icons" style='color: white; font-size: 36px; margin-top: 5px;'>&#xE14C;</i>
           </md-button>
         </div>
       </md-toolbar>
 	    <div layout='row'>
-	      <md-select ng-model="groupID" placeholder="Choose a Group" layout-margin style='padding: 0; margin: 10px auto'>
+	      <md-select ng-model="group" placeholder="Choose a Group" layout-margin style='padding: 0; margin: 10px auto'>
 	        <md-optgroup label="Groups">
-	          <md-option ng-value="group" ng-repeat="group in groups">{{ group }}</md-option>
+	          <md-option ng-value="group" ng-repeat="group in groups">{{ group.name }}</md-option>
 	        </md-optgroup>
 	      </md-select>
 	    </div>
 	    <div layout='row'>
 	    	<span flex></span>
 	      <md-button ng-click="closeDialog()" class="md-primary">Cancel</md-button>
-	      <md-button class='md-primary' ng-click='changeGroup(group)'>Change Groups</md-button>
+	      <md-button class='md-primary' ng-click='changeGroups(group)'>Change Groups</md-button>
       </div>
     </form>
   </md-dialog>
