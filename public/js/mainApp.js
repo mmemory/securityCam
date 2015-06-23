@@ -17,7 +17,7 @@ var app = angular.module('securityCam', ['ngMaterial', 'ui.router'])
                 'content': { 
                     templateUrl: 'js/Templates/DashTmpl.html',
                     controller: 'DashCtrl' 
-                }, 
+                }
             },
             resolve: {
               user: function(mainService) {
@@ -37,7 +37,7 @@ var app = angular.module('securityCam', ['ngMaterial', 'ui.router'])
                 'content': { 
                     templateUrl: 'js/Templates/AdminTmpl.html',
                     controller: 'AdminCtrl' 
-                }, 
+                }
             },
             resolve: {
               user: function(mainService) {
@@ -51,8 +51,8 @@ var app = angular.module('securityCam', ['ngMaterial', 'ui.router'])
                 'content': { 
                     templateUrl: 'js/Templates/WelcomeTmpl.html',
                     controller: 'WelcomeCtrl' 
-                }, 
-            },
+                }
+            }
         });
 
     }
