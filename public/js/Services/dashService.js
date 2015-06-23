@@ -3,7 +3,7 @@ var app = angular.module('securityCam')
         function($http, $q) {
 
             this.getPics = function(groupID, startDate, endDate) {
-                console.log('hit service')
+                console.log('hit service');
                 var deferred = $q.defer();
                 $http({
                     method: 'POST',
@@ -15,23 +15,24 @@ var app = angular.module('securityCam')
                     deferred.resolve(data);
                 }).catch(function(res) {
                     deferred.reject(res.data);
-                    console.log('rejected', res.data)
-                })
+                    console.log('rejected', res.data);
+                });
                 return deferred.promise;
             };
 
-            this.getFive = function() {
+            this.getFive = function(group_id) {
                 var deferred = $q.defer();
                 $http({
                     method: 'GET',
-                    url: '/api/images'
+                    url: '/api/images',
+                    data: {group_id: group_id}
                 }).then(function(res) {
-                    deferred.resolve(res)
-                    console.log(res)
+                    deferred.resolve(res);
+                    console.log(res);
                 }).catch(function(res) {
-                    deferred.reject(res.data)
-                })
-            }
+                    deferred.reject(res.data);
+                });
+            };
         }
     ]); // End Service //
 

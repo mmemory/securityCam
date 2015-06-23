@@ -12,12 +12,12 @@ angular.module('securityCam')
 
 	      	  // console.log('arcData from Dir', scope.arcData)
 	      
-					var data = scope.arcData
+					var data = scope.arcData;
 					var r = 55;
 		  
 		  		    var color = d3.scale.linear()
 		      			.domain([0, d3.max(data)])
-					  	.range(['#EF9A9A', '#FFCDD2'])
+					  	.range(['#EF9A9A', '#FFCDD2']);
 
 					var canvas = d3.select(element[0]).append('svg')
 						.attr('width', 260)
@@ -31,7 +31,7 @@ angular.module('securityCam')
 						.outerRadius(r);
 
 					var pie = d3.layout.pie()
-						.value(function(d) { return d; })
+						.value(function(d) { return d; });
 
 					var arcs = group.selectAll('.arc')
 						.data(pie(data))
@@ -55,7 +55,7 @@ angular.module('securityCam')
 			// $interval(buildGraph, 3500, 1);
 			buildGraph();
 
-	    	})
+	    	});
 	    }
-		}
+		};
 	}]);

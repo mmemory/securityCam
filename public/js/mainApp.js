@@ -2,7 +2,7 @@ var app = angular.module('securityCam', ['ngMaterial', 'ui.router'])
 	.config(['$mdThemingProvider', '$stateProvider', '$urlRouterProvider', function($mdThemingProvider, $stateProvider, $urlRouterProvider) {
   	$mdThemingProvider.theme('default')
     	.primaryPalette('light-blue')
-    	.accentPalette('pink')
+    	.accentPalette('pink');
 
     $urlRouterProvider.otherwise('/welcome');
 
@@ -17,7 +17,7 @@ var app = angular.module('securityCam', ['ngMaterial', 'ui.router'])
                 'content': { 
                     templateUrl: 'js/Templates/DashTmpl.html',
                     controller: 'DashCtrl' 
-                }, 
+                }
             },
             resolve: {
               user: function(mainService) {
@@ -37,7 +37,7 @@ var app = angular.module('securityCam', ['ngMaterial', 'ui.router'])
                 'content': { 
                     templateUrl: 'js/Templates/AdminTmpl.html',
                     controller: 'AdminCtrl' 
-                }, 
+                }
             },
             resolve: {
               user: function(mainService) {
@@ -51,9 +51,9 @@ var app = angular.module('securityCam', ['ngMaterial', 'ui.router'])
                 'content': { 
                     templateUrl: 'js/Templates/WelcomeTmpl.html',
                     controller: 'WelcomeCtrl' 
-                }, 
-            },
-        })
+                }
+            }
+        });
 
     }
-]) // end config //
+]); // end config //

@@ -8,7 +8,7 @@ var app = angular.module('securityCam')
    * report completion in console
    */
   function buildToggler(navID) {
-    $log.debug(navID + "clicked")
+    $log.debug(navID + "clicked");
     var debounceFn =  $mdUtil.debounce(function(){
           $mdSidenav(navID)
             .toggle()
@@ -34,7 +34,7 @@ var app = angular.module('securityCam')
   };
 
   $scope.register = function(ev) {
-    console.log("Register clicked LoginCtrl")
+    console.log("Register clicked LoginCtrl");
     $mdDialog.show({
       controller: RegisterController,
       parent: angular.element(document.body),
@@ -44,8 +44,8 @@ var app = angular.module('securityCam')
       targetEvent: ev
     })
     .then(function() {
-      console.log('registering...')
-    })
+      console.log('registering...');
+    });
   };
 
   function RegisterController($scope, $mdDialog) {
@@ -58,14 +58,14 @@ var app = angular.module('securityCam')
       .catch(function(err) {
         $scope.error = err;
         console.log($scope.error);
-      })
+      });
     };
 
     $scope.closeDialog = function() {
       $mdDialog.hide();
-      console.log('registration cancelled')
+      console.log('registration cancelled');
     };
-  };
+  }
 
   var accountSettings = function() {
     var account = this;
@@ -78,4 +78,4 @@ var app = angular.module('securityCam')
   };
 
 
-}]) // End MainCtrl //
+}]); // End MainCtrl //

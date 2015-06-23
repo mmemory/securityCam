@@ -13,9 +13,9 @@ var app = angular.module('securityCam')
                     deferred.resolve(userObj);
                 }).catch(function(res) {
                     deferred.reject(res.data);
-                    console.log('rejected', res)
+                    console.log('rejected', res);
                 });
                 return deferred.promise;
-            }
+            };
         }
     ]); // End Service //

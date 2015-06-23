@@ -12,8 +12,8 @@ var app = angular.module('securityCam');
 					firstName: firstname,
 					lastName: lastname,
 					email: email,
-					password: password,
-					groupName: groupName
+					groupName: groupName,
+					password: password
 				}
 			}).then(function(res) {
 				deferred.resolve(res.data);
@@ -38,7 +38,7 @@ var app = angular.module('securityCam');
 				deferred.resolve(res.data);
 			}).catch(function(res) {
 				deferred.reject(res.data);
-			})
+			});
 			return deferred.promise;
 		};
 
