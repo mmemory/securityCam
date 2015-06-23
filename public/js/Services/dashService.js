@@ -16,15 +16,16 @@ var app = angular.module('securityCam')
                 }).catch(function(res) {
                     deferred.reject(res.data);
                     console.log('rejected', res.data);
-                })
+                });
                 return deferred.promise;
             };
 
-            this.getFive = function() {
+            this.getFive = function(group_id) {
                 var deferred = $q.defer();
                 $http({
                     method: 'GET',
-                    url: '/api/images'
+                    url: '/api/images',
+                    data: {group_id: group_id}
                 }).then(function(res) {
                     deferred.resolve(res);
                     console.log(res);
