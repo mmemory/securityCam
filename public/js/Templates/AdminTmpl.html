@@ -1,67 +1,76 @@
-<div layout-gt-md="row" layout-md="column" layout-fill style="padding-bottom: 32px; width: 75%; margin: 20px auto;">
-  <md-whiteframe class="md-whiteframe-z1" style='background-color: white;' layout='column' layout-margin layout-padding layout-align="start start" flex-gt-md='45' flex='90'>
-    <h1>Users</h1>
-    <md-list style='width: 90%; margin: 0 auto;'>
-		  <md-list-item layout='row' layout-align='space-around center' flex='99'>
-		    	<p>User... </p>
-		    	<md-button class="md-fab md-mini md-primary" ng-click="deleteUserDialog($event)" style='background-color: #FFC107;'>
-		            <i class="material-icons" style='color: white; font-size: 24px; margin: 8px 1px 0px 0px;'>&#xE14C;</i>
-		        </md-button>
-		  </md-list-item>
-		  <md-list-item >
-		    	<p>User...</p>
-		    	<md-button  class="md-fab md-mini" ng-click="deleteUserDialog($event)" style='background-color: #FFC107;'>
-		            <i class="material-icons" style='color: white; font-size: 24px; margin: 8px 1px 0px 0px;'>&#xE14C;</i>
-		        </md-button>
-		  </md-list-item>
-		  <md-list-item >
-		    	<p>User...</p>
-		    	<md-button  class="md-fab md-mini" ng-click="deleteUserDialog($event)" style='background-color: #FFC107;'>
-		            <i class="material-icons" style='color: white; font-size: 24px; margin: 8px 1px 0px 0px;'>&#xE14C;</i>
-		        </md-button>
-		  </md-list-item>
-		  <md-list-item >
-		    	<p>User...</p>
-		    	<md-button  class="md-fab md-mini" ng-click="deleteUserDialog($event)" style='background-color: #FFC107;'>
-		            <i class="material-icons" style='color: white; font-size: 24px; margin: 8px 1px 0px 0px;'>&#xE14C;</i>
-		        </md-button>
-		  </md-list-item>
-		</md-list>
-  </md-whiteframe>
-  <md-whiteframe class="md-whiteframe-z1" style='background-color: white;' layout='column' layout-margin layout-padding layout-align="start start" flex-gt-md='45' flex='90'>
-  	<div layout='row' layout-align='start space-between'>
-    	<h1>Hardware</h1>
-    	<span flex layout-margin></span>
-    	<h6 style='color: red'>&nbsp;Coming soon!</h6>
-  	</div>
-    <md-list style='width: 90%; margin: 0 auto'>
-		  <md-list-item layout='row' layout-align='space-between center' flex>
-		    	<p>Front Door</p>
-		    	<md-button class="md-fab md-mini" ng-click="deleteHardwareDialog($event)" style='background-color: #FFC107;'>
-		            <i class="material-icons" style='color: white; font-size: 24px; margin: 8px 1px 0px 0px;'>&#xE14C;</i>
-		        </md-button>
-		  </md-list-item>
-		  <md-list-item>
-		    <p>Kids Room</p>
-		    <md-button class="md-fab md-mini" ng-click="deleteHardwareDialog($event)" style='background-color: #FFC107;'>
-		            <i class="material-icons" style='color: white; font-size: 24px; margin: 8px 1px 0px 0px;'>&#xE14C;</i>
-		        </md-button>
-		  </md-list-item>
-		  <md-list-item>
-		    <p>Backyard</p>
-		    <md-button class="md-fab md-mini" ng-click="deleteHardwareDialog($event)" style='background-color: #FFC107;'>
-		            <i class="material-icons" style='color: white; font-size: 24px; margin: 8px 1px 0px 0px;'>&#xE14C;</i>
-		        </md-button>
-		  </md-list-item>
-		  <md-list-item>
-		    <p>Living Room</p>
-		    <md-button class="md-fab md-mini" ng-click="deleteHardwareDialog($event)" style='background-color: #FFC107;'>
-		            <i class="material-icons" style='color: white; font-size: 24px; margin: 8px 1px 0px 0px;'>&#xE14C;</i>
-		        </md-button>
-		  </md-list-item>
-		</md-list>
-  </md-whiteframe>
- </div>
+<div layout="column" layout-fill style="width: 85%; margin: 20px auto;">
+	<div layout='row' layout-align='start start' flex='80'>
+	  <h2 style='margin-top:10px;'>Group: {{ group }}</h2>
+	  <span flex></span>
+	  <div>
+			<md-button class='md-raised md-primary' ng-click='chooseGroup($event)'>Change Group</md-button>
+		</div>
+	</div>
+	<div layout-gt-md="row" layout-md="column" style="width: 85%; margin: 20px auto;">
+	  <md-whiteframe class="md-whiteframe-z1" style='background-color: white;' layout='column' layout-margin layout-padding layout-align="start start" flex-gt-md='45' flex='90'>
+	    <h1>Users</h1>
+	    <md-list style='width: 90%; margin: 0 auto;'>
+			  <md-list-item layout='row' layout-align='space-around center' flex='99'>
+			    	<p>User... </p>
+			    	<md-button class="md-fab md-mini md-primary" ng-click="deleteUserDialog($event)" style='background-color: #FFC107;'>
+			            <i class="material-icons" style='color: white; font-size: 24px; margin: 8px 1px 0px 0px;'>&#xE14C;</i>
+			        </md-button>
+			  </md-list-item>
+			  <md-list-item>
+			    	<p>User...</p>
+			    	<md-button  class="md-fab md-mini" ng-click="deleteUserDialog($event)" style='background-color: #FFC107;'>
+			            <i class="material-icons" style='color: white; font-size: 24px; margin: 8px 1px 0px 0px;'>&#xE14C;</i>
+			        </md-button>
+			  </md-list-item>
+			  <md-list-item >
+			    	<p>User...</p>
+			    	<md-button  class="md-fab md-mini" ng-click="deleteUserDialog($event)" style='background-color: #FFC107;'>
+			            <i class="material-icons" style='color: white; font-size: 24px; margin: 8px 1px 0px 0px;'>&#xE14C;</i>
+			        </md-button>
+			  </md-list-item>
+			  <md-list-item >
+			    	<p>User...</p>
+			    	<md-button  class="md-fab md-mini" ng-click="deleteUserDialog($event)" style='background-color: #FFC107;'>
+			            <i class="material-icons" style='color: white; font-size: 24px; margin: 8px 1px 0px 0px;'>&#xE14C;</i>
+			        </md-button>
+			  </md-list-item>
+			</md-list>
+	  </md-whiteframe>
+	  <md-whiteframe class="md-whiteframe-z1" style='background-color: white;' layout='column' layout-margin layout-padding layout-align="start start" flex-gt-md='45' flex='90'>
+	  	<div layout='row' layout-align='start space-between'>
+	    	<h1>Hardware</h1>
+	    	<span flex layout-margin></span>
+	    	<h6 style='color: red'>&nbsp;Coming soon!</h6>
+	  	</div>
+	    <md-list style='width: 90%; margin: 0 auto'>
+			  <md-list-item layout='row' layout-align='space-between center' flex>
+			    	<p>Front Door</p>
+			    	<md-button class="md-fab md-mini" ng-click="deleteHardwareDialog($event)" style='background-color: #FFC107;'>
+			            <i class="material-icons" style='color: white; font-size: 24px; margin: 8px 1px 0px 0px;'>&#xE14C;</i>
+			        </md-button>
+			  </md-list-item>
+			  <md-list-item>
+			    <p>Kids Room</p>
+			    <md-button class="md-fab md-mini" ng-click="deleteHardwareDialog($event)" style='background-color: #FFC107;'>
+			            <i class="material-icons" style='color: white; font-size: 24px; margin: 8px 1px 0px 0px;'>&#xE14C;</i>
+			        </md-button>
+			  </md-list-item>
+			  <md-list-item>
+			    <p>Backyard</p>
+			    <md-button class="md-fab md-mini" ng-click="deleteHardwareDialog($event)" style='background-color: #FFC107;'>
+			            <i class="material-icons" style='color: white; font-size: 24px; margin: 8px 1px 0px 0px;'>&#xE14C;</i>
+			        </md-button>
+			  </md-list-item>
+			  <md-list-item>
+			    <p>Living Room</p>
+			    <md-button class="md-fab md-mini" ng-click="deleteHardwareDialog($event)" style='background-color: #FFC107;'>
+			            <i class="material-icons" style='color: white; font-size: 24px; margin: 8px 1px 0px 0px;'>&#xE14C;</i>
+			        </md-button>
+			  </md-list-item>
+			</md-list>
+	  </md-whiteframe>
+	</div>
+</div>	
     
 <div class="lock-size" layout="row" layout-align="end end">
   <md-fab-speed-dial md-open="demo.isOpen" md-direction="up" ng-class="demo.selectedMode">
