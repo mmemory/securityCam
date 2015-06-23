@@ -18,6 +18,7 @@ var User = require('./api/models/userModel.js');
 var UserControl = require('./api/controllers/userCtrl.js');
 var ImageControl = require('./api/controllers/imageCtrl.js');
 var HardwareControl = require('./api/controllers/hardwareCtrl.js');
+var adminCtrl = require('./api/controllers/adminCtrl.js');
 var Image = require('./api/models/imageModel.js');
 var QueryControl = require('./api/controllers/queryCtrl.js');
 
@@ -113,8 +114,8 @@ app.get('/auth/logout', UserControl.logoutUser);
 app.get('/api/users/user', UserControl.getCurrentUser);
 app.post('/api/users/register', UserControl.registerUser);
 app.post('/api/auth/login', passport.authenticate('local'), UserControl.authenticate);
-app.post('/api/user/member', UserControl.createNewGroupMember);
-app.delete('/api/user/member', UserControl.removeMember);
+app.post('/api/user/member', adminCtrl.createNewGroupMember);
+app.delete('/api/user/member', adminCtrl.removeMember);
 // Hardware
 app.post('/api/user/hardware', HardwareControl.createHardwareInstance);
 app.delete('api/user/hardware', HardwareControl.deleteHardware);
