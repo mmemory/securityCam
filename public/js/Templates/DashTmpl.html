@@ -3,11 +3,11 @@
     <div layout-gt-md='row' layout-md='column' layout-margin layout-fill>
       <div layout='column' layout-align='start start' layout-margin flex='66'>
         <div layout='row' style='width: 100%;'>
-          <h1 layout-margin>Photos {{ group }}</h1>
+          <h1 layout-margin>Photos {{ groupName }}</h1>
           <span flex></span>
           <md-select ng-model="groupSelect" placeholder="Choose a Group" layout-margin style='padding: 0;'>
             <md-optgroup label="Groups">
-              <md-option ng-value="group" ng-repeat="group in groups" ng-click="recentPics($index)">{{ group.name }}</md-option>
+              <md-option ng-repeat="group in groups" ng-click="recentPics($index)">{{ group.name }}</md-option>
             </md-optgroup>
           </md-select>
         </div>
