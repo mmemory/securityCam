@@ -1,24 +1,26 @@
 <div style="width: 60%;">
-  <md-dialog>
-    <form>
-   		<md-toolbar>
-        <div class="md-toolbar-tools">
-          <h2 style='color: white;'>Delete Hardware</h2>
-          <span flex></span>
-          <md-button class="md-icon-button" ng-click="closeDialog()">
-            <i class="material-icons" style='color: white; font-size: 36px'>&#xE14C;</i>
-          </md-button>
-        </div>
-      </md-toolbar>
-      <div layout-padding>
-        <p>Are you sure you want to delete {{ user.hardware_registered }} from your hardware list? This action cannot be reversed!</p>
-      <div class="md-actions" layout="row">
-        <span flex></span>
-        <md-button ng-click="closeDialog()" class="md-primary">
-          Cancel
-        </md-button>
-        <md-button class='md-primary' ng-click='deleteUser()'>Delete Hardware</md-button>
-      </div>
-    </form>
-  </md-dialog>
+	<md-dialog>
+		<form>
+			<md-toolbar>
+				<div class="md-toolbar-tools">
+					<h2 style='color: white;'>Delete Hardware</h2>
+					<span flex></span>
+					<md-button class="md-icon-button" ng-click="closeDialog()">
+						<i class="material-icons" style='color: white; font-size: 36px'>&#xE14C;</i>
+					</md-button>
+				</div>
+			</md-toolbar>
+			<div layout-padding>
+				<p>Are you sure you want to delete {{ user.hardware_registered }} from your hardware list? This action
+					cannot be reversed!</p>
+			</div>
+			<div class="md-actions" layout="row">
+				<span flex></span>
+				<md-button ng-click="closeDialog()" class="md-primary">
+					Cancel
+				</md-button>
+				<md-button class='md-primary' ng-click='deleteUser()'>Delete Hardware</md-button>
+			</div>
+		</form>
+	</md-dialog>
 </div>

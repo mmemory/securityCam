@@ -8,10 +8,10 @@ var app = angular.module('securityCam')
 
 		$scope.user = user;
     console.log($scope.user);
-    $scope.groups = $scope.user.groups;
+    //$scope.groups = $scope.admin.name;
 
     $scope.admin = adminUser;
-    console.log($scope.admin);
+    console.log('$scope.admin AdminCtrl.js:', $scope.admin);
 	
 
         ////////////////////////
@@ -147,10 +147,10 @@ var app = angular.module('securityCam')
 		function DialogController($scope, $mdDialog) {
 
 			// called from newUserDialog - adds user from Admin Page to selected group
-		  $scope.addUser = function(firstName, lastName, email, password) {
+		  $scope.addUser = function(firstName, lastName, email, password, group_id) {
 		    $mdDialog.hide();
 		    console.log('addUser invoked', firstName, lastName, email, password);
-		    AdminService.registerMember(firstName, lastName, email, password).then(function() {
+		    AdminService.registerMember(firstName, lastName, email, password, group_id).then(function() {
 		    	console.log('User added');
 		    });
 		  };
@@ -185,8 +185,10 @@ var app = angular.module('securityCam')
 			// called from changeGroupsDialog - changes selected group
 		  $scope.changeGroups = function(index) {
 		  	$mdDialog.hide();
-		  	console.log("change Groups invoked. index: ", index);
-		  	console.log($scope.groups[index]);
+		  	//console.log("change Groups invoked. index: ", index);
+		  	//console.log($scope.groups[index]);
+
+              $scope.members = $scope.admin[index].members;
 		  };
 
 			// closes Dialog - called from all Dialogs		  
