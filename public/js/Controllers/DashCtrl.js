@@ -54,11 +54,10 @@ var app = angular.module('securityCam')
             //////////////////////////////////
 
             // gets 5 most recent photos
-            $scope.recentPics = function() {
-                dashService.getFive($scope.group._id)
-                    .then(function(response) {
-                        $scope.pictures = response.data;
-                });
+            $scope.recentPics = function(index) {
+                console.log('scope.groups[index]:', $scope.groups[index]);
+
+                return dashService.getFive($scope.groups[index]._id)
             };
 
             ///////////////////////////////////////
