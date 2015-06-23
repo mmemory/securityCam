@@ -39,22 +39,25 @@ var app = angular.module('securityCam')
 	  $scope.registerUser = function(firstname, lastname, email, groupName, password) {
 	    $mdDialog.hide();
 	    console.log('addUser invoked', firstname, lastname, email, groupName, password);
-	    LoginService.signup(firstname, lastname, email, groupName, password).then(function(res) {
-	    	$scope.loginUser(email, password);
-	    })
-	    .catch(function(err) {
-	    	$scope.error = err;
-	    	console.log($scope.error);
-	    });
+	    LoginService.signup(firstname, lastname, email, groupName, password)
+            .then(function(res) {
+	    	    $scope.loginUser(email, password);
+            })
+            .catch(function(err) {
+                $scope.error = err;
+                console.log($scope.error);
+            });
 	  };
 
 	  $scope.loginUser = function(email, password) {
 	    $mdDialog.hide();
 	    console.log('addUser invoked', email, password);
-	    LoginService.login(email, password).then(function() {
-	    	console.log('about to route to dash');
-				$location.path('dashboard');
-			}).catch(function(err) {
+	    LoginService.login(email, password)
+            .then(function() {
+                console.log('about to route to dash');
+                    $location.path('dashboard');
+                })
+            .catch(function(err) {
 				console.log($scope.error);
 				$scope.error="There was an error with the Username or Password, please try again!";
 			});

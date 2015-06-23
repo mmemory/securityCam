@@ -3,8 +3,7 @@ var app = angular.module('securityCam')
 		function($scope, $mdDialog, user, AdminService) {
 		
 		$scope.user = user;
-    $scope.authorized = user.email;
-    console.log($scope.user);
+        console.log($scope.user);
 		
 		// Function to add a new user
 		// $scope.addUser = function(name, lastname, email, password) {
@@ -20,7 +19,7 @@ var app = angular.module('securityCam')
 
 		$scope.closeDialog = function() {
      	console.log('user registration cancelled');
-      $mdDialog.hide();
+        $mdDialog.hide();
     };
 		// New user dialog pop-up
 		$scope.addNewUser = function(ev) {
