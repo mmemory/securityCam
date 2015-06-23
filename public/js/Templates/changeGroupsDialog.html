@@ -1,23 +1,26 @@
 <div style="width: 60%;">
   <md-dialog>
     <form>
-   		<md-toolbar>
+    	<md-toolbar>
         <div class="md-toolbar-tools">
-          <h2 style='color: white;'>Delete User</h2>
+          <h2 style='color: white;'>Change Groups</h2>
           <span flex></span>
           <md-button class="md-icon-button" ng-click="closeDialog()">
             <i class="material-icons" style='color: white; font-size: 36px'>&#xE14C;</i>
           </md-button>
         </div>
       </md-toolbar>
-      <div layout-padding>
-        <p>Are you sure you want to delete this user? This action cannot be reversed!</p>
-      <div class="md-actions" layout="row">
-        <span flex></span>
-        <md-button ng-click="closeDialog()" class="md-primary">
-          Cancel
-        </md-button>
-        <md-button class='md-primary' ng-click='deleteUser()'>Delete User</md-button>
+	    <div layout='row'>
+	      <md-select ng-model="groupID" placeholder="Choose a Group" layout-margin style='padding: 0; margin: 10px auto'>
+	        <md-optgroup label="Groups">
+	          <md-option ng-value="group" ng-repeat="group in groups">{{ group }}</md-option>
+	        </md-optgroup>
+	      </md-select>
+	    </div>
+	    <div layout='row'>
+	    	<span flex></span>
+	      <md-button ng-click="closeDialog()" class="md-primary">Cancel</md-button>
+	      <md-button class='md-primary' ng-click='changeGroup(group)'>Change Groups</md-button>
       </div>
     </form>
   </md-dialog>

@@ -56,6 +56,23 @@ var app = angular.module('securityCam')
 		    });
 		};
 
+		$scope.chooseGroup = function(ev) {
+			console.log("chooseGroup clicked AdminCtrl");
+		    $mdDialog.show({
+		      controller: DialogController,
+		      scope: $scope,
+		      preserveScope: true,		     
+		      parent: angular.element(document.body),
+		      clickOutsideToClose: true,
+		      title: 'Change Groups',
+		      templateUrl: 'js/Templates/changeGroupsDialog.html',
+		      targetEvent: ev
+		  	})
+		    .then(function() {
+		    	$scope.addHardware(name, email);
+		    });
+		};
+
 		function DialogController($scope, $mdDialog) {
 		  $scope.addUser = function(firstName, lastName, email, password) {
 		    $mdDialog.hide();
@@ -83,6 +100,12 @@ var app = angular.module('securityCam')
 		  	AdminService.deleteHardware().then(function(res) {
 		  		console.log('hardware deleted :(');
 		  	});
+		  };
+
+		  $scope.changeGroups = function(newGroup) {
+		  	$mdDialog.hide();
+		  	console.log("change Groups invoked");
+		  	$scope.group = newGroup;
 		  };
 
 		}
