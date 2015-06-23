@@ -124,13 +124,7 @@ app.get('/api/d3/ten-days', requireAuth, QueryControl.findImagesFromPastTenDays)
 app.get('/api/d3/thirty-days', requireAuth, QueryControl.findImagesFromPastThirtyDays);
 // Image Data
 app.post('/api/image-data', logMe, ImageControl.receiveImageFromHardware);
-app.get('/api/image-data', logMe, function(req, res) {
-    Image.find(function(err, images) {
-        if (err) console.log('Error getting images', err);
-
-        res.send(images);
-    })
-});
+//app.get('/api/images', logMe, ImageControl.getAllGroupImages);
 
 
 
