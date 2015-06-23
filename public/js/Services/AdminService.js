@@ -35,6 +35,7 @@ var app = angular.module('securityCam')
                         password: password
                     }
                 }).then(function(res) {
+                    console.log(res);
                     deferred.resolve(res.data);
                     console.log(res.data);
                 }).catch(function(res) {
@@ -52,9 +53,9 @@ var app = angular.module('securityCam')
                         email: email
                     }
                 }).then(function(res) {
-                    deferred.resolve(res.data)
-                })
-            }
+                    deferred.resolve(res.data);
+                });
+            };
             this.deleteCamera = function(hardware) {
                 var deferred = $q.defer();
                 $http({
@@ -62,9 +63,9 @@ var app = angular.module('securityCam')
                     URL: '/api/user/hardware',
                     data: hardware
                 }).then(function(res) {
-                    deferred.resolve(res.data)
-                })
-            }
+                    deferred.resolve(res.data);
+                });
+            };
 
         }
     ]); // End Service //

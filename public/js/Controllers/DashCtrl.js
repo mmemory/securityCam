@@ -55,12 +55,12 @@ var app = angular.module('securityCam')
 
 
             // save array of numbers for photos taken in last thirty days here:      
-            $scope.thirtyDay = [78, 24, 76, 89, 67, 78, 87, 54, 68, 89, 43, 90, 77, 63, 81, 63, 86, 55, 72, 90, 12, 77, 89, 59, 70, 22, 67, 30, 87, 73]
+            $scope.thirtyDay = [78, 24, 76, 89, 67, 78, 87, 54, 68, 89, 43, 90, 77, 63, 81, 63, 86, 55, 72, 90, 12, 77, 89, 59, 70, 22, 67, 30, 87, 73];
 
 
             // This is for the groups that user is a part of - will come from Mongo. We need to determine 
             // how to seperate all data based on which 'group' user decides to view
-            $scope.groups = []
+            $scope.groups = [];
 
             $scope.user = user;
             $scope.authorized = user.email;
@@ -71,17 +71,17 @@ var app = angular.module('securityCam')
                 var groupAdminName = $scope.user.group_admin.name;
                 if (groupAdminName) {
                     groups.unshift(groupAdminName);
-                };
+                }
                 for (var i = 0; i < groupName.length; i++) {
                     groups.push(groupName[i]);
-                };
+                }
                 console.log($scope.user.group_member);
             };
             displayGroups($scope.groups);
 
 
             $scope.filterPhotos = function(ev) {
-                console.log("Filter clicked DashCtrl")
+                console.log("Filter clicked DashCtrl");
                 $mdDialog.show({
                     controller: FilterController,
                     scope: $scope,
@@ -93,8 +93,8 @@ var app = angular.module('securityCam')
                     targetEvent: ev
                 })
                     .then(function() {
-                        console.log('filtering...')
-                    })
+                        console.log('filtering...');
+                    });
             };
 
             function FilterController($scope, $mdDialog) {
@@ -108,24 +108,24 @@ var app = angular.module('securityCam')
                     var groupID = $scope.groupID;
                     dashService.getPics(groupID, startDate, endDate).then(function(response) {
                         console.log("response");
-                        $scope.queryPics = response.data
+                        $scope.queryPics = response.data;
                     }).catch(function(err) {
                         $scope.error = err;
                         console.log($scope.error);
-                        })
+                        });
                 };
 
                 $scope.recentPics = function() {
                     dashService.getFive().then(function(response) {
                         $scope.pictures = response.data;
-                    })
-                }
+                    });
+                };
 
                 $scope.closeDialog = function() {
                     $mdDialog.hide();
-                    console.log('filtering cancelled')
+                    console.log('filtering cancelled');
                 };
-            };
+            }
 
         }
-    ]) // End MainCtrl //
+    ]); // End MainCtrl //

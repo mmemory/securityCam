@@ -38,7 +38,7 @@ var app = angular.module('securityCam');
 				deferred.resolve(res.data);
 			}).catch(function(res) {
 				deferred.reject(res.data);
-			})
+			});
 			return deferred.promise;
 		};
 

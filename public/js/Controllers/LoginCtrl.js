@@ -11,15 +11,15 @@ var app = angular.module('securityCam')
 			$location.path('dashboard');
 		}).catch(function(err) {
 			console.log($scope.error);
-			$scope.error="There was an error with the Username or Password, please try again!"
+			$scope.error="There was an error with the Username or Password, please try again!";
 			document.getElementById('erase').value = '';
 			
-		})
+		});
 
 	};
 
 	$scope.register = function(ev) {
-		console.log("Register clicked LoginCtrl")
+		console.log("Register clicked LoginCtrl");
     $mdDialog.show({
       controller: RegisterController,
       parent: angular.element(document.body),
@@ -29,8 +29,8 @@ var app = angular.module('securityCam')
       targetEvent: ev
   	})
     .then(function() {
-    	console.log('registering...')
-    })
+    	console.log('registering...');
+    });
   };
 
   function RegisterController($scope, $mdDialog) {
@@ -43,15 +43,15 @@ var app = angular.module('securityCam')
 	    .catch(function(err) {
 	    	$scope.error = err;
 	    	console.log($scope.error);
-	    })
+	    });
 	  };
 
 	  $scope.closeDialog = function() {
 	    $mdDialog.hide();
-	    console.log('registration cancelled')
+	    console.log('registration cancelled');
 	  };
-	};
+	}
 
 
 
-}]) // End RegisCtrl.js //
+}]); // End RegisCtrl.js //

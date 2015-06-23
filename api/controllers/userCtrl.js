@@ -133,7 +133,8 @@ module.exports = {
                     console.log('newMember:', newMember);
 
                     // Update group_member array with group ID
-                    User.findByIdAndUpdate(newMember._id, {$push: {group_member: req.user.group_admin._id}}, function(err, updatedNewUser) {
+                    console.log('req.user from userCtrl 136', req.user);
+                    User.findByIdAndUpdate(newMember._id, {$push: {group_member: req.user.group_admin}}, function(err, updatedNewUser) {
                         if (err) res.send('Error adding group ID to new member groups');
 
                         res.send();
