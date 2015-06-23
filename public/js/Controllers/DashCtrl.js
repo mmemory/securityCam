@@ -20,20 +20,10 @@ var app = angular.module('securityCam')
 
             // This is for the groups that user is a part of - will come from Mongo. We need to determine
             // how to seperate all data based on which 'group' user decides to view
-            $scope.groups = [];
 
             $scope.user = user;
             console.log($scope.user);
-
-            var displayGroups = function(groups) {
-                var groupArray = $scope.user.group;
-
-                for (var i = 0; i < groupArray.length; i++) {
-                    groups.push(groupArray[i].name);
-                }
-            };
-            displayGroups($scope.groups);
-
+            $scope.groups = $scope.user.groups;
 
             $scope.filterPhotos = function(ev) {
                 console.log("Filter clicked DashCtrl");
@@ -72,8 +62,9 @@ var app = angular.module('securityCam')
                 };
 
                 $scope.recentPics = function() {
-                    dashService.getFive().then(function(response) {
-                        $scope.pictures = response.data;
+                    dashService.getFive($scope.group._id)
+                        .then(function(response) {
+                            $scope.pictures = response.data;
                     });
                 };
 

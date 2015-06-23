@@ -5,9 +5,9 @@
         <div layout='row' style='width: 100%;'>
           <h1 layout-margin>Photos {{ group }}</h1>
           <span flex></span>
-          <md-select ng-model="groupID" placeholder="Choose a Group" layout-margin style='padding: 0;'>
+          <md-select ng-model="group" placeholder="Choose a Group" layout-margin style='padding: 0;'>
             <md-optgroup label="Groups">
-              <md-option ng-value="group" ng-repeat="group in groups">{{ group }}</md-option>
+              <md-option ng-value="group" ng-repeat="group in groups" ng-click="recentPics()">{{ group.name }}</md-option>
             </md-optgroup>
           </md-select>
         </div>
