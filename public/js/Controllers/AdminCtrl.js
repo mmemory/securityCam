@@ -1,14 +1,17 @@
 var app = angular.module('securityCam')
-	.controller('AdminCtrl', ['$scope', '$mdDialog', 'user', 'AdminService', 
-		function($scope, $mdDialog, user, AdminService) {
+	.controller('AdminCtrl', ['$scope', '$mdDialog', 'user', 'AdminService', 'adminUser', 
+		function($scope, $mdDialog, user, AdminService, adminUser) {
 		
-	      ///////////////////////////////
-	      //      Define User Obj
-	      ///////////////////////////////
+	      //////////////////////////////////////////////
+	      //      Define User Obj and Admin Obj
+	      //////////////////////////////////////////////
 
 		$scope.user = user;
     console.log($scope.user);
     $scope.groups = $scope.user.groups;
+
+    $scope.admin = adminUser;
+    console.log($scope.admin);
 	
 
         ////////////////////////
