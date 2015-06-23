@@ -14,9 +14,9 @@ var app = angular.module('securityCam')
             $scope.thirtyDay = [78, 24, 76, 89, 67, 78, 87, 54, 68, 89, 43, 90, 77, 63, 81, 63, 86, 55, 72, 90, 12, 77, 89, 59, 70, 22, 67, 30, 87, 73];
 
 
-            ////////////////////////////
-            //      DATA DISPLAY
-            ///////////////////////////
+    ////////////////////////////
+    //      DATA DISPLAY
+    ///////////////////////////
 
             // This is for the groups that user is a part of - will come from Mongo. We need to determine
             // how to seperate all data based on which 'group' user decides to view
@@ -25,6 +25,12 @@ var app = angular.module('securityCam')
             console.log($scope.user);
             $scope.groups = $scope.user.groups;
 
+            /////////////////////////////////////////
+            //      Filter THrough Photos
+            /////////////////////////////////////////
+
+
+            // Opens filterPhotoDialog
             $scope.filterPhotos = function(ev) {
                 console.log("Filter clicked DashCtrl");
                 $mdDialog.show({
@@ -42,11 +48,29 @@ var app = angular.module('securityCam')
                     });
             };
 
-            // CONTROLLER //
+
+            //////////////////////////////////
+            //      latest 5 images
+            //////////////////////////////////
+
+            // gets 5 most recent photos
+            $scope.recentPics = function() {
+                dashService.getFive($scope.group._id)
+                    .then(function(response) {
+                        $scope.pictures = response.data;
+                });
+            };
+
+            ///////////////////////////////////////
+            //      Controller for Dialogs
+            ///////////////////////////////////////
+
             function FilterController($scope, $mdDialog) {
-                $scope.runTest = function(startDate, endDate) {
+
+                // Filters photos - called from filterPhotoDialog
+                $scope.filterImages = function(startDate, endDate) {
                     $mdDialog.hide();
-                    console.log('filterPhotos invoked', startDate, endDate);
+                    console.log('filterImages invoked', startDate, endDate);
                     var startDate = Date.parse($scope.startDate);
                     //console.log(startDate);
                     var endDate = Date.parse($scope.endDate);
@@ -61,18 +85,12 @@ var app = angular.module('securityCam')
                         });
                 };
 
-                $scope.recentPics = function() {
-                    dashService.getFive($scope.group._id)
-                        .then(function(response) {
-                            $scope.pictures = response.data;
-                    });
-                };
-
+                // Closes Dialog - called from all Dialogs
                 $scope.closeDialog = function() {
                     $mdDialog.hide();
                     console.log('filtering cancelled');
                 };
-            }
+            } // Ends FilterController
 
         }
     ]); // End MainCtrl //

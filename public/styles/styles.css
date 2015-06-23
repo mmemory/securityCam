@@ -33,3 +33,44 @@
 .login {
 	opacity: .9;
 }
+
+.adminMain {
+	width: 85%; 
+	margin: 20px auto;
+}
+
+.adminHeader {
+	margin-top: 10px;
+}
+
+.adminBoxes {
+	width: 85%; 
+	margin: 20px auto;
+}
+
+.usersBox {
+	background-color: white;
+}
+
+.userList {
+	width: 90%; 
+	margin: 0 auto;
+}
+
+.deleteUser {
+	background-color: #FFC107;
+}
+
+.userIcon {
+	color: white; 
+	font-size: 24px; 
+	margin: 8px 0px 0px 0px;
+}
+
+.hardwareBox {
+	background-color: white;
+}
+
+.comingSoon {
+	color: red;
+}
