@@ -41,8 +41,11 @@ var app = angular.module('securityCam', ['ngMaterial', 'ui.router'])
             },
             resolve: {
               user: function(mainService) {
-                return mainService.adminUser();
-              }
+                return mainService.user();
+              },
+                adminUser: function(mainService) {
+                    return mainService.adminUser();
+                }
             }
         })
         .state('welcome', {

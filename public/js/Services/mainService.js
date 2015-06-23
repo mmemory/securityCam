@@ -22,7 +22,7 @@ var app = angular.module('securityCam')
                 var deferred = $q.defer();
                 $http({
                     method: 'GET',
-                    url: '/api/users/user'
+                    url: '/api/users/admin'
                 }).then(function(res) {
                     //console.log('success', res.data);
                     var userObj = res.data;
