@@ -179,10 +179,11 @@ var app = angular.module('securityCam')
 		  };
 
 			// called from changeGroupsDialog - changes selected group
-		  $scope.changeGroups = function(newGroup) {
+		  $scope.changeGroups = function(index) {
 		  	$mdDialog.hide();
-		  	console.log("change Groups invoked");
-		  	$scope.group = newGroup;
+		  	console.log("change Groups invoked. index: ", index);
+		  	$scope.group = $scope.group[index];
+		  	console.log($scope.group);
 		  };
 
 			// closes Dialog - called from all Dialogs		  
