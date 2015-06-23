@@ -13,14 +13,12 @@
 	    <div layout='row'>
 	      <md-select ng-model="group" placeholder="Choose a Group" layout-margin style='padding: 0; margin: 10px auto'>
 	        <md-optgroup label="Groups">
-	          <md-option ng-value="group" ng-repeat="group in groups">{{ group.name }}</md-option>
+	          <md-option ng-value="group" ng-click='changeGroups($index)' ng-repeat="group in groups">{{ group.name }}</md-option>
 	        </md-optgroup>
 	      </md-select>
 	    </div>
 	    <div layout='row'>
 	    	<span flex></span>
-	      <md-button ng-click="closeDialog()" class="md-primary">Cancel</md-button>
-	      <md-button class='md-primary' ng-click='changeGroups($index)'>Change Groups</md-button>
       </div>
     </form>
   </md-dialog>

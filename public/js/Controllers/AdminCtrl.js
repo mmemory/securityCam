@@ -2,17 +2,18 @@ var app = angular.module('securityCam')
 	.controller('AdminCtrl', ['$scope', '$mdDialog', 'user', 'AdminService', 
 		function($scope, $mdDialog, user, AdminService) {
 		
-      ////////////////////////////
-      //      Define User Obj
-      ///////////////////////////
+	      ///////////////////////////////
+	      //      Define User Obj
+	      ///////////////////////////////
+
 		$scope.user = user;
     console.log($scope.user);
     $scope.groups = $scope.user.groups;
 	
 
-        ////////////////////////////
+        ////////////////////////
         //      Add user
-        ///////////////////////////
+        ///////////////////////
 
     // Adds user from the Admin Page into selected group
 		$scope.addNewUser = function(ev) {
@@ -182,8 +183,7 @@ var app = angular.module('securityCam')
 		  $scope.changeGroups = function(index) {
 		  	$mdDialog.hide();
 		  	console.log("change Groups invoked. index: ", index);
-		  	$scope.group = $scope.group[index];
-		  	console.log($scope.group);
+		  	console.log($scope.groups[index]);
 		  };
 
 			// closes Dialog - called from all Dialogs		  
