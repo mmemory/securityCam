@@ -1,5 +1,6 @@
 var app = angular.module('securityCam')
-	.controller('AdminCtrl', ['$scope', '$mdDialog', 'user', 'AdminService', function($scope, $mdDialog, user, AdminService) {
+	.controller('AdminCtrl', ['$scope', '$mdDialog', 'user', 'AdminService', 
+		function($scope, $mdDialog, user, AdminService) {
 		
 		$scope.user = user;
     $scope.authorized = user.email;

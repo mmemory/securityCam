@@ -12,12 +12,10 @@
           </md-select>
         </div>
         <md-button class='md-primary' ng-click='filterPhotos($event)'>Filter by date</md-button>
-        <div layout='row' layout-margin flex-wrap>
-          <div style='width: 200px; height: 140px; border: 1px solid black;' flex='45'></div>
-          <div style='width: 200px; height: 140px; border: 1px solid black;' flex='45'></div>
-          <div style='width: 200px; height: 140px; border: 1px solid black;' flex='45'></div>
-          <div style='width: 200px; height: 140px; border: 1px solid black;' flex='45'></div>
-          <div style='width: 200px; height: 140px; border: 1px solid black;' flex='45'></div>
+        <div layout='column' layout-padding layout-margin layout-align='start center' flex='45'>
+          <div style='width: 200px; height: 140px; border: 1px solid black; margin: 0 auto;' ng-repeat="picture in pictures">
+          <img src="{{pictures}}">
+          </div>
         </div>
       </div>
       <span flex></span>
