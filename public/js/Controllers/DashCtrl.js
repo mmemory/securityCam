@@ -49,6 +49,23 @@ var app = angular.module('securityCam')
             };
 
 
+            $scope.openPhoto = function(ev) {
+                console.log("openPhoto clicked DashCtrl");
+                $mdDialog.show({
+                    controller: FilterController,
+                    scope: $scope,
+                    preserveScope: true,
+                    parent: angular.element(document.body),
+                    clickOutsideToClose: true,
+                    title: 'Open Photo',
+                    templateUrl: 'js/Templates/openPhotoDialog.html',
+                    targetEvent: ev
+                })
+                    .then(function() {
+                        console.log('opening photo...');
+                    });
+            };
+
             //////////////////////////////////
             //      latest 5 images
             //////////////////////////////////
@@ -59,7 +76,7 @@ var app = angular.module('securityCam')
 
                 $scope.groupName = $scope.groups[index].name;
 
-                return dashService.getFive($scope.groups[index]._id)
+                return dashService.getFive($scope.groups[index]._id);
             };
 
             ///////////////////////////////////////
