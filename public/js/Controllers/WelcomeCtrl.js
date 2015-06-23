@@ -2,7 +2,7 @@ var app = angular.module('securityCam')
 	.controller('WelcomeCtrl', ['$scope', '$mdDialog', '$location', '$document', 'LoginService', function($scope, $mdDialog, $location, $document, LoginService) {
 	
 	$scope.login = function(ev) {
-		console.log("Login clicked WelcomeCtrl")
+		console.log("Login clicked WelcomeCtrl");
     $mdDialog.show({
       controller: RegisterController,
       scope: $scope,
@@ -14,12 +14,12 @@ var app = angular.module('securityCam')
       targetEvent: ev
   	})
     .then(function() {
-    	console.log('logging in...')
-    })
+    	console.log('logging in...');
+    });
 	};
 
 	$scope.register = function(ev) {
-		console.log("Register clicked WelcomeCtrl")
+		console.log("Register clicked WelcomeCtrl");
     $mdDialog.show({
       controller: RegisterController,
       scope: $scope,
@@ -31,8 +31,8 @@ var app = angular.module('securityCam')
       targetEvent: ev
   	})
     .then(function() {
-    	console.log('registering...')
-    })
+    	console.log('registering...');
+    });
   };
 
   function RegisterController($scope, $mdDialog) {
@@ -45,7 +45,7 @@ var app = angular.module('securityCam')
 	    .catch(function(err) {
 	    	$scope.error = err;
 	    	console.log($scope.error);
-	    })
+	    });
 	  };
 
 	  $scope.loginUser = function(email, password) {
@@ -56,20 +56,20 @@ var app = angular.module('securityCam')
 				$location.path('dashboard');
 			}).catch(function(err) {
 				console.log($scope.error);
-				$scope.error="There was an error with the Username or Password, please try again!"
-			})
+				$scope.error="There was an error with the Username or Password, please try again!";
+			});
 	  };
 
 	  $scope.closeDialog = function() {
 	    $mdDialog.hide();
-	    console.log('registration cancelled')
+	    console.log('registration cancelled');
 	  };
-	};
+	}
 
 	$scope.scroll = function() {
-		console.log('scroll clicked')
+		console.log('scroll clicked');
 		$document.scrollToElementAnimated('section');
 	};
 	
 
-}]) // End MainCtrl //
+}]); // End MainCtrl //

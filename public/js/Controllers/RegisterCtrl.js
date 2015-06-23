@@ -11,9 +11,9 @@ var app = angular.module('securityCam')
 		}).catch(function(err) {
 			$scope.error = err;
 			console.log($scope.error);
-			document.getElementsByClassName('erase').value = ""
-		})
+			document.getElementsByClassName('erase').value = "";
+		});
 			
-	}
+	};
 
-}]) // End RegisCtrl.js //
+}]); // End RegisCtrl.js //

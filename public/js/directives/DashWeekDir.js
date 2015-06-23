@@ -10,7 +10,7 @@ angular.module('securityCam')
 
 	      var buildGraph = function() {
 
-      		var bardata = scope.barData
+      		var bardata = scope.barData;
 	      	// console.log('bardata', bardata, 'scope.barData', scope.barData)
 
 	      	var height = 50,
@@ -28,22 +28,22 @@ angular.module('securityCam')
 				    .style('opacity', .3)
 				    .html(function(d) {
 					    return "<a ui-sref='admin'></a>";
-  					})
+  					});
 
 				  var colors = d3.scale.linear()
 				  	.domain([0, d3.max(bardata)])
-			  		.range(['#5C6BC0', '#C5CAE9'])
+			  		.range(['#5C6BC0', '#C5CAE9']);
 
 				  var test = d3.max(bardata);
 				  // console.log("max test", test);
 
 	      	var yScale = d3.scale.linear()
 	      		.domain([0, d3.max(bardata)])
-	      		.range([0, height])
+	      		.range([0, height]);
 
 	      	var xScale = d3.scale.ordinal()
 	      		.domain(d3.range(0, bardata.length))
-	      		.rangeBands([0, width], .1)
+	      		.rangeBands([0, width], .1);
 
 	      	var canvas = d3.select(element[0]).append('svg')
 	      		.attr('width', width + margin.left + margin.right)
@@ -65,24 +65,24 @@ angular.module('securityCam')
 							 //    .text(function(d) { return d; })
 						.on('mouseover', function (d) {
 					        tooltip.transition()
-					            .style('opacity', .9)
+					            .style('opacity', .9);
 					        tooltip.html(d + " photos")
 					            .style('left', (d3.event.pageX - 40) + 'px')
-					            .style('top', (d3.event.pageY - 50) + 'px')
+					            .style('top', (d3.event.pageY - 50) + 'px');
 					        tempColor = this.style.fill;
 					        d3.select(this)
 					            // .style('opacity', .6)
-					            .style('fill', '#385071')
+					            .style('fill', '#385071');
 					            // .attr('height', function(d) { return yScale(d) - 15 })
 					            // .attr('y', function(d) { return height - yScale(d) - 30 })
 					    })
 					  .on('mouseout', function(d) {
 					        tooltip.transition()
 					            .style('opacity', 0)
-					            .duration(200)
+					            .duration(200);
 					        d3.select(this)
 					            .style('opacity', 1)
-					            .style('fill', tempColor)
+					            .style('fill', tempColor);
 					            // .attr('height', function(d) { return yScale(d) })
 					            // .attr('y', function(d) { return height - yScale(d) })
 					  });
@@ -92,27 +92,27 @@ angular.module('securityCam')
 						.attr('y', function(d) { return height - yScale(d); })
 						// .delay(function(d, i) { return i * 150 })
 						.duration(1500)
-						.ease('elastic')
+						.ease('elastic');
 
 					var vAxis = d3.svg.axis()
 						.scale(yScale)
 						.orient('left')
-						.ticks(8)
+						.ticks(8);
 
-					var vGuide = d3.select('svg'[0]).append('g')
-						vAxis(vGuide)
-						vGuide.attr('transform', 'translate(35, 0)')
+					var vGuide = d3.select('svg'[0]).append('g');
+						vAxis(vGuide);
+						vGuide.attr('transform', 'translate(35, 0)');
 						vGuide.selectAll('path')
-							.style({ fill: 'none', stroke: '#000' })
+							.style({ fill: 'none', stroke: '#000' });
 						vGuide.selectAll('line')
 							.style({ stroke: '#000' })
-							.style('font-size', '10px')
-				}
+							.style('font-size', '10px');
+				};
 
       	// $interval(buildGraph, 3500, 1);
       	buildGraph();
 
-    	})
+    	});
   	}
-  }  
+  } ; 
 }]);

@@ -2,7 +2,7 @@ var app = angular.module('securityCam', ['ngMaterial', 'ui.router'])
 	.config(['$mdThemingProvider', '$stateProvider', '$urlRouterProvider', function($mdThemingProvider, $stateProvider, $urlRouterProvider) {
   	$mdThemingProvider.theme('default')
     	.primaryPalette('light-blue')
-    	.accentPalette('pink')
+    	.accentPalette('pink');
 
     $urlRouterProvider.otherwise('/welcome');
 
@@ -53,7 +53,7 @@ var app = angular.module('securityCam', ['ngMaterial', 'ui.router'])
                     controller: 'WelcomeCtrl' 
                 }, 
             },
-        })
+        });
 
     }
-]) // end config //
+]); // end config //
