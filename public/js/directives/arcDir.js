@@ -20,11 +20,11 @@ angular.module('securityCam')
 					  	.range(['#EF9A9A', '#FFCDD2'])
 
 					var canvas = d3.select(element[0]).append('svg')
-						.attr('width', 345)
+						.attr('width', 260)
 						.attr('height', 130);
 
 					var group = canvas.append('g')
-						.attr('transform', 'translate(170, 65)');
+						.attr('transform', 'translate(0, 65)');
 
 					var arc = d3.svg.arc()
 						.innerRadius(30) //set to 0 for a pie chart

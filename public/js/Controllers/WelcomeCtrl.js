@@ -5,6 +5,8 @@ var app = angular.module('securityCam')
 		console.log("Login clicked WelcomeCtrl")
     $mdDialog.show({
       controller: RegisterController,
+      scope: $scope,
+      preserveScope: true,
       parent: angular.element(document.body),
       clickOutsideToClose: true,
       title: 'Login',
@@ -37,8 +39,8 @@ var app = angular.module('securityCam')
 	  $scope.registerUser = function(firstname, lastname, email, groupName, password) {
 	    $mdDialog.hide();
 	    console.log('addUser invoked', firstname, lastname, email, groupName, password);
-	    LoginService.signup(firstname, lastname, email, groupName, password).then(function() {
-	    	$location.path('dashboard');
+	    LoginService.signup(firstname, lastname, email, groupName, password).then(function(res) {
+	    	$scope.loginUser(email, password);
 	    })
 	    .catch(function(err) {
 	    	$scope.error = err;
@@ -46,10 +48,11 @@ var app = angular.module('securityCam')
 	    })
 	  };
 
-	  $scope.login = function(email, password) {
+	  $scope.loginUser = function(email, password) {
 	    $mdDialog.hide();
 	    console.log('addUser invoked', email, password);
-	    LoginService.login($scope.email, $scope.password).then(function() {
+	    LoginService.login(email, password).then(function() {
+	    	console.log('about to route to dash');
 				$location.path('dashboard');
 			}).catch(function(err) {
 				console.log($scope.error);

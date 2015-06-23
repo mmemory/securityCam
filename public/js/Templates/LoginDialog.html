@@ -14,13 +14,13 @@
         <md-content>
     	   	<md-input-container>
 		      	<label>Email</label>
-		      	<input ng-model="email" type='email' required="true">
+		      	<input ng-model="loginEmail" type='email' required="true">
 		    	</md-input-container>
   		  </md-content>
         <md-content>
            <md-input-container>
             <label>Password</label>
-            <input ng-model="password" type='password' required="true">
+            <input ng-model="loginPassword" type='password' required="true">
           </md-input-container>
         </md-content>
   		</div>
@@ -29,7 +29,7 @@
         <md-button ng-click="closeDialog()" class="md-primary">
           Cancel
         </md-button>
-        <md-button ng-click="login(email, password)" class="md-primary">
+        <md-button ng-click="loginUser(loginEmail, loginPassword)" class="md-primary">
           Login
         </md-button>
       </div>

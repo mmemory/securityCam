@@ -14,7 +14,7 @@ angular.module('securityCam')
 	      	// console.log('bardata', bardata, 'scope.barData', scope.barData)
 
 	      	var height = 50,
-	      		  width = 250,
+	      		  width = 190,
 	      		  margin = { top: 5, right: 5, bottom: 7, left: 5},
 	      		  barWidth = 20,
 	      		  barOffset = 5;

@@ -1,31 +1,17 @@
 <div layout-margin>
-  <md-whiteframe class="md-whiteframe-z1" layout layout-padding layout-align="start start" style='background-color: white; height: 600px;' flex='99'>
-    <div layout='column' layout-align='center start' layout-margin style='width: 100%;'>
-      <div layout='row' style='width: 100%;'>
-        <h1 layout-margin>Photos {{ group }}</h1>
-        <span flex></span>
-        <md-select ng-model="groupID" placeholder="Choose a Group" layout-margin style='padding: 0;'>
-          <md-optgroup label="Groups">
-            <md-option ng-value="group" ng-repeat="group in groups">{{ group }}</md-option>
-          </md-optgroup>
-        </md-select>
-      </div>
-      <md-button class='md-primary' ng-click='filterPhotos($event)'>Filter by date</md-button>
-      <div layout='row' layout-align='start start' layout-margin flex>
-        <!-- <div layout='column' layout-align='start start' flex='25'>
-          <h6 layout-margin>Search Photos</h6>
-          <form layout='column'>
-            <md-input-container flex>
-              <label>Start Date</label>
-              <input type="date" ng-model="startDate">
-            </md-input-container>
-            <md-input-container flex>
-              <label>End Date</label>
-              <input type="date" ng-model="endDate">
-            </md-input-container>
-            <md-button class='md-raised md-primary' ng-click='runTest(startDate, endDate)'>Filter Photos</md-button>
-          </form>
-        </div> -->
+  <md-whiteframe class="md-whiteframe-z1" layout layout-padding layout-align="start start" style='background-color: white;' flex='99'>
+    <div layout-gt-md='row' layout-md='column' layout-margin layout-fill>
+      <div layout='column' layout-align='start start' layout-margin flex='66'>
+        <div layout='row' style='width: 100%;'>
+          <h1 layout-margin>Photos {{ group }}</h1>
+          <span flex></span>
+          <md-select ng-model="groupID" placeholder="Choose a Group" layout-margin style='padding: 0;'>
+            <md-optgroup label="Groups">
+              <md-option ng-value="group" ng-repeat="group in groups">{{ group }}</md-option>
+            </md-optgroup>
+          </md-select>
+        </div>
+        <md-button class='md-primary' ng-click='filterPhotos($event)'>Filter by date</md-button>
         <div layout='column' layout-padding layout-margin layout-align='start center' flex='45'>
           <div style='width: 200px; height: 140px; border: 1px solid black; margin: 0 auto;' ng-repeat="picture in pictures">
           <img src="{{pictures}}">
@@ -33,40 +19,42 @@
         </div>
       </div>
       <span flex></span>
-      <div layout='row' layout-wrap style='height: auto' layout-align='start start' layout-align-gt-md='center start' layout-fill>
-        <md-whiteframe class="md-whiteframe-z2" style='background-color: white; height: 200px; padding: 0; color: white;' layout='column' layout-align='center start' layout-margin flex-md='45' flex-gt-md='30'>
-          <span style='width:100%; height: 65%; background: #7986CB;' layout="column" layout-align="start center">
-            <h6 class='.md-headline' style='margin-top: 8px; margin-top: 18px;'>Photos the last 10 days</h6>
-            <h1 style='margin-top: 30px; color: white;' class='.md-headline'>256</h1>
-          </span>
-          <span style='width:100%; height: 35%; background: #3F51B5;' layout="column" layout-align="start center">
-            <div style='height: 120px; margin-top: 12px'>
-              <div dash-weekly bar-data='tenDay'></div>    
-            </div> 
-          </span>
-        </md-whiteframe>
-        <md-whiteframe class="md-whiteframe-z2" style='background-color: white; height: 200px; padding: 0; color: white;' layout='column' layout-align='center start' layout-margin flex-md='45' flex-gt-md='33'>
-          <span style='width:100%; height: 65%; background: #66BB6A;' layout="column" layout-align="start center">
-            <h6 class='.md-headline' style='margin-top: 8px; margin-top: 18px;'>Photos the last 30 days</h6>
-            <h1 style='margin-top: 30px; color: white;' class='.md-headline'>842</h1>
-          </span>
-          <span style='width:100%; height: 35%; background: #43A047;' layout="column" layout-align="start center">
-            <div style='height: 120px; margin-top: 12px'>
-              <div dash-monthly bar-data='thirtyDay'></div>    
-            </div> 
-          </span> 
-        </md-whiteframe>
-        <md-whiteframe class="md-whiteframe-z2" style='background-color: white; height: 200px; padding: 0; color: white;' layout='column' layout-align='center start' layout-margin flex-md='45' flex-gt-md='30'>
-          <span style='width:100%; height: 65%; background: #EF5350
-      ;' layout="column" layout-align="start center">
-            <div dummy-arc arc-data='tenDay'></div>    
-          </span>
-          <span style='width:100%; height: 35%; background: #E53935;' layout="column" layout-align="start center">
-            <div style='height: 120px; margin-top: 12px'>
-              <h6 class='.md-headline' style='margin-top: 8px; margin-top: 18px;'>SoMe CoOl GrApH!</h6>
-            </div> 
-          </span> 
-        </md-whiteframe>
+      <div flex='30'>
+        <div layout-wrap layout-gt-md='column' layout-md='row' layout-sm='column' layout-align='center center' style='height: auto' layout-margin>
+          <md-whiteframe class="md-whiteframe-z2" style='background-color: white; height: 200px; padding: 0; color: white;' layout='column' layout-align='center start' layout-margin flex-gt-md='99' flex-md='45' flex-sm='90' layout-fill>
+            <span style='width:100%; height: 65%; background: #7986CB;' layout="column" layout-align="start center">
+              <h6 class='.md-headline' style='margin-top: 8px; margin-top: 18px;'>Photos the last 10 days</h6>
+              <h1 style='margin-top: 30px; color: white;' class='.md-headline'>256</h1>
+            </span>
+            <span style='width:100%; height: 35%; background: #3F51B5;' layout="column" layout-align="start center">
+              <div style='height: 120px; margin: 12px auto 0px auto'>
+                <div dash-weekly bar-data='tenDay'></div>    
+              </div> 
+            </span>
+          </md-whiteframe>
+          <md-whiteframe class="md-whiteframe-z2" style='background-color: white; height: 200px; padding: 0; color: white;' layout='column' layout-align='center start' layout-margin flex='99' flex-gt-md='99' flex-md='45' flex-sm='90' layout-fill>
+            <span style='width:100%; height: 65%; background: #66BB6A;' layout="column" layout-align="start center">
+              <h6 class='.md-headline' style='margin-top: 8px; margin-top: 18px;'>Photos the last 30 days</h6>
+              <h1 style='margin-top: 30px; color: white;' class='.md-headline'>842</h1>
+            </span>
+            <span style='width:100%; height: 35%; background: #43A047;' layout="column" layout-align="start center">
+              <div style='height: 120px; margin-top: 12px'>
+                <div dash-monthly bar-data='thirtyDay'></div>    
+              </div> 
+            </span> 
+          </md-whiteframe>
+          <md-whiteframe class="md-whiteframe-z2" style='background-color: white; height: 200px; padding: 0; color: white;' layout='column' layout-align='center start' layout-margin flex='99' flex-gt-md='99' flex-md='45' flex-sm='90' layout-fill>
+            <span style='width:100%; height: 65%; background: #EF5350
+        ;' layout="column" layout-align="start center">
+              <div style='color: white; margin-top: 30px; font-weight: bold;' class='md-display-3'>7476</div>    
+            </span>
+            <span style='width:100%; height: 35%; background: #E53935;' layout="column" layout-align="start center">
+              <div style='height: 120px; margin-top: 12px'>
+                <h6 class='.md-headline' style='margin-top: 8px; margin-top: 18px;'>Total photos taken</h6>
+              </div> 
+            </span> 
+          </md-whiteframe>
+        </div>
       </div>
     </div>
     
