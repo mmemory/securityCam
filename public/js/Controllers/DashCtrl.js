@@ -67,9 +67,11 @@ var app = angular.module('securityCam')
             console.log($scope.user);
 
             var displayGroups = function(groups) {
-                groupAdminName = $scope.user.group_admin.name;
-                groupName = $scope.user.group_member;
-                groups.unshift(groupAdminName);
+                var groupName = $scope.user.group_member;
+                var groupAdminName = $scope.user.group_admin.name;
+                if (groupAdminName) {
+                    groups.unshift(groupAdminName);
+                }
                 for (var i = 0; i < groupName.length; i++) {
                     groups.push(groupName[i]);
                 }
