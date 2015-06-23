@@ -17,13 +17,13 @@ module.exports = {
         var dataFromHardware = req.body;
 
         //var timestamp = new Date(dataFromHardware.timestamp);
-        var timestamp = new Date(dataFromHardware.ts);
+        //var timestamp = new Date(dataFromHardware.ts);
 
         var newImageData = {
             name: dataFromHardware.n,
             from_hardware: dataFromHardware.c,
             image_url: dataFromHardware.u,
-            created_on: timestamp,
+            created_on: dataFromHardware.ts,
             lightIntensity: dataFromHardware.li,
             temperatureInCelsius: dataFromHardware.tc,
             temperatureInFahrenheit: dataFromHardware.tf,
@@ -50,9 +50,11 @@ module.exports = {
                 if (hardwareFound) {
                     Hardware.findByIdAndUpdate(hardwareFound._id, {$push: {pictures: image._id}}, function(err) {
                         if (err) console.log('Error saving image to hardware pictures array', err);
+
                         //Get pictures from global group images
                         Group.findByIdAndUpdate(hardwareFound.group_assigned, {$push: {pictures_total: image._id}}, function(err) {
                             if (err) console.log('Error saving group images to total', err);
+
                             res.send();
                         });
                     })
