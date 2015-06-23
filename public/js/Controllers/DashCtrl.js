@@ -57,6 +57,8 @@ var app = angular.module('securityCam')
             $scope.recentPics = function(index) {
                 console.log('scope.groups[index]:', $scope.groups[index]);
 
+                $scope.groupName = $scope.groups[index].name;
+
                 return dashService.getFive($scope.groups[index]._id)
             };
 
