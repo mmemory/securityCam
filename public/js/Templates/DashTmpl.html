@@ -11,22 +11,10 @@
             </md-optgroup>
           </md-select>
         </div>
-        <md-button class='md-primary' ng-click='filterPhotos($event)'>Filter by date</md-button>
+        <md-button class='md-accent md-raised' ng-click='filterPhotos($event)'>Filter by date</md-button>
         <div layout='row' layout-padding layout-margin layout-align='start center' layout-wrap>
-          <!-- <div style='width: 200px; height: 140px; border: 1px solid black; margin: 0 auto;' ng-repeat="picture in pictures">
-          <img src="{{pictures}}">
-          </div> -->
-          <div style='width: 200px; height: 180px; border: 1px solid black; margin: 10px auto;' flex='45' ng-click='openPhoto($event)'>
-          </div>
-          <div style='width: 200px; height: 180px; border: 1px solid black; margin: 10px auto;' flex='45'>
-          </div>
-          <div style='width: 200px; height: 180px; border: 1px solid black; margin: 10px auto;' flex='45'>
-          </div>
-          <div style='width: 200px; height: 180px; border: 1px solid black; margin: 10px auto;' flex='45'>
-          </div>
-          <div style='width: 200px; height: 180px; border: 1px solid black; margin: 10px auto;' flex='45'>
-          </div>
-          <div style='width: 200px; height: 180px; border: 1px solid black; margin: 10px auto;' flex='45'>
+          <div flex='45' ng-click='openPhoto($event, image)' ng-repeat='image in images | limitTo:-6'>
+            <img style='width: 200px;' ng-src={{image.image_url}}>
           </div>
         </div>
       </div>

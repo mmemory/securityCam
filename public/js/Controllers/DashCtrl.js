@@ -79,6 +79,19 @@ var app = angular.module('securityCam')
                 return dashService.getFive($scope.groups[index]._id);
             };
 
+
+            /////////////////////////////////////////
+            //      Get Images on page Load
+            /////////////////////////////////////////
+
+            $scope.getImages = function() {
+                dashService.getImages().then(function(response) {
+                    console.log("RESPONSE", response);
+                    $scope.images = response;
+                });
+            }();
+
+
             ///////////////////////////////////////
             //      Controller for Dialogs
             ///////////////////////////////////////
