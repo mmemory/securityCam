@@ -52,7 +52,7 @@ var app = angular.module('securityCam')
 		      targetEvent: ev
 		  	})
 		    .then(function() {
-		    	$scope.addHardware(name, email);
+		    	console.log('adding hardware');
 		    });
 		};
 
@@ -69,7 +69,7 @@ var app = angular.module('securityCam')
 		      targetEvent: ev
 		  	})
 		    .then(function() {
-		    	$scope.addHardware(name, email);
+		    	console.log('changing groups...');
 		    });
 		};
 
@@ -81,6 +81,15 @@ var app = angular.module('securityCam')
 		    	console.log('User added');
 		    });
 		  };
+
+		  $scope.addHarware = function(newProductCode, cameraName) {
+		    $mdDialog.hide();
+		    console.log('addHardware invoked', firstName, lastName, email, password);
+		    AdminService.addHardware(newProductCode, cameraName).then(function() {
+		    	console.log('Hardware added');
+		    });
+		  };
+
 		  $scope.closeDialog = function() {
 		    $mdDialog.hide();
 		    console.log('registration cancelled');
