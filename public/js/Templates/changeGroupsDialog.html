@@ -13,7 +13,7 @@
 	    <div layout='row'>
 	      <md-select ng-model="group" placeholder="Choose a Group" layout-margin style='padding: 0; margin: 10px auto'>
 	        <md-optgroup label="Groups">
-	          <md-option ng-value="group" ng-click='changeGroups($index)' ng-repeat="group in groups">{{ group.name }}</md-option>
+	          <md-option ng-value="group" ng-click='changeGroups($index)' ng-repeat="group in admin">{{ group.name }}</md-option>
 	        </md-optgroup>
 	      </md-select>
 	    </div>

@@ -12,31 +12,13 @@
 	  <md-whiteframe class="md-whiteframe-z1 usersBox" layout='column' layout-margin layout-padding layout-align="start start" flex-gt-md='45' flex='90'>
 	    <h1>Users</h1>
 	    <md-list class='userList'>
-			  <md-list-item layout='row' layout-align='space-around center' flex='99'>
-			    	<p>User... </p>
+			  <md-list-item layout='row' layout-align='space-around center' flex='99' ng-repeat="member in members">
+			    	<p>{{member.first_name}}</p>
 			    	<md-button class="md-fab md-mini md-primary deleteUser" style='background-color: #FFC107' ng-click="deleteUserDialog($event)">
 			            <i class="material-icons userIcon">&#xE14C;</i>
 			        </md-button>
 			  </md-list-item>
-			  <md-list-item>
-			    	<p>User...</p>
-			    	<md-button  class="md-fab md-mini deleteUser" style='background-color: #FFC107' ng-click="deleteUserDialog($event)">
-			            <i class="material-icons userIcon">&#xE14C;</i>
-			        </md-button>
-			  </md-list-item>
-			  <md-list-item >
-			    	<p>User...</p>
-			    	<md-button  class="md-fab md-mini deleteUser" style='background-color: #FFC107' ng-click="deleteUserDialog($event)">
-			            <i class="material-icons userIcon">&#xE14C;</i>
-			        </md-button>
-			  </md-list-item>
-			  <md-list-item >
-			    	<p>User...</p>
-			    	<md-button  class="md-fab md-mini deleteUser" style='background-color: #FFC107' ng-click="deleteUserDialog($event)">
-			            <i class="material-icons userIcon">&#xE14C;</i>
-			        </md-button>
-			  </md-list-item>
-			</md-list>
+		</md-list>
 	  </md-whiteframe>
 	  <md-whiteframe class="md-whiteframe-z1 hardwareBox" layout='column' layout-margin layout-padding layout-align="start start" flex-gt-md='45' flex='90'>
 	  	<div layout='row' layout-align='start space-between'>
