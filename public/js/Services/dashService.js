@@ -32,6 +32,25 @@ var app = angular.module('securityCam')
                 }).catch(function(res) {
                     deferred.reject(res.data);
                 });
+                return deferred.promise;
+            };
+
+            this.getImages = function() {
+                var deferred = $q.defer();
+                $http({
+                    method: 'GET',
+                    url: '/api/images/hack'
+                }).then(function(res) {
+                    console.log(res);
+                    for (var i = 0; i < res.data.length; i++) {
+                        res.data[i].timestamp = new Date(res.data[i].ts);
+                        console.log('TIMESTAMP', res.data.timestamp);
+                    }
+                    deferred.resolve(res.data);
+                }).catch(function(res) {
+                    deferred.reject(res.data);
+                });
+                return deferred.promise;
             };
         }
     ]); // End Service //
