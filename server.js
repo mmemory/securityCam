@@ -123,9 +123,12 @@ app.delete('api/user/hardware', HardwareControl.deleteHardware);
 app.get('/api/searchterm/:groupID/:startDate/:endDate', QueryControl.findImagesByDateRange);
 app.get('/api/d3/ten-days', requireAuth, QueryControl.findImagesFromPastTenDays);
 app.get('/api/d3/thirty-days', requireAuth, QueryControl.findImagesFromPastThirtyDays);
+app.get('/api/admin', requireAuth, adminCtrl.adminGroupsAndMembers);
 // Image Data
 app.post('/api/image-data', logMe, ImageControl.receiveImageFromHardware);
 //app.get('/api/images', logMe, ImageControl.getAllGroupImages);
+
+app.get('/api/images/hack', ImageControl.allImages);
 
 
 
