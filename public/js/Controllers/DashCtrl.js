@@ -48,7 +48,7 @@ var app = angular.module('securityCam')
                     });
             };
 
-
+            // opens openPhotoDialog to display photo in 'shadow box' type of scenario
             $scope.openPhoto = function(ev) {
                 console.log("openPhoto clicked DashCtrl");
                 $mdDialog.show({
@@ -64,19 +64,6 @@ var app = angular.module('securityCam')
                     .then(function() {
                         console.log('opening photo...');
                     });
-            };
-
-            //////////////////////////////////
-            //      latest 5 images
-            //////////////////////////////////
-
-            // gets 5 most recent photos
-            $scope.recentPics = function(index) {
-                console.log('scope.groups[index]:', $scope.groups[index]);
-
-                $scope.groupName = $scope.groups[index].name;
-
-                return dashService.getFive($scope.groups[index]._id);
             };
 
 
@@ -102,18 +89,13 @@ var app = angular.module('securityCam')
                 $scope.filterImages = function(startDate, endDate) {
                     $mdDialog.hide();
                     console.log('filterImages invoked', startDate, endDate);
-                    var startDate = Date.parse($scope.startDate);
-                    //console.log(startDate);
-                    var endDate = Date.parse($scope.endDate);
-                    //console.log(endDate);
-                    var groupID = $scope.groupID;
-                    dashService.getPics(groupID, startDate, endDate).then(function(response) {
-                        console.log("response");
-                        $scope.queryPics = response.data;
+                    dashService.filterImagesByDate(filterStartDate, filterEndDate).then(function(response) {
+                        console.log("RESPONSE", response);
+                        $scope.queryPics = response;
                     }).catch(function(err) {
                         $scope.error = err;
                         console.log($scope.error);
-                        });
+                    });
                 };
 
                 // Closes Dialog - called from all Dialogs

@@ -1,4 +1,6 @@
 <div layout="column" layout-fill class='adminMain'>
+
+	<!-- Shows group and button to change group -->
 	<div layout='row' layout-align='start start' flex='80'>
 	  <h2 class='adminHeader'>Group: {{ group.name }}</h2>
 	  <span flex></span>
@@ -7,19 +9,39 @@
 		</div>
 	</div>
 
-	<!-- 	User and Hardware Boxes -->
+	<!-- 	Users Box - md-list-item repeats through users with ng-repeat -->
 	<div layout-gt-md="row" layout-md="column" class='adminBoxes'>
 	  <md-whiteframe class="md-whiteframe-z1 usersBox" layout='column' layout-margin layout-padding layout-align="start start" flex-gt-md='45' flex='90'>
 	    <h1>Users</h1>
 	    <md-list class='userList'>
-			  <md-list-item layout='row' layout-align='space-around center' flex='99' ng-repeat="member in members">
-			    	<p>{{member.first_name}}</p>
+			  <md-list-item layout='row' layout-align='space-around center' flex='99'>
+			    	<p>John Baker</p>
+			    	<md-button class="md-fab md-mini md-primary deleteUser" style='background-color: #FFC107' ng-click="deleteUserDialog($event)">
+			            <i class="material-icons userIcon">&#xE14C;</i>
+			        </md-button>
+			  </md-list-item>
+			  <md-list-item layout='row' layout-align='space-around center' flex='99'>
+			    	<p>Samantha Smith</p>
+			    	<md-button class="md-fab md-mini md-primary deleteUser" style='background-color: #FFC107' ng-click="deleteUserDialog($event)">
+			            <i class="material-icons userIcon">&#xE14C;</i>
+			        </md-button>
+			  </md-list-item>
+			  <md-list-item layout='row' layout-align='space-around center' flex='99'>
+			    	<p>Megatron</p>
+			    	<md-button class="md-fab md-mini md-primary deleteUser" style='background-color: #FFC107' ng-click="deleteUserDialog($event)">
+			            <i class="material-icons userIcon">&#xE14C;</i>
+			        </md-button>
+			  </md-list-item>
+			  <md-list-item layout='row' layout-align='space-around center' flex='99'>
+			    	<p>Queen Elizabeth</p>
 			    	<md-button class="md-fab md-mini md-primary deleteUser" style='background-color: #FFC107' ng-click="deleteUserDialog($event)">
 			            <i class="material-icons userIcon">&#xE14C;</i>
 			        </md-button>
 			  </md-list-item>
 		</md-list>
 	  </md-whiteframe>
+
+		<!-- 	Hardware Box - md-list-item repeats through hardware with ng-repeat -->
 	  <md-whiteframe class="md-whiteframe-z1 hardwareBox" layout='column' layout-margin layout-padding layout-align="start start" flex-gt-md='45' flex='90'>
 	  	<div layout='row' layout-align='start space-between'>
 	    	<h1>Hardware</h1>
@@ -30,25 +52,25 @@
 			  <md-list-item layout='row' layout-align='space-between center' flex>
 			    	<p>Front Door</p>
 			    	<md-button class="md-fab md-mini deleteUser" style='background-color: #FFC107' ng-click="deleteHardwareDialog($event)">
-			            <i class="material-icons" style='color: white; font-size: 24px; margin: 8px 1px 0px 0px;'>&#xE14C;</i>
+			            <i class="material-icons userIcon" >&#xE14C;</i>
 			        </md-button>
 			  </md-list-item>
 			  <md-list-item>
 			    <p>Kids Room</p>
 			    <md-button class="md-fab md-mini deleteUser" style='background-color: #FFC107' ng-click="deleteHardwareDialog($event)">
-			            <i class="material-icons" style='color: white; font-size: 24px; margin: 8px 1px 0px 0px;'>&#xE14C;</i>
+			            <i class="material-icons userIcon" >&#xE14C;</i>
 			        </md-button>
 			  </md-list-item>
 			  <md-list-item>
 			    <p>Backyard</p>
 			    <md-button class="md-fab md-mini deleteUser" style='background-color: #FFC107' ng-click="deleteHardwareDialog($event)">
-			            <i class="material-icons" style='color: white; font-size: 24px; margin: 8px 1px 0px 0px;'>&#xE14C;</i>
+			            <i class="material-icons userIcon" >&#xE14C;</i>
 			        </md-button>
 			  </md-list-item>
 			  <md-list-item>
 			    <p>Living Room</p>
 			    <md-button class="md-fab md-mini deleteUser" style='background-color: #FFC107' ng-click="deleteHardwareDialog($event)">
-			            <i class="material-icons" style='color: white; font-size: 24px; margin: 8px 1px 0px 0px;'>&#xE14C;</i>
+			            <i class="material-icons userIcon" >&#xE14C;</i>
 			        </md-button>
 			  </md-list-item>
 			</md-list>
@@ -56,6 +78,7 @@
 	</div>
 </div>	
     
+<!-- Md-FAB button for adding Users and Hardware - layout defined by MD -->
 <div class="lock-size" layout="row" layout-align="end end">
   <md-fab-speed-dial md-open="demo.isOpen" md-direction="up" ng-class="demo.selectedMode">
     <md-fab-trigger>
@@ -79,51 +102,3 @@
     </md-fab-actions>
   </md-fab-speed-dial>
 </div>
-
-
-
-
-<!-- 		<md-button layout='row' layout-align='center center' class="md-warn md-fab md-fab-bottom-right right" aria-label="Add" ng-click='addNewUser($event)'>
-      <md-icon md-svg-icon="path/to/your.svg"></md-icon>
-      <md-tooltip>
-        Add
-      </md-tooltip>
-    </md-button> -->
-
-
-
-    <!-- <div class='width: 90%'>
-	    <form name="userForm">
-	      <div layout layout-sm="column">
-	        <md-input-container>
-	            <label>First Name</label>
-	            <input ng-model=''>
-	          </md-input-container>
-	        <md-input-container flex>
-	          <label>Last Name</label>
-	          <input ng-model="">
-	        </md-input-container>
-	      </div>
-	      <div layout layout-sm="column">
-	        <md-input-container flex>
-	          <label>First name</label>
-	          <input ng-model="">
-	        </md-input-container>
-	      </div>
-	      <md-input-container flex>
-	        <label>Address</label>
-	        <input ng-model="">
-	      </md-input-container>
-	      <div layout layout-sm="column">
-	        <md-input-container flex>
-	          <label>City</label>
-	          <input ng-model="">
-	        </md-input-container>
-	        <md-input-container flex>
-	          <label>State</label>
-	          <input ng-model="">
-	        </md-input-container>
-	      </div>
-	      <md-button class='md-raised md-primary' ng-click="">Add Group</md-button>
-	    </form>
-		</div> -->

@@ -1,7 +1,7 @@
 var app = angular.module('securityCam')
     .service('AdminService', ['$http', '$q', function($http, $q) {
 
-            this.registerMember = function(firstname, lastname, email, password, group_id) {
+            this.registerMember = function(group, firstname, lastname, email, password) {
                 console.log('hit AdminService called');
                 var deferred = $q.defer();
                 $http({
@@ -12,7 +12,7 @@ var app = angular.module('securityCam')
                         lastName: lastname,
                         email: email,
                         password: password,
-                        group_id: group_id
+                        group_id: group
                     }
                 }).then(function(res) {
                     console.log(res);

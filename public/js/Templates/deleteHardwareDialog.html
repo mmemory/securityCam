@@ -1,21 +1,27 @@
-<div style="width: 60%;">
+<div class='deleteDialog'>
 	<md-dialog>
 		<form>
+
+			<!-- header -->
 			<md-toolbar>
 				<div class="md-toolbar-tools">
-					<h2 style='color: white;'>Delete Hardware</h2>
+					<h2 id='dialogHeader'>Delete Hardware</h2>
 					<span flex></span>
 					<md-button class="md-icon-button" ng-click="closeDialog()">
-						<i class="material-icons" style='color: white; font-size: 36px'>&#xE14C;</i>
+						<i class="material-icons" id='dialogHeaderButton'>&#xE14C;</i>
 					</md-button>
 				</div>
 			</md-toolbar>
+
+			<!-- Content -->
 			<div layout-padding>
 				<p>Are you sure you want to delete {{ user.hardware_registered }} from your hardware list? This action
 					cannot be reversed!</p>
 			</div>
+
+			<!-- Buttons -->
 			<div class="md-actions" layout="row">
-				<span flex></span>
+				<span flex></span>  <!-- Sends buttons to right side of dialog -->
 				<md-button ng-click="closeDialog()" class="md-primary">
 					Cancel
 				</md-button>
