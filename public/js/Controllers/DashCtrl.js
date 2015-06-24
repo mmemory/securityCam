@@ -89,9 +89,9 @@ var app = angular.module('securityCam')
                 $scope.filterImages = function(startDate, endDate) {
                     $mdDialog.hide();
                     console.log('filterImages invoked', startDate, endDate);
-                    dashService.filterImagesByDate(filterStartDate, filterEndDate).then(function(response) {
+                    dashService.filterImagesByDate(startDate, endDate).then(function(response) {
                         console.log("RESPONSE", response);
-                        $scope.queryPics = response;
+                        $scope.images = response;
                     }).catch(function(err) {
                         $scope.error = err;
                         console.log($scope.error);
