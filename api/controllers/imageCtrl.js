@@ -70,7 +70,7 @@ module.exports = {
     allImages: function(req, res) {
       Image.find()
       .sort('-created_on')
-      .limit(2)
+      .limit(6)
       .exec(function(err, images) {
         res.send(images);
       });
