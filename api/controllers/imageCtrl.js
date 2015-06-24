@@ -23,11 +23,7 @@ module.exports = {
             name: dataFromHardware.n,
             from_hardware: dataFromHardware.c,
             image_url: dataFromHardware.u,
-            created_on: dataFromHardware.ts,
-            lightIntensity: dataFromHardware.li,
-            temperatureInCelsius: dataFromHardware.tc,
-            temperatureInFahrenheit: dataFromHardware.tf,
-            humidity: dataFromHardware.h
+            created_on: dataFromHardware.ts
         };
 
         var newImage = new Image(newImageData);
