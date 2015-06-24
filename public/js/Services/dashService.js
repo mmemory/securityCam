@@ -6,13 +6,13 @@ var app = angular.module('securityCam')
                 console.log('hit service');
                 var deferred = $q.defer();
                 $http({
-                    method: 'POST',
+                    method: 'GET',
                     url: '/api/searchterm/' + startDate + '/' + endDate
                 }).then(function(response) {
                     console.log("Filter Response Service: ", response);
                     // Do something with the response 
-                    var data = response;
-                    deferred.resolve(data);
+                    var photos = response.data;
+                    deferred.resolve(photos);
                 }).catch(function(res) {
                     deferred.reject(res.data);
                     console.log('rejected', res.data);
@@ -38,7 +38,7 @@ var app = angular.module('securityCam')
                 return deferred.promise;
             };
         }
-        
+
     ]); // End Service //
 
 

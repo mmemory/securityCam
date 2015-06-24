@@ -120,7 +120,7 @@ app.delete('/api/user/member', adminCtrl.removeMember);
 app.post('/api/user/hardware', HardwareControl.createHardwareInstance);
 app.delete('api/user/hardware', HardwareControl.deleteHardware);
 // Data Queries
-app.get('/api/searchterm/:startDate/:endDate', QueryControl.findImagesByDateRange);
+app.get('/api/searchterm/:startDate/:endDate', QueryControl.filterImagesByDate);
 app.get('/api/d3/ten-days', requireAuth, QueryControl.findImagesFromPastTenDays);
 app.get('/api/d3/thirty-days', requireAuth, QueryControl.findImagesFromPastThirtyDays);
 app.get('/api/admin', requireAuth, adminCtrl.adminGroupsAndMembers);
