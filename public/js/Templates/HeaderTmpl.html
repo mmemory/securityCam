@@ -1,35 +1,40 @@
 <md-toolbar class='header'>
   <div layout-margin class="md-toolbar-tools" flex>
-    <h2 layout-margin style='font-size: 1.3em;'>
-      <a ui-sref='dashboard' style='color: white;'>GladCam</a>
+    <!-- Web App Name -->
+    <h2 layout-margin id='header'>
+      <a ui-sref='dashboard'>GladCam</a>
     </h2>
-    <i class="material-icons" style='font-size: 36px; color: white;'>&#xE8FC;</i>
+
+    <!-- Logo -->
+    <i class="material-icons" id='logo'>&#xE8FC;</i>
     <span flex></span>
+
+    <!-- Menu Button -->
     <md-menu>
       <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="$mdOpenMenu()">
-        <i class="material-icons" style='margin-top: 12px;'>&#xE5D2;</i></md-icon>
+        <i class="material-icons" id='headerMenuButton'>&#xE5D2;</i></md-icon>
       </md-button>
+
+      <!-- Button Menu -->
       <md-menu-content width="2">
         <md-menu-item>
-          <md-button ui-sref="dashboard" style='margin-top; 6px; font-size: 15px;'>
-            <!-- <i class="material-icons">&#xE8B8;</i> -->
+          <md-button ui-sref="dashboard" class='menuButton'>
             <p>Dashboard</p>
           </md-button>
         </md-menu-item>
         <md-menu-item>
-          <md-button ui-sref='admin' style='margin-top; 6px; font-size: 15px;'>
-            <!-- <i class="material-icons">&#xE8B8;</i> -->
+          <md-button ui-sref='admin' class='menuButton'>
             <p>Admin</p>
           </md-button>
         </md-menu-item>
       <!--   <md-menu-item>
-          <md-button ng-click="accountSettings()" style='margin-top; 6px; font-size: 15px;'>
+          <md-button ng-click="accountSettings()" class='menuButton'>
             <i class="material-icons">&#xE8B8;</i>
             <p>Settings</p>
           </md-button>
         </md-menu-item> -->
         <md-menu-item>
-          <md-button href='/auth/logout' style='margin-top; 6px; font-size: 15px;'>Logout</md-button>
+          <md-button href='/auth/logout' class='menuButton'>Logout</md-button>
         </md-menu-item>
       </md-menu-content>
     </md-menu>

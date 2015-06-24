@@ -1,15 +1,19 @@
-<div style="width: 60%;">
+<div class='deleteDialog'>
   <md-dialog>
     <form>
+
+      <!-- header -->
    		<md-toolbar>
         <div class="md-toolbar-tools">
-          <h2 style='color: white;'>Filter Photos</h2>
+          <h2 id='dialogHeader'>Filter Photos</h2>
           <span flex></span>
           <md-button class="md-icon-button" ng-click="closeDialog()">
-            <i class="material-icons" style='color: white; font-size: 36px'>&#xE14C;</i>
+            <i class="material-icons" id='dialogHeaderButton'>&#xE14C;</i>
           </md-button>
         </div>
       </md-toolbar>
+
+      <!-- Content - calendar dropdown -->
       <div layout-padding>
         <md-input-container flex>
           <label>Start Date - mm/dd/yyyy</label>
@@ -20,7 +24,9 @@
           <input type="date" ng-model="endDate">
         </md-input-container>
       <div class="md-actions" layout="row">
-        <span flex></span>
+        <span flex></span> <!-- Moves buttons to the right side of the dialog -->
+
+        <!-- buttons -->
         <md-button ng-click="closeDialog()" class="md-primary">
           Cancel
         </md-button>

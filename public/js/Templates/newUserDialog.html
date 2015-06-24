@@ -12,7 +12,12 @@
       </md-toolbar>
       <div layout-padding>
         <md-content>
-      	   <md-input-container>
+          <md-select ng-model="groupSelected" placeholder="Choose a Group" layout-margin style='padding: 0;'>
+            <md-optgroup label="Groups">
+              <md-option ng-repeat="group in groups" ng-click="recentPics($index)">{{ group.name }}</md-option>
+            </md-optgroup>
+          </md-select>
+      	  <md-input-container>
   		      <label>First Name</label>
   		      <input ng-model="newUserFirstName">
   		    </md-input-container>
@@ -47,7 +52,7 @@
         <md-button ng-click="closeDialog()" class="md-primary">
           Cancel
         </md-button>
-        <md-button ng-click="addUser(newUserFirstName, newUserLastName, newUserEmail, newUserPassword, group_id)" class="md-primary">
+        <md-button ng-click="addUser(groupSelected, newUserFirstName, newUserLastName, newUserEmail, newUserPassword, group_id)" class="md-primary">
           Register User
         </md-button>
       </div>

@@ -74,3 +74,61 @@
 .comingSoon {
 	color: red;
 }
+
+.groupDialog {
+	width: 400px;
+}
+
+.groupDialogDropdown {
+	padding: 0; 
+	margin: 60px auto 30px auto;
+}
+
+.dashDivStyling1 {
+	width: 100%;
+}
+
+#dashWhiteframe {
+	background-color: white;
+}
+
+.dashSelect {
+	padding: 0px;
+}
+
+.dashImages {
+	width: 200px;
+}
+
+.deleteDialog {
+	width: 60%;
+	min-width: 285px;
+}
+
+#dialogHeader {
+	color: white;
+}
+
+#dialogHeaderButton {
+	color: white; 
+	font-size: 36px;
+	margin-top: 7px;
+}
+
+#header {
+	font-size: 1.3em;
+	color: white;
+}
+
+#headerMenuButton {
+	margin-top: 12px;
+}
+
+#logo {
+	font-size: 36px; color: white;
+}
+
+.menuButton {
+	margin-top: 12px; 
+	font-size: 15px;
+}
