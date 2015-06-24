@@ -19,7 +19,7 @@ var app = angular.module('securityCam')
         ///////////////////////
 
     // Adds user from the Admin Page into selected group
-		$scope.addNewUser = function(ev) {
+		$scope.addNewUser = function(ev, user) {
 			console.log("addNewUser clicked AdminCtrl");
 		    $mdDialog.show({
 		      controller: DialogController,
@@ -147,10 +147,11 @@ var app = angular.module('securityCam')
 		function DialogController($scope, $mdDialog) {
 
 			// called from newUserDialog - adds user from Admin Page to selected group
-		  $scope.addUser = function(firstName, lastName, email, password, group_id) {
+		  $scope.addUser = function(group, firstName, lastName, email, password, group_id) {
 		    $mdDialog.hide();
-		    console.log('addUser invoked', firstName, lastName, email, password);
-		    AdminService.registerMember(firstName, lastName, email, password, group_id).then(function() {
+		    var groupID = group._id;
+		    console.log('addUser invoked', groupID, firstName, lastName, email, password);
+		    AdminService.registerMember(groupID, firstName, lastName, email, password, group_id).then(function() {
 		    	console.log('User added');
 		    });
 		  };

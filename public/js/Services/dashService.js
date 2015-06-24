@@ -2,35 +2,20 @@ var app = angular.module('securityCam')
     .service('dashService', ['$http', '$q',
         function($http, $q) {
 
-            this.getPics = function(groupID, startDate, endDate) {
+            this.filterImagesByDate = function(startDate, endDate) {
                 console.log('hit service');
                 var deferred = $q.defer();
                 $http({
-                    method: 'POST',
-                    url: '/api/searchterm/' +groupID+ '/' +startDate+ '/' +endDate
+                    method: 'GET',
+                    url: '/api/searchterm/' + startDate + '/' + endDate
                 }).then(function(response) {
-                    console.log(response);
+                    console.log("Filter Response Service: ", response);
                     // Do something with the response 
-                    var data = response;
-                    deferred.resolve(data);
+                    var photos = response.data;
+                    deferred.resolve(photos);
                 }).catch(function(res) {
                     deferred.reject(res.data);
                     console.log('rejected', res.data);
-                });
-                return deferred.promise;
-            };
-
-            this.getFive = function(group_id) {
-                var deferred = $q.defer();
-                $http({
-                    method: 'GET',
-                    url: '/api/images',
-                    data: {group_id: group_id}
-                }).then(function(res) {
-                    deferred.resolve(res);
-                    console.log(res);
-                }).catch(function(res) {
-                    deferred.reject(res.data);
                 });
                 return deferred.promise;
             };
@@ -39,7 +24,7 @@ var app = angular.module('securityCam')
                 var deferred = $q.defer();
                 $http({
                     method: 'GET',
-                    url: '/api/images/hack'
+                    url: '/api/images/allImages'
                 }).then(function(res) {
                     console.log(res);
                     for (var i = 0; i < res.data.length; i++) {
@@ -53,6 +38,7 @@ var app = angular.module('securityCam')
                 return deferred.promise;
             };
         }
+
     ]); // End Service //
 
 

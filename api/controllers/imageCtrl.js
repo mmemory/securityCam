@@ -53,7 +53,7 @@ module.exports = {
 
                             res.send();
                         });
-                    })
+                    });
                 } else {
                     console.log('Couldn\'t find hardware (imageCtrl.js)');
                 }
@@ -65,6 +65,8 @@ module.exports = {
 
     allImages: function(req, res) {
       Image.find()
+      .sort('-created_on')
+      .limit(6)
       .exec(function(err, images) {
         res.send(images);
       });

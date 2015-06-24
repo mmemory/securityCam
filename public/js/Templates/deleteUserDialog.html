@@ -1,19 +1,25 @@
-<div style="width: 60%;">
+<div class='deleteDialog'>
   <md-dialog>
     <form>
+      <!-- header -->
    		<md-toolbar>
         <div class="md-toolbar-tools">
-          <h2 style='color: white;'>Delete User</h2>
+          <h2 id='dialogHeader'>Delete User</h2>
           <span flex></span>
           <md-button class="md-icon-button" ng-click="closeDialog()">
-            <i class="material-icons" style='color: white; font-size: 36px'>&#xE14C;</i>
+            <i class="material-icons" id='dialogHeaderButton'>&#xE14C;</i>
           </md-button>
         </div>
       </md-toolbar>
+
+      <!-- Content -->
       <div layout-padding>
         <p>Are you sure you want to delete this user? This action cannot be reversed!</p>
+      </div>
+
+      <!-- Buttons -->
       <div class="md-actions" layout="row">
-        <span flex></span>
+        <span flex></span> <!-- pushes buttons to the right side of the dialog box -->
         <md-button ng-click="closeDialog()" class="md-primary">
           Cancel
         </md-button>

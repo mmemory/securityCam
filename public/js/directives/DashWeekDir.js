@@ -15,7 +15,7 @@ angular.module('securityCam')
 
 	      	var height = 50,
 	      		  width = 190,
-	      		  margin = { top: 5, right: 5, bottom: 7, left: 5},
+	      		  margin = { top: 5, right: 5, bottom: 7, left: 5 },
 	      		  barWidth = 20,
 	      		  barOffset = 5;
 
