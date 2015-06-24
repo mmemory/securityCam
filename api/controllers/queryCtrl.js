@@ -2,6 +2,7 @@ var User = require('../models/userModel.js');
 var Group = require('../models/groupModel.js');
 var Image = require('../models/imageModel.js');
 var Hardware = require('../models/hardwareModel.js');
+var Ambient = require('../models/ambientDataModel.js');
 
 module.exports = {
 
@@ -57,6 +58,33 @@ module.exports = {
 
     findImagesFromPastThirtyDays: function(req, res) {
         // Stuff
+    },
+
+    getAmbientSensorData: function(req, res) {
+
+        Ambient
+            .find()
+            .limit(148)
+            .sort('-created_on')
+            .exec(function(err, ambientData) {
+                if (err) console.log('Error finding ambient data', err);
+
+                var ambientDataObject = {
+                    temperatureInCelsius: [],
+                    temperatureInFarenheit: [],
+                    light: ambientData[0].light,
+                    humidity: ambientData[0].humidity,
+                    currentTempC: this.temperatureInCelsius[0],
+                    curentTempF: this.temperatureInFarenheit[0]
+                };
+
+                for (var i = 0; i < ambientData.length; i++) {
+                    ambientDataObject.temperatureInCelsius.push(ambientData[i].temperatureInCelsius);
+                    ambientDataObject.temperatureInFarenheit.push(ambientData[i].temperatureInFarenheit);
+                }
+
+                res.send(ambientDataObject);
+            })
     }
 
 };

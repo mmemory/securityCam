@@ -21,6 +21,7 @@ var HardwareControl = require('./api/controllers/hardwareCtrl.js');
 var adminCtrl = require('./api/controllers/adminCtrl.js');
 var Image = require('./api/models/imageModel.js');
 var QueryControl = require('./api/controllers/queryCtrl.js');
+var AmbientControl = require('./api/controllers/ambientDataControl.js');
 
 
 
@@ -124,8 +125,10 @@ app.get('/api/searchterm/:startDate/:endDate', QueryControl.filterImagesByDate);
 app.get('/api/d3/ten-days', requireAuth, QueryControl.findImagesFromPastTenDays);
 app.get('/api/d3/thirty-days', requireAuth, QueryControl.findImagesFromPastThirtyDays);
 app.get('/api/admin', requireAuth, adminCtrl.adminGroupsAndMembers);
-// Image Data
+app.get('/api/ambient', QueryControl.getAmbientSensorData);
+// Data From Hardware
 app.post('/api/image-data', logMe, ImageControl.receiveImageFromHardware);
+app.post('/api/ambient-data', logMe, AmbientControl.receiveAmbientDataFromHardware);
 //app.get('/api/images', logMe, ImageControl.getAllGroupImages);
 
 app.get('/api/images/allImages', ImageControl.allImages);
