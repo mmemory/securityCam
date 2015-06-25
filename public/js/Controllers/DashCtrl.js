@@ -90,7 +90,7 @@ var app = angular.module('securityCam')
                     $mdDialog.hide();
                     var filterStartDate = Date.parse(startDate) / 1000;
                     var filterEndDate = Date.parse(endDate) / 1000;
-                    console.log('filterImages invoked', filterStartDate, filterEndDate);
+                    console.log('filterImages invoked', startDate, endDate, filterStartDate, filterEndDate);
                     dashService.filterImagesByDate(filterStartDate, filterEndDate).then(function(response) {
                         console.log("RESPONSE", response);
                         $scope.images = response;
@@ -106,6 +106,16 @@ var app = angular.module('securityCam')
                     console.log('filtering cancelled');
                 };
             } // Ends FilterController
+
+            ///////////////////////////////////////////
+            //      Functions for data display
+            /////////////////////////////////////////// 
+
+            $scope.environmentData = function() {
+                dashService.environmentData().then(function(results) {
+                    console.log(results);
+                });
+            }(); 
 
         }
     ]); // End MainCtrl //

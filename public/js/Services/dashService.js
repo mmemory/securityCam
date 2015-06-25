@@ -37,6 +37,18 @@ var app = angular.module('securityCam')
                 });
                 return deferred.promise;
             };
+
+            this.environmentData = function () {
+                var deferred = $q.defer();
+                $http({
+                    method: 'GET',
+                    url: '/api/ambient'
+                }).then(function(response) {
+                    console.log(response);
+                    deferred.resolve(response);
+                });
+                return deferred.promise;
+            };
         }
 
     ]); // End Service //
