@@ -74,14 +74,16 @@ module.exports = {
                     temperatureInFarenheit: [],
                     light: ambientData[0].light,
                     humidity: ambientData[0].humidity,
-                    currentTempC: this.temperatureInCelsius[0],
-                    curentTempF: this.temperatureInFarenheit[0]
+                    currentTempC: ambientData[0].temperatureInCelsius,
+                    currentTempF: ambientData[0].temperatureInFarenheit
                 };
 
                 for (var i = 0; i < ambientData.length; i++) {
                     ambientDataObject.temperatureInCelsius.push(ambientData[i].temperatureInCelsius);
                     ambientDataObject.temperatureInFarenheit.push(ambientData[i].temperatureInFarenheit);
                 }
+
+                console.log(ambientDataObject);
 
                 res.send(ambientDataObject);
             })
