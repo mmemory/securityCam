@@ -8,7 +8,7 @@ module.exports = {
         var newAmbientObjectData = {
             temperatureInCelsius: ambientData.tc,
             temperatureInFarenheit: ambientData.tf,
-            light: ambientData.l,
+            light: ambientData.li,
             humidity: ambientData.h,
             created_on: ambientData.ts
         };

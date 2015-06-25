@@ -69,23 +69,25 @@ module.exports = {
             .exec(function(err, ambientData) {
                 if (err) console.log('Error finding ambient data', err);
 
-                var ambientDataObject = {
-                    temperatureInCelsius: [],
-                    temperatureInFarenheit: [],
-                    light: ambientData[0].light,
-                    humidity: ambientData[0].humidity,
-                    currentTempC: ambientData[0].temperatureInCelsius,
-                    currentTempF: ambientData[0].temperatureInFarenheit
-                };
+                if (ambientData) {
+                    var ambientDataObject = {
+                        temperatureInCelsius: [],
+                        temperatureInFarenheit: [],
+                        light: ambientData[0].light,
+                        humidity: ambientData[0].humidity,
+                        currentTempC: ambientData[0].temperatureInCelsius,
+                        currentTempF: ambientData[0].temperatureInFarenheit
+                    };
 
-                for (var i = 0; i < ambientData.length; i++) {
-                    ambientDataObject.temperatureInCelsius.push(ambientData[i].temperatureInCelsius);
-                    ambientDataObject.temperatureInFarenheit.push(ambientData[i].temperatureInFarenheit);
+                    for (var i = 0; i < ambientData.length; i++) {
+                        ambientDataObject.temperatureInCelsius.push(ambientData[i].temperatureInCelsius);
+                        ambientDataObject.temperatureInFarenheit.push(ambientData[i].temperatureInFarenheit);
+                    }
+
+                    console.log(ambientDataObject);
+
+                    res.send(ambientDataObject);
                 }
-
-                console.log(ambientDataObject);
-
-                res.send(ambientDataObject);
             })
     }
 
