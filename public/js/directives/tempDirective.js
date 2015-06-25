@@ -13,7 +13,7 @@ angular.module('securityCam')
 					var m = [8, 30, 8, 30], // margins
 						  w = 280 - m[1] - m[3], // width
 					 	  h = 120 - m[0] - m[2]; // height
-					 	  
+
 					 	  
 					var data = scope.tempData;
 					
