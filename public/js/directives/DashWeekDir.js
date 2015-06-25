@@ -106,8 +106,8 @@ angular.module('securityCam')
 							.style('font-size', '10px');
 				};
 
-      	// $interval(buildGraph, 3500, 1);
-      	buildGraph();
+      	$interval(buildGraph, 1000, 1);
+      	// buildGraph();
 
     	});
   	}
