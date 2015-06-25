@@ -132,3 +132,24 @@
 	margin-top: 12px; 
 	font-size: 15px;
 }
+
+path {
+	stroke: white;
+	stroke-width: 2;
+	fill: none;
+}
+
+.axis {
+  shape-rendering: crispEdges;
+  color: white;
+}
+
+.y.axis line, .y.axis path {
+  fill: none;
+  stroke: white;
+}
+
+.chart-container {
+  width: 200px;
+  height: 200px;
+}
