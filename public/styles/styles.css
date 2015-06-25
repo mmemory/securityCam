@@ -134,28 +134,22 @@
 }
 
 path {
-	stroke: steelblue;
+	stroke: white;
 	stroke-width: 1;
 	fill: none;
 }
 
 .axis {
   shape-rendering: crispEdges;
-}
-
-.x.axis line {
-  stroke: lightgrey;
-}
-
-.x.axis .minor {
-  stroke-opacity: .5;
-}
-
-.x.axis path {
-  display: none;
+  color: white;
 }
 
 .y.axis line, .y.axis path {
   fill: none;
-  stroke: #000;
+  stroke: white;
+}
+
+.chart-container {
+  width: 200px;
+  height: 200px;
 }

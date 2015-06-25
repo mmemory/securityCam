@@ -114,8 +114,18 @@ var app = angular.module('securityCam')
             $scope.environmentData = function() {
                 dashService.environmentData().then(function(results) {
                     console.log(results);
+                    $scope.ambientData = {
+                        currentTempC: results.currentTempC,
+                        currentTempF: results.currentTempF,
+                        humidity: results.humidity,
+                        lightDensity: results.light
+                    };
+                    $scope.tempC = results.temperatureInCelsius.reverse();
+                    $scope.tempF = results.temperatureInFarenheit.reverse();
                 });
-            }(); 
+            }();
+
+
 
         }
     ]); // End MainCtrl //

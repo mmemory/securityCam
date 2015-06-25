@@ -45,7 +45,8 @@ var app = angular.module('securityCam')
                     url: '/api/ambient'
                 }).then(function(response) {
                     console.log(response);
-                    deferred.resolve(response);
+                    data = response.data;
+                    deferred.resolve(data);
                 });
                 return deferred.promise;
             };
