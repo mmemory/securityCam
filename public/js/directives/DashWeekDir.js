@@ -10,7 +10,7 @@ angular.module('securityCam')
 
 	      var buildGraph = function() {
 
-      		var bardata = scope.barData;
+      		var bardata = 90;
 	      	// console.log('bardata', bardata, 'scope.barData', scope.barData)
 
 	      	var height = 50,
@@ -33,9 +33,6 @@ angular.module('securityCam')
 				  var colors = d3.scale.linear()
 				  	.domain([0, d3.max(bardata)])
 			  		.range(['#5C6BC0', '#C5CAE9']);
-
-				  var test = d3.max(bardata);
-				  // console.log("max test", test);
 
 	      	var yScale = d3.scale.linear()
 	      		.domain([0, d3.max(bardata)])

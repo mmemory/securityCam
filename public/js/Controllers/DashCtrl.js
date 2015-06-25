@@ -118,7 +118,7 @@ var app = angular.module('securityCam')
                         currentTempC: results.currentTempC,
                         currentTempF: results.currentTempF,
                         humidity: results.humidity,
-                        lightDensity: results.light
+                        lightDensity: 864
                     };
                     $scope.tempC = results.temperatureInCelsius.reverse();
                     $scope.tempF = results.temperatureInFarenheit.reverse();

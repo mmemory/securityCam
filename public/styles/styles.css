@@ -133,20 +133,19 @@
 	font-size: 15px;
 }
 
-path {
-	stroke: white;
+.tempGraph path {
+	stroke: #C5CAE9;
 	stroke-width: 2;
 	fill: none;
 }
 
 .axis {
   shape-rendering: crispEdges;
-  color: white;
 }
 
 .y.axis line, .y.axis path {
   fill: none;
-  stroke: white;
+  stroke: #C5CAE9;
 }
 
 .chart-container {

@@ -43,7 +43,7 @@ angular.module('securityCam')
 						graph.append("svg:g")
 						      .attr("class", "y axis")
 						      .attr("transform", "translate(-25,0)")
-						      .style('fill', 'white')
+						      .style('fill', '#C5CAE9')
 						      .style('font-size', '.9em')
 						      .call(yAxisLeft);
 						
