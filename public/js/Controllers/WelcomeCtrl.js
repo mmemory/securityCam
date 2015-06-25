@@ -10,7 +10,7 @@ var app = angular.module('securityCam')
       parent: angular.element(document.body),
       clickOutsideToClose: true,
       title: 'Login',
-      templateUrl: 'js/Templates/loginDialog.html',
+      templateUrl: 'js/Templates/LoginDialog.html',
       targetEvent: ev
   	})
     .then(function() {
