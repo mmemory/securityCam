@@ -39,7 +39,7 @@ angular.module('securityCam')
 
 				};
 
-      	$interval(buildGraph, 1000, 0);
+      	$interval(buildGraph, 1000, 1);
       	// buildGraph();
 
     	});
