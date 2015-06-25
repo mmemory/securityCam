@@ -15,16 +15,16 @@ angular.module('securityCam')
 					var data = scope.arcData;
 					var r = 55;
 		  
-		  		    var color = d3.scale.linear()
-		      			.domain([0, d3.max(data)])
-					  	.range(['#EF9A9A', '#FFCDD2']);
+		  		    var color = d3.scale.ordinal()
+		      			// .domain([0, .5])
+					  	.range(['#1B5E20', '#81C784']);
 
 					var canvas = d3.select(element[0]).append('svg')
 						.attr('width', 260)
 						.attr('height', 130);
 
 					var group = canvas.append('g')
-						.attr('transform', 'translate(0, 65)');
+						.attr('transform', 'translate(130, 65)');
 
 					var arc = d3.svg.arc()
 						.innerRadius(30) //set to 0 for a pie chart
@@ -42,13 +42,6 @@ angular.module('securityCam')
 					arcs.append('path')
 						.attr('d', arc)
 						.attr('fill', function(d) { return color(d.data); });
-
-					arcs.append('text')
-						.attr('transform', function(d) { return 'translate(' + arc.centroid(d) + ')'; })
-						.attr('text-anchor', 'middle')
-						.attr('font-size', '.6em')
-						.text(function(d) { return d.data })
-						.attr('fill', 'white');
 
 			};
 
