@@ -53,11 +53,11 @@
           <!-- Graph for last 30 days -->
           <md-whiteframe class="md-whiteframe-z2" style='background-color: white; height: 200px; padding: 0; color: white;' layout='column' layout-align='center start' layout-margin flex='99' flex-gt-md='99' flex-md='45' flex-sm='90' layout-fill>
             <span style='width:100%; height: 65%; background: #66BB6A;' layout="column" layout-align="start center">
-              <div humidity-arc humidity-data='ambientData.humidity'></div>
+              <div dummy-arc arc-data='ambientData.humidity'></div>
             </span>
             <span style='width:100%; height: 35%; background: #43A047;' layout="column" layout-align="start center">
               <div style='height: 120px; margin-top: 12px'>
-                <h6 class='.md-headline' style='margin-top: 8px; margin-top: 18px;'>Current Humidity: {{ ambientData.humidity }}%</h6>
+                <h6 class='.md-headline' style='margin-top: 8px; margin-top: 18px;'>Current Humidity: {{ ambientData.humidity[0] }}%</h6>
               </div> 
             </span> 
           </md-whiteframe>
