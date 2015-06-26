@@ -45,8 +45,8 @@ angular.module('securityCam')
 
 			};
 
-			// $interval(buildGraph, 3500, 1);
-			buildGraph();
+			$interval(buildGraph, 3500, 1);
+			//buildGraph();
 
 	    	});
 	    }
